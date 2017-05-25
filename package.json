@@ -1,11 +1,10 @@
 {
   "name": "psl-workshop-protractor",
   "version": "1.0.0",
-  "description": "",
+  "description": "First workshop for automation",
   "main": "index.js",
   "scripts": {
-    "init": "protractor init",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "protractor protractor.config.js"
   },
   "repository": {
     "type": "git",
