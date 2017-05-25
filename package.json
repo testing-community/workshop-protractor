@@ -1,0 +1,30 @@
+{
+  "name": "psl-workshop-protractor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "init": "protractor init",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aperdomob/psl-workshop-protractor.git"
+  },
+  "keywords": [
+    "practice",
+    "protractor",
+    "psl",
+    "training",
+    "workshop"
+  ],
+  "author": "aperdomobo@gmail.com (Alejandro Perdomo)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aperdomob/psl-workshop-protractor/issues"
+  },
+  "homepage": "https://github.com/aperdomob/psl-workshop-protractor#readme",
+  "devDependencies": {
+    "protractor": "^5.1.2"
+  }
+}
