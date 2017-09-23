@@ -7,8 +7,8 @@
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
-    "pretest": "npm run build",
-    "test": "protractor dist/protractor/config.js"
+    "test:local": "npm run build && protractor dist/protractor/config.js",
+    "test:headless": "npm run build && protractor dist/protractor/headless.config.js"
   },
   "repository": {
     "type": "git",
