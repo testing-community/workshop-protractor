@@ -5,7 +5,6 @@ export let config: Config = {
   framework: 'jasmine',
   seleniumAddress: 'http://localhost:4444/wd/hub',
   specs: ['../test/Google.spec.js'],
-  helpers: [ './test/helpers/reporter.js'],
   noGlobals: true,
   onPrepare: () => {
     reporter();
