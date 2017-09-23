@@ -10,4 +10,4 @@ export let config: Config = {
     reporter();
     browser.ignoreSynchronization = true;
   }
-}
+};

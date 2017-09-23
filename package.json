@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "webdriver-manager update --gecko false",
     "clean": "rm -rf dist",
-    "prebuild": "npm run clean",
+    "lint": "tslint --type-check --project tsconfig.json **/*.ts",
+    "prebuild": "npm run clean && npm run lint",
     "build": "tsc",
     "test:local": "npm run build && protractor dist/protractor/config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
@@ -35,6 +36,8 @@
   "devDependencies": {
     "@types/jasminewd2": "^2.0.3",
     "jasmine-spec-reporter": "^4.2.1",
+    "tslint": "^5.7.0",
+    "tslint-config-airbnb": "^5.3.0",
     "typescript": "^2.5.2"
   }
 }
