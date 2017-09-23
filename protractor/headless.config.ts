@@ -9,11 +9,11 @@ export let config: Config = {
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
-      args: ["--headless", "--disable-gpu", "--window-size=800,600"]
+      args: ['--headless', '--disable-gpu', '--window-size=800,600']
     }
   },
   onPrepare: () => {
     reporter();
     browser.ignoreSynchronization = true;
   }
-}
+};
