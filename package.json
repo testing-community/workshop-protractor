@@ -4,7 +4,11 @@
   "description": "First workshop for automation",
   "main": "index.js",
   "scripts": {
-    "test": "protractor protractor.config.js"
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "pretest": "npm run build",
+    "test": "protractor dist/protractor/config.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +27,11 @@
     "url": "https://github.com/aperdomob/psl-workshop-protractor/issues"
   },
   "homepage": "https://github.com/aperdomob/psl-workshop-protractor#readme",
-  "devDependencies": {
+  "dependencies": {
     "protractor": "^5.1.2"
+  },
+  "devDependencies": {
+    "@types/jasminewd2": "^2.0.3",
+    "typescript": "^2.5.2"
   }
 }
