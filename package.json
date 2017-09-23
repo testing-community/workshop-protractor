@@ -4,11 +4,13 @@
   "description": "First workshop for automation",
   "main": "index.js",
   "scripts": {
+    "postinstall": "webdriver-manager update --gecko false",
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
     "test:local": "npm run build && protractor dist/protractor/config.js",
-    "test:headless": "npm run build && protractor dist/protractor/headless.config.js"
+    "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
+    "test": "npm run test:headless"
   },
   "repository": {
     "type": "git",
