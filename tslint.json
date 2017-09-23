@@ -1,0 +1,10 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint-config-airbnb"
+  ],
+  "rules": {
+    "trailing-comma": [true],
+    "no-boolean-literal-compare": [true]
+  }
+}
