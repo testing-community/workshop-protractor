@@ -4,6 +4,7 @@
   "description": "First workshop for automation",
   "main": "index.js",
   "scripts": {
+    "postinstall": "webdriver-manager update",
     "clean": "rm -rf dist",
     "prebuild": "npm run clean",
     "build": "tsc",
