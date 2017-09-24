@@ -3,7 +3,7 @@ import { reporter } from './helpers/reporter';
 
 export let config: Config = {
   framework: 'jasmine',
-  specs: ['../test/Google.spec.js'],
+  specs: ['../test/**/*.spec.js'],
   SELENIUM_PROMISE_MANAGER: false,
   noGlobals: true,
   capabilities: {
