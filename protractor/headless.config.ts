@@ -6,6 +6,7 @@ export let config: Config = {
   specs: ['../test/**/*.spec.js'],
   SELENIUM_PROMISE_MANAGER: false,
   noGlobals: true,
+  getPageTimeout: 1000,
   capabilities: {
     browserName: 'chrome',
     chromeOptions: {
