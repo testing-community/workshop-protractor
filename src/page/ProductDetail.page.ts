@@ -5,7 +5,7 @@ export class ProductDetailPage {
     return $('#add_to_cart > button > span');
   }
 
-  public adToCart(): promise.Promise<void> {
+  public addToCart(): promise.Promise<void> {
     return this.addToCartButton.click();
   }
 }
