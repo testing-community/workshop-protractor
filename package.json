@@ -12,7 +12,7 @@
     "test:local": "npm run build && protractor dist/protractor/config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
-    "test": "npm run test:saucelabs`"
+    "test": "npm run test:saucelabs"
   },
   "repository": {
     "type": "git",
