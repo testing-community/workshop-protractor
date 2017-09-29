@@ -12,8 +12,7 @@
     "test:local": "npm run build && protractor dist/protractor/config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
-    "test:saucelabs:multi": "npm run build && protractor dist/protractor/saucelabs-multibrowser.config.js",
-    "test": "npm run test:saucelabs:multi"
+    "test": "npm run test:saucelabs`"
   },
   "repository": {
     "type": "git",
