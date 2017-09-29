@@ -11,7 +11,8 @@
     "build": "tsc",
     "test:local": "npm run build && protractor dist/protractor/config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
-    "test": "npm run test:headless"
+    "test:saucelabs": " cross-env SAUCE=true npm run test:local",
+    "test": "npm run test:saucelabs"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@types/jasminewd2": "^2.0.3",
+    "cross-env": "^5.0.5",
     "jasmine-spec-reporter": "^4.2.1",
     "tslint": "^5.7.0",
     "tslint-config-airbnb": "^5.3.0",
