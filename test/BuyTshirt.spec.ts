@@ -28,7 +28,7 @@ describe('Buy a t-shirt', () => {
   it('then should be bought a t-shirt', async () => {
     await browser.get('http://automationpractice.com/');
     await menuContentPage.goToTShirtMenu();
-    await productListPage.selectFirstItem();
+    await productListPage.selectProduct('Faded Short Sleeve T-shirts');
     await productDetailPage.addToCart();
     await productAddedModalPage.proceedToCheckout();
     await summaryStepPage.proceedToCheckout();
