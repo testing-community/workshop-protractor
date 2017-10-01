@@ -1,7 +1,7 @@
 import { browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 
-describe('Given a page to practice automation', () => {
+fdescribe('Given a page to practice automation', () => {
   beforeAll(async () => {
     await browser.get('http://toolsqa.com/automation-practice-form/');
   });
@@ -18,6 +18,7 @@ describe('Given a page to practice automation', () => {
         profession: ['Automation Tester'],
         tools: ['Selenium Webdriver'],
         continent: 'South America',
+        file: './resources/photo.jpg',
         commands: [
           'Browser Commands',
           'Navigation Commands',
@@ -29,6 +30,10 @@ describe('Given a page to practice automation', () => {
 
     it('the form should be filled', async () => {
       expect(await personalInformationPage.getPageTitle()).toBe('Practice Automation Form');
+    });
+
+    it('then filename should be loaded', async () => {
+      expect(await personalInformationPage.getFilename()).toBe('photo.jpg');
     });
   });
 });
