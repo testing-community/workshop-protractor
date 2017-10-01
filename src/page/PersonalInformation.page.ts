@@ -1,4 +1,4 @@
-import { element, by, ElementFinder, browser } from 'protractor';
+import { element, by, ElementFinder } from 'protractor';
 
 export class PersonalInformationPage {
   private get firstNameField(): ElementFinder {
@@ -74,7 +74,6 @@ export class PersonalInformationPage {
       await this.seleniumCommandOption(name).click();
     }
 
-    browser.sleep(1000);
     await this.sendButton.click();
   }
 }
