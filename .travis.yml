@@ -1,11 +1,15 @@
 language: node_js
 cache:
- directories:
- - node_modules
+  directories:
+  - node_modules
 notifications:
- email: false
+  email: false
 node_js:
 - '7'
 branches:
- except:
- - /^v\d+\.\d+\.\d+$/
+  except:
+  - "/^v\\d+\\.\\d+\\.\\d+$/"
+env:
+  global:
+  - secure: RfEJBDkaVqtiyVPhDvqYVUpXT6l9BGAVWQRoB5Po5ALuqIHHGbGna4E+weIVxIAE4RPPGzUfxneq+g2tQMx7K0jPofTHZ5QqineTCLJWX1qtVyw8e9SclcrbkAPBx3qdxLZmueU6WtPRxPSJk4BJNpIP9HwrEH6YhJd11fWhlUii0wWNtNiipNsJHKJIALBAUtwcVDiXtzTc2vll4gn3caaqXB82hLkznZ9DJ6VfXBDhlLN5lDC/gEo9hHjTxbU6J1ke3bYwCbzI+MaK0DiSLCModGOHAsjQbRxI8sEetmKq+ekKKzP/rcUe0+we1um12syalKawZb07U5b35hHZNK/Kmt16v4B0FZwxTW9mR3J1r6tBHJoKSNbY0lRDG+9sBCOpEo/g12nczuuqYu3LzozxURV6lmtC+PYbhRNg8Yr1RN5aBjoT4zNeLpZteMu2R4qtUUp6u8MjjC/gEkIk611dZ3KK9DsXJnzD5J2Fh7faNXSdqaBoEliltCWap5me+DrD4HVtiRAMiC/vQOYce2+uABtdFCjZ+h98+wO6W1yBctiWijnwOc+dSmWCy3B5dnBQv5F6tBHq4sKOoYjUA581U+twxbkuRPNnOCBhUV3DEw475oKqyEL9+yY9oHh5AZUUECp+JR5xluch/JSmv6FvZs/2YZ4Q4x4yjQenKDw=
+  - secure: bTU9G+Iv3ZeIZ8bKEI3qGHUisX6MbFVZtpBusEWBZRw7Tw8L0gtFLhfUKwdChlhkblSKvSM2U+Mrk53Gb7FdK9yrHiyTSxHX563jvsZNrQIPWwbBo/jU+Z5IWQ/ZNKF1lh+uOVZHiufg6Xa+vDb5N113Yma+KSZDvreD7wB9rrVZG3lX6MrGdbu8diw9H7sMdYQERpNbU61v8Uj6PEHu+XQMJ/jlFVbzjzb4l8X9jufMgGVdVnMqhTaqY3aNLfm7WBJMoMF4XLLm1MMsLVlhsKJbLwpH5UHy6NTtgNGcn0ccZ4T3xHKXalB4fahrBHnTy89Q+7esE3AVUkLPKPgrB5DeN4fmKGVF8PHfh5z0/nRrv6Mqv3aA9Tist8HA0JLckDURoGoEZ80MhE7Xc624CpvFIrgM59Oo48LCnc8ibzOhonTs5gCWq79UbwAk5Z0y5NybE/Zg0hbqaiEivqbw8vlfsgjc4Mkz9F/nx3R0zmYLDzPySdabQHIqngLWgtFu51EuoZFdz8Uhc0ukQX4XWc/HOqPyyvxMBAPWBy2paQu+QMHFVYKtxlcq8d0lX7NxZ791hIKwnHGDZCsbZ1Mxad5qMkdbCVKVu/xGOT0qg8rcD9PuAbJXBOnRnsyr2gCLzHMLQnecUIGQO7v7TRy+UPvTTtRdUpMCEV+7Zc92fxg=

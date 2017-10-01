@@ -8,6 +8,7 @@ export let config: Config = {
   noGlobals: true,
   getPageTimeout: 30000,
   capabilities: {
+    name: 'UI Workshop',
     browserName: 'chrome',
     chromeOptions: {
       args: ['disable-infobars=true --window-size=800,600'],
@@ -21,5 +22,7 @@ export let config: Config = {
     reporter();
     browser.ignoreSynchronization = true;
     browser.manage().timeouts().implicitlyWait(0);
-  }
+  },
+  sauceUser: process.env.SAUCE_USERNAME,
+  sauceKey: process.env.SAUCE_ACCESS_KEY
 };
