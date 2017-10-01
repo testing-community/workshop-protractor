@@ -18,6 +18,7 @@ describe('Given a page to practice automation', () => {
         profession: ['Automation Tester'],
         tools: ['Selenium Webdriver'],
         continent: 'South America',
+        file: './resources/photo.jpg',
         commands: [
           'Browser Commands',
           'Navigation Commands',
@@ -29,6 +30,10 @@ describe('Given a page to practice automation', () => {
 
     it('the form should be filled', async () => {
       expect(await personalInformationPage.getPageTitle()).toBe('Practice Automation Form');
+    });
+
+    it('then filename should be loaded', async () => {
+      expect(await personalInformationPage.getFilename()).toBe('photo.jpg');
     });
   });
 });

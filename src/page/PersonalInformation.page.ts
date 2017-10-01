@@ -1,4 +1,20 @@
-import { element, by, ElementFinder } from 'protractor';
+import { browser, element, by, ElementFinder } from 'protractor';
+import { resolve } from 'path';
+import { existsSync } from 'fs';
+import * as remote from 'selenium-webdriver/remote';
+
+interface PersonalInformation {
+  firstName: string;
+  lastName: string;
+  sex: string;
+  experience: number;
+  profession: string[];
+  tools: string[];
+  continent: string;
+  commands: string[];
+  file?: string;
+}
+
 
 export class PersonalInformationPage {
   private get firstNameField(): ElementFinder {
@@ -15,6 +31,10 @@ export class PersonalInformationPage {
 
   private get pageTitleLabel(): ElementFinder {
     return element(by.id('content')).element(by.tagName('h1'));
+  }
+
+  private get uploadFileInput(): ElementFinder {
+    return element(by.id('photo'));
   }
 
   private sexOption(name: string): ElementFinder {
@@ -45,16 +65,22 @@ export class PersonalInformationPage {
     return await this.pageTitleLabel.getText();
   }
 
-  public async fillForm(form: {
-    firstName: string,
-    lastName: string,
-    sex: string,
-    experience: number,
-    profession: string[],
-    tools: string[],
-    continent: string,
-    commands: string[]
-  }): Promise<void> {
+  public async getFilename(): Promise<string> {
+    const fullPath: string = await this.uploadFileInput.getAttribute('value');
+    return fullPath.split(/(\\|\/)/g).pop();
+  }
+
+  private async uploadFile(relativePath: string): Promise<void> {
+    const fullPath = resolve(process.cwd(), relativePath);
+
+    if (existsSync(fullPath)) {
+      await browser.setFileDetector(new remote.FileDetector());
+      await this.uploadFileInput.sendKeys(fullPath);
+      await browser.setFileDetector(undefined);
+    }
+  }
+
+  public async fillForm(form: PersonalInformation): Promise<void> {
     await this.firstNameField.sendKeys(form.firstName);
     await this.lastNameField.sendKeys(form.lastName);
     await this.sexOption(form.sex).click();
@@ -62,6 +88,10 @@ export class PersonalInformationPage {
 
     for (const name of form.profession) {
       await this.professionOption(name).click();
+    }
+
+    if (form.file) {
+      await this.uploadFile(form.file);
     }
 
     for (const name of form.tools) {
@@ -73,7 +103,10 @@ export class PersonalInformationPage {
     for (const name of form.commands) {
       await this.seleniumCommandOption(name).click();
     }
+  }
 
+  public async submit(form: PersonalInformation): Promise<void> {
+    await this.fillForm(form);
     await this.sendButton.click();
   }
 }
