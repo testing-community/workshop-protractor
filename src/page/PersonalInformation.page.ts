@@ -13,8 +13,8 @@ interface PersonalInformation {
   continent: string;
   commands: string[];
   file?: string;
+  downloadFile?: boolean;
 }
-
 
 export class PersonalInformationPage {
   private get firstNameField(): ElementFinder {
@@ -35,6 +35,10 @@ export class PersonalInformationPage {
 
   private get uploadFileInput(): ElementFinder {
     return element(by.id('photo'));
+  }
+
+  private get seleniumAutomationLink(): ElementFinder {
+    return element(by.linkText('Selenium Automation Hybrid Framework'));
   }
 
   private sexOption(name: string): ElementFinder {
@@ -59,6 +63,27 @@ export class PersonalInformationPage {
 
   private seleniumCommandOption(name: string): ElementFinder {
     return element(by.id('selenium_commands')).element(by.cssContainingText('option', name));
+  }
+
+  private async download() {
+    await this.seleniumAutomationLink.click();
+
+    const downloadedPromise = new Promise((res) => {
+      const fullPath = resolve(process.cwd(), 'temp/OnlineStore.zip');
+      const verifyDownload = () => {
+        if (existsSync(fullPath)) {
+          res(true);
+        }
+      };
+
+      setInterval(verifyDownload, 500);
+    });
+
+    const timeoutPromise = new Promise((_, reject) => {
+      setTimeout(() => reject(true), 20000);
+    });
+
+    await Promise.race([downloadedPromise, timeoutPromise]);
   }
 
   public async getPageTitle(): Promise<string> {
@@ -92,6 +117,10 @@ export class PersonalInformationPage {
 
     if (form.file) {
       await this.uploadFile(form.file);
+    }
+
+    if (form.downloadFile) {
+      await this.download();
     }
 
     for (const name of form.tools) {
