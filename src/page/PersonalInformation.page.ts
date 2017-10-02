@@ -38,7 +38,7 @@ export class PersonalInformationPage {
     return element(by.id('photo'));
   }
 
-  private get TestFileDownloadLink(): ElementFinder {
+  private get testFileDownloadLink(): ElementFinder {
     return element(by.linkText('Test File to Download'));
   }
 
@@ -67,7 +67,7 @@ export class PersonalInformationPage {
   }
 
   private async download() {
-    const link = await this.TestFileDownloadLink.getAttribute('href');
+    const link = await this.testFileDownloadLink.getAttribute('href');
 
     const service = new DownloadService();
     await service.downloadFile(link, 'test-document.xlsx');
