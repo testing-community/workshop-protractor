@@ -1,6 +1,5 @@
 import { browser, Config } from 'protractor';
 import { reporter } from './helpers/reporter';
-import { resolve } from 'path';
 
 export let config: Config = {
   framework: 'jasmine',
@@ -13,10 +12,7 @@ export let config: Config = {
     chromeOptions: {
       args: ['disable-infobars=true --window-size=800,600'],
       prefs: {
-        credentials_enable_service: false,
-        download: {
-          default_directory: resolve(process.cwd(), 'temp')
-        }
+        credentials_enable_service: false
       }
     }
   },

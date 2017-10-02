@@ -2,6 +2,7 @@ import { browser, element, by, ElementFinder } from 'protractor';
 import { resolve } from 'path';
 import { existsSync } from 'fs';
 import * as remote from 'selenium-webdriver/remote';
+import { DownloadService } from '../service';
 
 interface PersonalInformation {
   firstName: string;
@@ -38,7 +39,7 @@ export class PersonalInformationPage {
   }
 
   private get seleniumAutomationLink(): ElementFinder {
-    return element(by.linkText('Selenium Automation Hybrid Framework'));
+    return element(by.linkText('Test File to Download'));
   }
 
   private sexOption(name: string): ElementFinder {
@@ -66,24 +67,10 @@ export class PersonalInformationPage {
   }
 
   private async download() {
-    await this.seleniumAutomationLink.click();
+    const link = await this.seleniumAutomationLink.getAttribute('href');
 
-    const downloadedPromise = new Promise((res) => {
-      const fullPath = resolve(process.cwd(), 'temp/OnlineStore.zip');
-      const verifyDownload = () => {
-        if (existsSync(fullPath)) {
-          res(true);
-        }
-      };
-
-      setInterval(verifyDownload, 500);
-    });
-
-    const timeoutPromise = new Promise((_, reject) => {
-      setTimeout(() => reject(true), 20000);
-    });
-
-    await Promise.race([downloadedPromise, timeoutPromise]);
+    const service = new DownloadService();
+    await service.downloadFile(link, 'test-document.xlsx');
   }
 
   public async getPageTitle(): Promise<string> {

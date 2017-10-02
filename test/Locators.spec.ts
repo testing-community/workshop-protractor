@@ -1,5 +1,6 @@
 import { browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
+import { DownloadService } from '../src/service';
 
 fdescribe('Given a page to practice automation', () => {
   beforeAll(async () => {
@@ -35,6 +36,12 @@ fdescribe('Given a page to practice automation', () => {
 
     it('then filename should be loaded', async () => {
       expect(await personalInformationPage.getFilename()).toBe('photo.jpg');
+    });
+
+    it('then should be created a file', async () => {
+      const service = new DownloadService();
+      const file = await service.readFileFromTemp('test-document.xlsx');
+      expect(file.byteLength).toBeGreaterThanOrEqual(8000);
     });
   });
 });

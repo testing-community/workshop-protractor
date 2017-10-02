@@ -31,9 +31,11 @@
   },
   "homepage": "https://github.com/aperdomob/psl-workshop-protractor#readme",
   "dependencies": {
+    "isomorphic-fetch": "^2.2.1",
     "protractor": "^5.1.2"
   },
   "devDependencies": {
+    "@types/isomorphic-fetch": "0.0.34",
     "@types/jasminewd2": "^2.0.3",
     "jasmine-spec-reporter": "^4.2.1",
     "tslint": "^5.7.0",
