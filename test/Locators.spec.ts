@@ -2,7 +2,7 @@ import { browser } from 'protractor';
 import { PersonalInformationPage } from '../src/page';
 import { DownloadService } from '../src/service';
 
-fdescribe('Given a page to practice automation', () => {
+describe('Given a page to practice automation', () => {
   beforeAll(async () => {
     await browser.get('http://toolsqa.com/automation-practice-form/');
   });
