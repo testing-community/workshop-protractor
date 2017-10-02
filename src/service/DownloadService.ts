@@ -3,7 +3,6 @@ import { resolve } from 'path';
 import * as fetch from 'isomorphic-fetch';
 
 export class DownloadService {
-
   private tempFolder: string;
 
   constructor() {

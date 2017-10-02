@@ -11,9 +11,7 @@ export let config: Config = {
     browserName: 'chrome',
     chromeOptions: {
       args: ['disable-infobars=true --window-size=800,600'],
-      prefs: {
-        credentials_enable_service: false
-      }
+      prefs: { credentials_enable_service: false }
     }
   },
   jasmineNodeOpts: {
