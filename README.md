@@ -7,27 +7,27 @@
 1. [Configuración Inicial del Proyecto](#1-configuración-inicial-del-proyecto)
 1. [Mejorando el primer caso de prueba](#2-mejorando-el-primer-caso-de-prueba)
 1. [Migrando a TypeScript](#3-migrando-a-typescript)
-1. [Agregando Reporte a la Consola](4-agregando-reporte-a-la-consola)
+1. [Agregando Reporte a la Consola](#4-agregando-reporte-a-la-consola)
 1. [Desactivar el manejador de promesas y Selenium server](#5-desactivar-el-manejador-de-promesas-y-selenium-server)
 1. [Chrome Headless](#6-chrome-headless)
 1. [Agregar Integración Continua](#7-agregar-integración-continua)
 1. [Agregando Análisis de Código Estático](#8-agregando-análisis-de-código-estático)
 1. [CSS Selector](#9-css-selector)
-1. [Page Object Model](10-page-object-model)
+1. [Page Object Model](#10-page-object-model)
 1. [Esperas de Carga de Página y de Jasmine](#11-esperas-de-carga-de-página-y-de-jasmine)
 1. [Esperas Implicitas](#12-esperas-implicitas)
 1. [Esperas Explicitas](#13-esperas-explicitas)
 1. [Mejorando los Locator](#14-mejorando-los-locator)
 1. [Separar prueba en diferentes describes](#15-separar-prueba-en-diferentes-describes)
-1. [Agregando Jasmine-awesome]()
-1. [Utilizando Capabilities para configurar Chrome]()
+1. [Agregando Jasmine Awesome](#16-agregando-jasmine-awesome)
+1. [Utilizando Capabilities para configurar Chrome](#17-utilizando-capabilities-para-configurar-chrome)
 1. [Listas de Elementos, filtros y elementos dentro de elementos](#18-listas-de-elementos-filtros-y-elementos-dentro-de-elementos)
 1. [Más Locators](#19-más-locators)
 1. [Ejecución de Código Javascript](#20-ejecución-de-código-javascript)
 1. [Trabajando con IFrames](#21-trabajando-con-iframes)
 1. [Subiendo un Archivo](#22-subiendo-un-archivo)
 1. [Descargando Archivos](#23-descargando-archivos)
-1. [Configurar Saucelabs]()
+1. [Configurar Saucelabs](#24-configurar-saucelabs)
 1. [Probar con diferentes navegadores](#25-probar-con-diferentes-navegadores)
 
 ### 1. Configuración Inicial del Proyecto
@@ -452,7 +452,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 14. Mejorando los Locator
+### 14. Mejorando los Locator
 
 **Descripción**: En esta sesión usted hará la propuesta de que locators deberían ser utilizados en la prueba que se está implementado.
 
