@@ -4,31 +4,31 @@
 
 ### Tabla de Contenido
 
-1. [Configuración Inicial del Proyecto](#section-links)
-1. Mejorando el primer caso de prueba
-1. Migrando a TypeScript
-1. Agregando Reporte a la Consola
-1. Desactivar el manejador de promesas y Selenium server
-1. Chrome Headless
-1. Agregar Integración Continua
-1. Agregando Análisis de Código Estático
-1. CSS Selector
-1. Page Object Model
-1. Esperas de Carga de Página y de Jasmine
-1. Esperas Implicitas
-1. Esperas Explicitas
-1. Mejorando los Locator
-1. Separar prueba en diferentes describes
-1. Agregando Jasmine-awesome
-1. Utilizando Capabilities para configurar Chrome
-1. Listas de Elementos, filtros y elementos dentro de elementos
-1. Más Locators
-1. Ejecución de Código Javascript
-1. Trabajando con IFrames
-1. Subiendo un Archivo
-1. Descargando Archivos
-1. Configurar Saucelabs
-1. Probar con diferentes navegadores
+1. [Configuración Inicial del Proyecto](#1-configuración-inicial-del-proyecto)
+1. [Mejorando el primer caso de prueba](#2-mejorando-el-primer-caso-de-prueba)
+1. [Migrando a TypeScript](#3-migrando-a-typescript)
+1. [Agregando Reporte a la Consola](4-agregando-reporte-a-la-consola)
+1. [Desactivar el manejador de promesas y Selenium server](#5-desactivar-el-manejador-de-promesas-y-selenium-server)
+1. [Chrome Headless](#6-chrome-headless)
+1. [Agregar Integración Continua](#7-agregar-integración-continua)
+1. [Agregando Análisis de Código Estático](#8-agregando-análisis-de-código-estático)
+1. [CSS Selector](#9-css-selector)
+1. [Page Object Model](10-page-object-model)
+1. [Esperas de Carga de Página y de Jasmine](#11-esperas-de-carga-de-página-y-de-jasmine)
+1. [Esperas Implicitas](#12-esperas-implicitas)
+1. [Esperas Explicitas](#13-esperas-explicitas)
+1. [Mejorando los Locator](#14-mejorando-los-locator)
+1. [Separar prueba en diferentes describes](#15-separar-prueba-en-diferentes-describes)
+1. [Agregando Jasmine-awesome]()
+1. [Utilizando Capabilities para configurar Chrome]()
+1. [Listas de Elementos, filtros y elementos dentro de elementos](#18-listas-de-elementos-filtros-y-elementos-dentro-de-elementos)
+1. [Más Locators](#19-más-locators)
+1. [Ejecución de Código Javascript](#20-ejecución-de-código-javascript)
+1. [Trabajando con IFrames](#21-trabajando-con-iframes)
+1. [Subiendo un Archivo](#22-subiendo-un-archivo)
+1. [Descargando Archivos](#23-descargando-archivos)
+1. [Configurar Saucelabs]()
+1. [Probar con diferentes navegadores](#25-probar-con-diferentes-navegadores)
 
 ### 1. Configuración Inicial del Proyecto
 
@@ -98,7 +98,7 @@
 1. Crear un PR y esperar por la aprobación o comentarios de los revisores
 1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
 
-### Mejorando el primer caso de prueba
+### 2. Mejorando el primer caso de prueba
 
 **Descripción**: Se utilizará el método `onPrepare` para configurar la información que debería ser igual en todas las pruebas, adicionalmente se utilizará el `beforeEach` para organizar la prueba de forma más legible
 
@@ -366,7 +366,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 10. Page Object Model
+### 10. Page Object Model
 
 **Descripción**: El page object model es el patrón por defecto que se utiliza para la mantenibilidad de las pruebas, conocer cómo implementar este patrón le ahorrará muchas horas de reproceso en el futuro. En esta sesión se hará la primera implementación del patrón Page Object Model (POM)
 
@@ -453,6 +453,7 @@
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 ### 14. Mejorando los Locator
+
 **Descripción**: En esta sesión usted hará la propuesta de que locators deberían ser utilizados en la prueba que se está implementado.
 
 1. Haga su propia propuesta de locators para cada uno de los page-objects
@@ -472,6 +473,7 @@
 1. Enviar PR con los cambios
 
 ### 16. Agregando Jasmine-awesome
+
 **Descripción**: agregaremos un reporte visual a nuestro proyecto de tal forma que tenga un reporte html de la ejecución de las pruebas
 
 1. Instalar la dependencia de desarrollo **jasmine-awesome-report**
@@ -482,6 +484,7 @@
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 ### 17. Utilizando Capabilities para configurar Chrome
+
 **Descripción**: Las popups que muestra chrome cuando se está ejecutando por selenium son molestas y pueden causar fragilidad en las pruebas, en esta sesión se enseñará a desactivarlas por medio de las capabilities.
 
 1. Modificar la configuración local de protractor agregando una capability para chrome para evitar ventanas emergente en la ejecución
@@ -580,6 +583,7 @@
 1. Modificar la prueba de tal forma que descargue el archivo y después comprobar que descargó de forma correcta
 
 ### 24. Configurar Saucelabs
+
 **Descripción**: Ejecutar en modo headless no siempre es la mejor opción, existen herramientas de pago como Saucelabs que nos provisionan diferentes sistemas operativos y diferentes navegadores, en esta sesión configuraremos saucelabs para ejecutar nuestras pruebas.
 
 Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interfaz gráfica, debemos utilizar servicios externos para la ejecución en browsers reales. En este caso utilizaremos saucelabs.
