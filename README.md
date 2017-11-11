@@ -410,7 +410,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 11 Esperas de Carga de Página y de Jasmine
+### 11. Esperas de Carga de Página y de Jasmine
 
 **Descripción**: Las esperas en selenium son los tiempos que se esperará para realizar algunas acciones, conocerlos y saber cómo utilizarlos nos disminuirá la fragilidad de las pruebas y adicionalmente nos ayudará a reducir los tiempos de ejecución.
 
