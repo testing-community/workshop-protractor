@@ -472,7 +472,7 @@
     * Pago en el banco (Este debe contener el `it` de validación)
 1. Enviar PR con los cambios
 
-### 16. Agregando Jasmine-awesome
+### 16. Agregando Jasmine Awesome
 
 **Descripción**: agregaremos un reporte visual a nuestro proyecto de tal forma que tenga un reporte html de la ejecución de las pruebas
 
@@ -483,7 +483,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 17. Utilizando Capabilities para configurar Chrome
+### 17. Utilizando Capabilities para configurar Chrome
 
 **Descripción**: Las popups que muestra chrome cuando se está ejecutando por selenium son molestas y pueden causar fragilidad en las pruebas, en esta sesión se enseñará a desactivarlas por medio de las capabilities.
 
@@ -582,7 +582,7 @@
     Recibirá el nombre del archivo y devolverá el buffer que contiene la información del archivo
 1. Modificar la prueba de tal forma que descargue el archivo y después comprobar que descargó de forma correcta
 
-### 24. Configurar Saucelabs
+### 24. Configurar Saucelabs
 
 **Descripción**: Ejecutar en modo headless no siempre es la mejor opción, existen herramientas de pago como Saucelabs que nos provisionan diferentes sistemas operativos y diferentes navegadores, en esta sesión configuraremos saucelabs para ejecutar nuestras pruebas.
 
