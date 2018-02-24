@@ -34,7 +34,7 @@
 
 **Descripción**: Se configurará inicialmente el proyecto con javascript y se hará una prueba sobre la página de google
 
-1. Crear un repositorio en GitHub con el nombre de “**protractor-workshop-2017**”
+1. Crear un repositorio en GitHub con el nombre de “**protractor-workshop-2018**”
 1. Seguir las instrucciones para realizar el primer commit
 1. En la configuración del repositorio de GitHub en la opción Branches proteja la rama Master indicando que los PR requieran revisión antes de mergear y que requiera la comprobación del estado antes de hacer merge
 1. Dentro del menú colaboradores agregar a:
@@ -48,7 +48,7 @@
 
    | Parametro          | Valor |
    | ------------------ | ---------- |
-   | **Name**           | _[Por Defecto]_                               |
+   | **Name**           | workshop-protractor                           |
    | **Version**        | _[Por Defecto]_                               |
    | **Description**    | This is a Workshop about Protractor           |
    | **Entry Point**    | _[Por Defecto]_                               |
@@ -245,7 +245,7 @@
     capabilities: {
       browserName: 'chrome',
       chromeOptions: {
-        args: ['--headless', '--disable-gpu', '--window-size=800,600']
+        args: ['--headless', '--disable-gpu', '--window-size=800,600', '--no-sandbox']
       }
     }
     ```
@@ -299,7 +299,8 @@
 1. Agregar el script de **package.json** lint
     `"lint": "tslint --type-check --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"`
 1. Corregir las reglas de forma automática `npm run lint -- --fix`
-1. Las reglas que no se puedan corregir automáticamente investigue y corrijalas
+1. Las reglas que no se puedan corregir automáticamente investigue y corrijalas. Ejecute el comando `npm run lint` para verificar que reglas esta rompiendo
+1. Modifique el script de `prebuild` del `package.json` agregandole al final `&& npm run lint`
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 ### 9. CSS Selector
