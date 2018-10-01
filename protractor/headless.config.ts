@@ -8,7 +8,7 @@ export let config: Config = {
   noGlobals: true,
   getPageTimeout: 30000,
   jasmineNodeOpts: {
-    defaultTimeoutInterval: 120000 
+    defaultTimeoutInterval: 120000
   },
   capabilities: {
     browserName: 'chrome',
