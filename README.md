@@ -1,4 +1,10 @@
-# psl-workshop-protractor
+# Workshop Protractor
+
+!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando Protractor. Mediante el desarrollo de varios ejercicios prácticos, se abarcara todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con Travis.CI, cómo usar Saucelab como plataforma de pruebas en la nube, el uso de Zalenium para orquestar pruebas (tanto local como en la nube), y el adecuado uso de Github y Gitflow para la entrega de un producto de software..
+
+**Recursos**:
+
+* [Wiki](https://github.com/AgileTestingColombia/workshop-protractor/wiki)
 
 ## Steps
 
@@ -34,13 +40,26 @@
 
 **Descripción**: Se configurará inicialmente el proyecto con javascript y se hará una prueba sobre la página de google
 
-1. Crear un repositorio en GitHub con el nombre de “**protractor-workshop-2018**”
+**Nota:** Si no tiene conocimiento sobre Github se le recomienda realizar el taller [Introducción a GitHub](https://services.github.com/on-demand/intro-to-github/es/)
+
+1. Crear una cuenta en Github si no la tiene.
+1. Crear un repositorio en limpio dentro de la página de GitHub con el nombre de “**protractor-workshop-2018**”
+1. Crear una carpeta en su computador llamada `protractor-workshop-2018` y ubicarse en ella en una consola
 1. Seguir las instrucciones para realizar el primer commit
+
+    ``` shell
+    echo "# protractor-workshop-2018" >> README.md
+    git init
+    git add README.md
+    git commit -m "first commit"
+    git remote add origin git@github.com:aperdomob/protractor-workshop-2018.git
+    git push -u origin master
+    ```
+
 1. En la configuración del repositorio de GitHub en la opción Branches proteja la rama Master indicando que los PR requieran revisión antes de mergear y que requiera la comprobación del estado antes de hacer merge
 1. Dentro del menú colaboradores agregar a:
    * [aperdomob](https://github.com/aperdomob)
    * [germandavid85](https://github.com/germandavid85)
-   * [jhenaoz](https://github.com/jhenaoz)
    * [luigisamurai](https://github.com/luigisamurai)
 1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado
 1. Crear una rama **project-setup** en el repositorio
@@ -52,7 +71,7 @@
    | **Version**        | _[Por Defecto]_                               |
    | **Description**    | This is a Workshop about Protractor           |
    | **Entry Point**    | _[Por Defecto]_                               |
-   | **Test Command**   | `protractor protractor.config.js`             |
+   | **Test Command**   | `protractor dist/protractor/config.js`             |
    | **Git Repository** | _[Por Defecto]_                               |
    | **Keywords**       | ui-testing, dojo, practice, protractor        |
    | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su github]_) |
@@ -62,7 +81,8 @@
   `npm install --save protractor`
 
 1. Crear en la raíz del proyecto el archivo **protractor.config.js** y agregar la siguiente información
-   ``` js
+
+   ``` ts
    exports.config = {
      framework: 'jasmine',
      seleniumAddress: 'http://localhost:4444/wd/hub',
