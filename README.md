@@ -1,6 +1,6 @@
 # Workshop Protractor
 
-!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando Protractor. Mediante el desarrollo de varios ejercicios prácticos, se abarcara todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con Travis.CI, cómo usar Saucelab como plataforma de pruebas en la nube, el uso de Zalenium para orquestar pruebas (tanto local como en la nube), y el adecuado uso de Github y Gitflow para la entrega de un producto de software..
+!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcara todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el adecuado uso de [Github](https://github.com/) y Gitflow para la entrega de un producto de software..
 
 **Recursos**:
 
@@ -63,6 +63,9 @@
    * [luigisamurai](https://github.com/luigisamurai)
 1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado
 1. Crear una rama **project-setup** en el repositorio
+    ``` bash
+    git checkout -b project-setup
+    ```
 1. Ejecutar en una consola `npm init` dentro de la ruta donde se encuentra el repositorio y colocar la siguiente información:
 
    | Parametro          | Valor |
@@ -71,37 +74,48 @@
    | **Version**        | _[Por Defecto]_                               |
    | **Description**    | This is a Workshop about Protractor           |
    | **Entry Point**    | _[Por Defecto]_                               |
-   | **Test Command**   | `protractor dist/protractor/config.js`             |
+   | **Test Command**   | `protractor dist/protractor/config.js`        |
    | **Git Repository** | _[Por Defecto]_                               |
    | **Keywords**       | ui-testing, dojo, practice, protractor        |
    | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su github]_) |
    | **License**        | MIT                                           |
 
 1. Instalar la dependencia de protractor
-  `npm install --save protractor`
+  `npm install protractor`
 
-1. Crear en la raíz del proyecto el archivo **protractor.config.js** y agregar la siguiente información
+1. Instalar las dependencias de desarrollo de typescript
+  `npm i --save-dev typescript``
 
-   ``` ts
-   exports.config = {
-     framework: 'jasmine',
-     seleniumAddress: 'http://localhost:4444/wd/hub',
-     specs: ['test/spec.js']
-   }
-   ```
+1. Instalar los types de Jasmines
+  `npm install --save-dev @types/jasminewd2`
+
+1. Crear en la raíz del proyecto la carpeta **protractor** y dentro de ella el archivo  **config.ts** y agregar la siguiente información
+
+  ``` ts
+  import { Config } from 'protractor';
+
+  export const config: Config = {
+    framework: 'jasmine',
+    specs: [ '../test/spec.js' ],
+    seleniumAddress: 'http://localhost:4444/wd/hub'
+  };
+  ```
 
 1. Actualizar los drivers con el comando
+
    ``` bash
    ./node_modules/protractor/bin/webdriver-manager update
    ```
 
-1. En una segunda consola ejecutar
+1. En la consola ejecutar
+
    ``` bash
    ./node_modules/protractor/bin/webdriver-manager start
    ```
 
-1. Crear la carpeta **test** y dentro de la carpeta crear el archivo **spec.js**
-   ``` js
+1. Crear la carpeta **test** y dentro de la carpeta crear el archivo **spec.ts**
+
+   ``` ts
    describe('This is the first example of protractor', () => {
      it('should have a title', () => {
        browser.ignoreSynchronization = true;
@@ -111,10 +125,24 @@
    });
    ```
 
-1. Ejecutar el comando `npm test` y comprobar que la prueba pasa de forma satisfactoria
+1. Ejecutar el comando en una segunda consola `npm test` y comprobar que la prueba pasa de forma satisfactoria
 1. Crear el archivo **.gitignore** en la raíz del proyecto. Ingresar a la página <https://www.gitignore.io/> y en el área de texto  agregar el _sistema operativo_, _IDE's_ y _NodeJS_, ejemplo _OSX Node VisualStudioCode_. Genere el archivo y cópielo dentro del archivo **.gitignore**
+1. Agregar al final del **.gitignore** las siguientes líneas
+    ``` bash
+    # Typescript
+    dist
+    ```
 1. Crear el archivo **LICENSE** en la raíz del proyecto con lo especificado en <https://en.wikipedia.org/wiki/MIT_License> (_Tenga en cuanta cambiar el año y el copyright holders_)
-1. Realizar un commit donde incluya los 5 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
+1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
+    ``` bash
+    @aperdomob @germandavid85 @luigisamurai
+    ```
+1. Realizar un commit donde incluya los 7 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
+    ```bash
+    git add .
+    git commit -m "setup protractor configuration"
+    git push origin project-setup
+    ```
 1. Crear un PR y esperar por la aprobación o comentarios de los revisores
 1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
 
@@ -150,18 +178,6 @@
       });
     });
     ```
-1. Ejecutar `npm test` y verificar la correcta ejecución de la prueba
-1. Subir los cambios a Github
-1. Crear un PR y esperar por la aprobación o comentarios de los revisores
-1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
-1. Eliminar la rama una vez mergeada
-
-### 3. Migrando a TypeScript
-
-**Descripción**: Angular ha hecho un gran esfuerzo por hacer funcionar sus framework mucho mejor en typescript, y protractor no es la excepción, en esta sesión se migrará el proyecto que se tiene al uso de typescript
-
-1. Instalar las dependencias de desarrollo **@types/jasminewd2** typescript
-    `npm install --save-dev @types/jasminewd2 typescript`
 1. Crear el archivo **tsconfig.json** en la raíz del proyecto con el siguiente contenido
     ``` json
     {
@@ -176,6 +192,27 @@
       }
     }
     ```
+
+1. Modificar los scripts del package.json para que tengan el siguiente contenido:
+    ``` json
+    "clean": "rm -rf dist",
+    "pretest": "npm run clean && tsc",
+    "test": "npm run build && protractor dist/protractor/config.js"
+    ```
+
+1. Ejecutar `npm test` y verificar la correcta ejecución de la prueba
+1. Subir los cambios a Github
+1. Crear un PR y esperar por la aprobación o comentarios de los revisores
+1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
+1. Eliminar la rama una vez mergeada
+
+### 3. Migrando a TypeScript
+
+**Descripción**: Angular ha hecho un gran esfuerzo por hacer funcionar sus framework mucho mejor en typescript, y protractor no es la excepción, en esta sesión se migrará el proyecto que se tiene al uso de typescript
+
+1. Instalar las dependencias de desarrollo **@types/jasminewd2** typescript
+    `npm install --save-dev @types/jasminewd2 typescript`
+
 1. Cambiar el nombre del archivo **Google.spec.js** por **Google.spec.ts** y agregar en la siguiente primera línea (La segunda línea debe ser un salto de línea para separar los imports de los describe)
     ```ts
     import { browser } from 'protractor';
@@ -194,14 +231,6 @@
         browser.ignoreSynchronization = true;
       }
     }
-    ```
-1. Modificar los scripts del package.json para que tengan el siguiente contenido:
-    ``` json
-    "clean": "rm -rf dist",
-   "prebuild": "npm run clean",
-   "build": "tsc",
-   "test": "npm run build && protractor dist/protractor/config.js"
-    ```
 1. Agregar las siguientes líneas en el **.gitignore**
     ``` bash
     ## Typescript
