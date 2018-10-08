@@ -1,10 +1,11 @@
 # Workshop Protractor
 
-!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcara todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el adecuado uso de [Github](https://github.com/) y Gitflow para la entrega de un producto de software..
+!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcara todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el adecuado uso de [Github](https://github.com/) y [Gitflow](https://guides.github.com/introduction/flow/) para la entrega de un producto de software.
 
 **Recursos**:
 
 * [Wiki](https://github.com/AgileTestingColombia/workshop-protractor/wiki)
+* [Guide](https://agiletestingcolombia.gitbook.io/workshops/)
 
 ## Steps
 
@@ -38,9 +39,9 @@
 
 ### 1. Configuración Inicial del Proyecto
 
-**Descripción**: Se configurará inicialmente el proyecto con javascript y se hará una prueba sobre la página de google
+**Descripción**: Se configurará inicialmente el proyecto con [TypeScript](https://www.typescriptlang.org/) y se hará una prueba sobre la página de [Google](https://www.google.com/). Adicionalmente se creará la configuración necesaria básica para un repositorio de [Github](https://help.github.com/)
 
-**Nota:** Si no tiene conocimiento sobre Github se le recomienda realizar el taller [Introducción a GitHub](https://services.github.com/on-demand/intro-to-github/es/)
+**Nota:** Si no tiene conocimiento sobre Github se le recomienda realizar las [Guias de Github](https://guides.github.com/activities/hello-world/) o el lab de [Introduction to Github](https://lab.github.com/githubtraining/introduction-to-github)
 
 1. Crear una cuenta en Github si no la tiene.
 1. Crear un repositorio en limpio dentro de la página de GitHub con el nombre de “**protractor-workshop-2018**”
