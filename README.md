@@ -203,7 +203,7 @@
 
 1. Ejecutar `npm test` y verificar la correcta ejecución de la prueba
 1. Subir los cambios a Github
-1. Crear un PR y esperar por la aprobación o comentarios de los revisores
+1. Crear un PR y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo siga las siguientes [instrucciones](https://help.github.com/articles/creating-a-pull-request/)
 1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
 1. Eliminar la rama una vez mergeada
 
