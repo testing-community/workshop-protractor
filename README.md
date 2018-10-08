@@ -91,16 +91,15 @@
   `npm install --save-dev @types/jasminewd2`
 
 1. Crear en la raíz del proyecto la carpeta **protractor** y dentro de ella el archivo  **config.ts** y agregar la siguiente información
+    ``` ts
+    import { Config } from 'protractor';
 
-  ``` ts
-  import { Config } from 'protractor';
-
-  export const config: Config = {
-    framework: 'jasmine',
-    specs: [ '../test/spec.js' ],
-    seleniumAddress: 'http://localhost:4444/wd/hub'
-  };
-  ```
+    export const config: Config = {
+      framework: 'jasmine',
+      specs: [ '../test/spec.js' ],
+      seleniumAddress: 'http://localhost:4444/wd/hub'
+    };
+    ```
 
 1. Actualizar los drivers con el comando
 
