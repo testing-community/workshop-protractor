@@ -7,7 +7,7 @@ export { SignInStepPage } from './sign-in-step.page';
 export { AddressStepPage } from './address-step.page';
 export { ShippingStepPage } from './shipping-step.page';
 export { PaymentStepPage } from './payment-step.page';
-export { BankPaymentPage } from './BankPayment.page';
+export { BankPaymentPage } from './bank-payment.page';
 export { OrderResumePage } from './order-resume.page';
 export { PersonalInformationPage } from './PersonalInformation.page';
 export { IFramePage } from './IFrame.page';
