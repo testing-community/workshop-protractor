@@ -1,7 +1,7 @@
 export { MenuContentPage } from './menu-content.page';
 export { ProductListPage } from './product-list.page';
 export { ProductDetailPage } from './ProductDetail.page';
-export { ProductAddedModalPage } from './ProductAddedModal.page';
+export { ProductAddedModalPage } from './product-added-modal.page';
 export { SummaryStepPage } from './SummaryStep.page';
 export { SignInStepPage } from './SignInStep.page';
 export { AddressStepPage } from './AddressStep.page';
