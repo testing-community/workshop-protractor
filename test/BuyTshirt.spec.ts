@@ -2,7 +2,6 @@ import { browser } from 'protractor';
 import {
   MenuContentPage,
   ProductListPage,
-  ProductDetailPage,
   ProductAddedModalPage,
   SummaryStepPage,
   SignInStepPage,
@@ -13,7 +12,6 @@ import {
   AddressStepPage
 } from '../src/page';
 
-// skipped test because this form now use iframe
 fdescribe('Given a shopping page', () => {
   beforeAll(async () => {
     await browser.get('http://automationpractice.com/');
@@ -23,13 +21,11 @@ fdescribe('Given a shopping page', () => {
     beforeAll(async () => {
       const menuContentPage: MenuContentPage = new MenuContentPage();
       const productListPage: ProductListPage = new ProductListPage();
-      const productDetailPage: ProductDetailPage = new ProductDetailPage();
       const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
       const summaryStepPage: SummaryStepPage = new SummaryStepPage();
 
       await menuContentPage.goToTShirtMenu();
       await productListPage.selectProduct('Faded Short Sleeve T-shirts');
-      await productDetailPage.addToCart();
       await productAddedModalPage.proceedToCheckout();
       await summaryStepPage.proceedToCheckout();
     });
