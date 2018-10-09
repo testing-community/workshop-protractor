@@ -4,7 +4,7 @@ export { ProductDetailPage } from './ProductDetail.page';
 export { ProductAddedModalPage } from './product-added-modal.page';
 export { SummaryStepPage } from './summary-step.page';
 export { SignInStepPage } from './sign-in-step.page';
-export { AddressStepPage } from './AddressStep.page';
+export { AddressStepPage } from './address-step.page';
 export { ShippingStepPage } from './ShippingStep.page';
 export { PaymentStepPage } from './PaymentStep.page';
 export { BankPaymentPage } from './BankPayment.page';
