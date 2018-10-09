@@ -142,7 +142,7 @@
 1. Modificar los scripts del package.json para que tengan el siguiente contenido:
     ``` json
     "clean": "rm -rf dist",
-    "pretest": "npm run clean && tsc",
+    "build": "npm run clean && tsc",
     "test": "npm run build && protractor dist/protractor/config.js"
     ```
 
@@ -243,11 +243,11 @@
 
 ### 4. Desactivar el manejador de promesas y Selenium server
 
-**Descripción**: El próximo año, protractor dejará de dar soporte a un tipo de promesas personalizadas que ha trabajado desde sus inicios, para adelantarnos al futuro modificaremos el proyecto de tal forma que protractor no maneje el manejador de promesas que piensa deprecar
+**Descripción**: Para [Octubre del 2018](https://github.com/SeleniumHQ/selenium/issues/2969) WebDriverJS dejará de dar soporte a un tipo de promesas personalizadas que ha trabajado desde sus inicios, aunque hoy en día aún hay soporte es necesario empezar a trabajar de la forma que recomienda Protractor
 
 1. Eliminar la propiedad `seleniumAddress` del **config.ts**
-1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false`
-1. Modificar el archivo de **Google.spec.ts** para que trabaje con **async/await**
+1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false` en el **config.ts**
+1. Modificar el archivo de **spec.ts** para que trabaje con **async/await**
     ``` ts
     import { browser } from 'protractor';
 
@@ -269,13 +269,13 @@
 
 **Descripción**: Muchas veces no contamos con servidores de integración continua que tengan acceso a máquinas con interfaz gráfica. Existen algunos navegadores que tienen versión headless que funcionan sin interfaz gráfica pero se comportan muy similar a los navegadores comunes. En esta sesión vamos a configurar la versión headless de chrome
 
-1. Duplicar el archivo **conf.js** con el nombre de **headless.conf.ts**
+1. Duplicar el archivo **config.ts** con el nombre de **headless.config.ts**
 1. Agregar la propiedad de capabilities en el nuevo archivo con la siguiente información
     ``` ts
     capabilities: {
       browserName: 'chrome',
       chromeOptions: {
-        args: ['--headless', '--disable-gpu', '--window-size=800,600', '--no-sandbox']
+        args: ['--headless', '--disable-gpu']
       }
     }
     ```
@@ -291,17 +291,15 @@
 1. Crear el archivo **.travis.yml** en la raíz del proyecto
 1. Agregar el siguiente contenido
     ``` yml
+    dist: trusty
+    addons:
+      chrome: stable
     language: node_js
-    cache:
-    directories:
-    - node_modules
-    notifications:
-    email: false
     node_js:
-    - '7'
-    branches:
-    except:
-    - /^v\d+\.\d+\.\d+$/
+      - "10"
+    cache:
+      directories:
+        - "node_modules"
     ```
 1. Habilitar en Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
 1. Modificar los scripts de **package.json** con agregando `"test": "npm run test:headless"`
@@ -327,17 +325,17 @@
     }
     ```
 1. Agregar el script de **package.json** lint
-    `"lint": "tslint --type-check --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"`
+    `"lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"`
 1. Corregir las reglas de forma automática `npm run lint -- --fix`
 1. Las reglas que no se puedan corregir automáticamente investigue y corrijalas. Ejecute el comando `npm run lint` para verificar que reglas esta rompiendo
-1. Modifique el script de `prebuild` del `package.json` agregandole al final `&& npm run lint`
+1. Modifique el script de `build` del `package.json` agregandole al final `npm run lint &&`
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 ### 8. CSS Selector
 
 **Descripción**: Los css selector son los selectores más utilizados por los desarrolladores tener un buen dominio de ellos facilita la automatización de pruebas. En esta sesión se implementará un primer caso de pruebas con css selectores
 
-1. Crear el archivo **BuyTshirt.spec.ts** dentro de la carpeta **test**
+1. Crear el archivo **buy-tshirt.spec.ts** dentro de la carpeta **test**
 1. Escribir dentro del archivo el siguiente contenido
     ``` ts
     import { $, browser } from 'protractor';
@@ -352,10 +350,13 @@
         await(browser.sleep(10000));
         await $('#block_top_menu > ul > li:nth-child(3) > a').click();
         await(browser.sleep(3000));
-        await
-        $('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img').click();
+        await browser
+          .actions()
+          .mouseMove(
+            $('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img'))
+          .perform();
         await(browser.sleep(3000));
-        await $('#add_to_cart > button > span').click();
+        await $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click();
         await(browser.sleep(3000));
         await $('[style*="display: block;"] .button-container > a').click();
         await(browser.sleep(3000));
@@ -393,7 +394,6 @@
     ``` ts
     getPageTimeout: 1000
     ```
-1. Eliminar el archivo **Google.spec.ts**
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
