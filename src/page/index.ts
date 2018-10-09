@@ -8,6 +8,6 @@ export { AddressStepPage } from './address-step.page';
 export { ShippingStepPage } from './ShippingStep.page';
 export { PaymentStepPage } from './PaymentStep.page';
 export { BankPaymentPage } from './BankPayment.page';
-export { OrderResumePage } from './OrderResume.page';
+export { OrderResumePage } from './order-resume.page';
 export { PersonalInformationPage } from './PersonalInformation.page';
 export { IFramePage } from './IFrame.page';
