@@ -1,8 +1,10 @@
-import { $$, ElementFinder, ElementArrayFinder, promise } from 'protractor';
+import { $$, ElementFinder, ElementArrayFinder } from 'protractor';
 
 export class ProductListPage {
-  private get products(): ElementArrayFinder {
-    return $$('.product-container');
+  private products: ElementArrayFinder;
+
+  constructor() {
+    this.products = $$('.product-container');
   }
 
   private findByProduct(productName: string): ElementFinder {
@@ -15,7 +17,7 @@ export class ProductListPage {
       .first();
   }
 
-  public selectProduct(productName: string): promise.Promise<void> {
-    return this.findByProduct(productName).$('img').click();
+  public async selectProduct(productName: string): Promise<void> {
+    await this.findByProduct(productName).$('img').click();
   }
 }
