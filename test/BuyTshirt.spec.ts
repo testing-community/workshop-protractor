@@ -14,7 +14,7 @@ import {
 } from '../src/page';
 
 // skipped test because this form now use iframe
-xdescribe('Given a shopping page', () => {
+fdescribe('Given a shopping page', () => {
   beforeAll(async () => {
     await browser.get('http://automationpractice.com/');
   });

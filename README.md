@@ -402,17 +402,19 @@
 **Descripción**: El page object model es el patrón por defecto que se utiliza para la mantenibilidad de las pruebas, conocer cómo implementar este patrón le ahorrará muchas horas de reproceso en el futuro. En esta sesión se hará la primera implementación del patrón Page Object Model (POM)
 
 1. Crear la carpeta **src/page** desde la raíz del proyecto
-1. Crear el archivo **src/page/MenuContent.page.ts** con el siguiente contenido
+1. Crear el archivo **src/page/menu-content.page.ts** con el siguiente contenido
     ``` ts
-    import { $, ElementFinder, promise } from 'protractor';
+    import { $, ElementFinder } from 'protractor';
 
     export class MenuContentPage {
-      private get tShirtMenu(): ElementFinder {
-        return $('#block_top_menu > ul > li:nth-child(3) > a');
+      private tShirtMenu: ElementFinder;
+
+      constructor () {
+        this.tShirtMenu = $('#block_top_menu > ul > li:nth-child(3) > a');
       }
 
-      public goToTShirtMenu(): promise.Promise<void> {
-        return this.tShirtMenu.click();
+      public async goToTShirtMenu(): Promise<void> {
+        await this.tShirtMenu.click();
       }
     }
     ```
