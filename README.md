@@ -420,7 +420,7 @@
     ```
 1. Crear el archivo src/page/index.ts con el siguiente contenido
     ``` ts
-    export { MenuContentPage } from './MenuContent.page';
+    export { MenuContentPage } from './menu-content.page';
     ```
 1. Modificar el archivo **BuyTshirt.spec.ts** de la siguiente forma
     * Importar la dependencia del page object despues del import de protractor
@@ -439,7 +439,7 @@
       await(browser.sleep(3000));
       await menuContentPage.goToTShirtMenu();
       ```
-1. Realice el resto de page object y remplacelo en la prueba, los nombres de los page object son:  **AddressStep.page.ts**, **BankPayment.page.ts**, **OrderResume.page.ts**, **PaymentStep.page.ts**, **ProductAddedModal.page.ts**, **ProductDetail.page.ts**, **ProductList.page.ts**, **ShippingStep.page.ts**, **SignInStep.page.ts**, **SummaryStep.page.ts**
+1. Realice el resto de page object y remplacelo en la prueba, los nombres de los page object son:  **address-step.page.ts**, **bank-payment.page.ts**, **order-resume.page.ts**, **payment-step.page.ts**, **product-added-modal.page.ts**, **product-detail.page.ts**, **product-list.page.ts**, **shipping-step.page.ts**, **sign-in-step.page.ts**, **summary-step.page.ts**
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
