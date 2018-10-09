@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "webdriver-manager update --gecko false",
     "clean": "rm -rf dist temp",
-    "lint": "tslint --type-check --project tsconfig.json **/*.ts",
+    "lint": "tslint --project tsconfig.json **/*.ts",
     "prebuild": "npm run clean && npm run lint",
     "build": "tsc",
     "test:local": "npm run build && protractor dist/protractor/config.js",
