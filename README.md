@@ -238,6 +238,7 @@
       reporter();
       ```
 1. Solicite la revisión de código tal como se hizo en el punto anterior. Dentro de la descripción del PR incluya una imagen con el resultado de la ejecución, así como muestra a continuación
+
    ![Console result](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image4.png)
 
 ### 4. Desactivar el manejador de promesas y Selenium server
