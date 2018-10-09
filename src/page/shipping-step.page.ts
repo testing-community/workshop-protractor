@@ -1,12 +1,12 @@
 import { $, ElementFinder } from 'protractor';
 
 export class ShippingStepPage {
-  private get acceptTermsAndConditionCheck(): ElementFinder {
-    return $('#cgv');
-  }
+  private acceptTermsAndConditionCheck: ElementFinder;
+  private proceedToCheckoutButton: ElementFinder;
 
-  private get proceedToCheckoutButton(): ElementFinder {
-    return $('[name="processCarrier"]');
+  constructor () {
+    this.acceptTermsAndConditionCheck = $('#cgv');
+    this.proceedToCheckoutButton = $('[name="processCarrier"]');
   }
 
   public async acceptAndContinue(): Promise<void> {

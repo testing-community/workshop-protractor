@@ -43,8 +43,6 @@ fdescribe('Given a shopping page', () => {
         });
 
         describe('and pay to the bank', () => {
-          const orderResumePage: OrderResumePage = new OrderResumePage();
-
           beforeAll(async () => {
             const shippingStepPage: ShippingStepPage = new ShippingStepPage();
             const paymentStepPage: PaymentStepPage = new PaymentStepPage();
@@ -56,6 +54,8 @@ fdescribe('Given a shopping page', () => {
           });
 
           it('then the order should be completed', async () => {
+            const orderResumePage: OrderResumePage = new OrderResumePage();
+
             await expect(orderResumePage.getOrderTitle())
               .toBe('Your order on My Store is complete.');
           });

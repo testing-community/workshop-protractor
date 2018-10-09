@@ -5,7 +5,7 @@ export { ProductAddedModalPage } from './product-added-modal.page';
 export { SummaryStepPage } from './summary-step.page';
 export { SignInStepPage } from './sign-in-step.page';
 export { AddressStepPage } from './address-step.page';
-export { ShippingStepPage } from './ShippingStep.page';
+export { ShippingStepPage } from './shipping-step.page';
 export { PaymentStepPage } from './PaymentStep.page';
 export { BankPaymentPage } from './BankPayment.page';
 export { OrderResumePage } from './order-resume.page';
