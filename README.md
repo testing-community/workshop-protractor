@@ -221,20 +221,24 @@
 1. Instale la dependencia de desarrollo **jasmine-spec-reporter**
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
     ```ts
-    import { DisplayProcessor, SpecReporter } from "jasmine-spec-reporter";
+    import { DisplayProcessor, SpecReporter } from 'jasmine-spec-reporter';
 
     export let reporter = () => {
       jasmine.getEnv().addReporter(new SpecReporter({
-        customProcessors: [DisplayProcessor],
+        customProcessors: [DisplayProcessor]
       }));
     };
     ```
-1. Modifique el **conf.ts** incluyendo el `import` del `reporter` y dentro del `onPrepare` llamar al método reporter
+1. Modifique el **conf.ts** incluyendo el `import` del `reporter`
     ``` ts
-    import { reporter }   from './helpers/reporter';
-    reporter();
+    import { reporter } from './helpers/reporter';
     ```
+1. dentro del método `onPrepare` agregar el llamado al método reporter
+      ``` ts
+      reporter();
+      ```
 1. Solicite la revisión de código tal como se hizo en el punto anterior. Dentro de la descripción del PR incluya una imagen con el resultado de la ejecución, así como muestra a continuación
+
    ![Console result](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image4.png)
 
 ### 4. Desactivar el manejador de promesas y Selenium server
