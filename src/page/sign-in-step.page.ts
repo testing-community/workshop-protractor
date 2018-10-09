@@ -1,16 +1,14 @@
 import { $, ElementFinder } from 'protractor';
 
 export class SignInStepPage {
-  private get emailField(): ElementFinder {
-    return $('#email');
-  }
+  private emailField: ElementFinder;
+  private passwordFiled: ElementFinder;
+  private submitLoginButton: ElementFinder;
 
-  private get passwordFiled(): ElementFinder {
-    return $('#passwd');
-  }
-
-  private get submitLoginButton(): ElementFinder {
-    return $('#SubmitLogin');
+  constructor() {
+    this.emailField = $('#email');
+    this.passwordFiled = $('#passwd');
+    this.submitLoginButton = $('#SubmitLogin');
   }
 
   public async login(email: string, password: string): Promise<void> {
