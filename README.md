@@ -157,7 +157,7 @@
 1. Crear el archivo **LICENSE** en la raíz del proyecto con lo especificado en <https://en.wikipedia.org/wiki/MIT_License> (_Tenga en cuanta cambiar el año y el copyright holders_)
 1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
     ``` bash
-    @aperdomob @germandavid85 @luigisamurai
+    * @aperdomob @germandavid85 @luigisamurai
     ```
 1. Realizar un commit donde incluya los 7 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
     ```bash
