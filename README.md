@@ -125,59 +125,6 @@
    });
    ```
 
-1. Ejecutar el comando en una segunda consola `npm test` y comprobar que la prueba pasa de forma satisfactoria
-1. Crear el archivo **.gitignore** en la raíz del proyecto. Ingresar a la página <https://www.gitignore.io/> y en el área de texto  agregar el _sistema operativo_, _IDE's_ y _NodeJS_, ejemplo _OSX Node VisualStudioCode_. Genere el archivo y cópielo dentro del archivo **.gitignore**
-1. Agregar al final del **.gitignore** las siguientes líneas
-    ``` bash
-    # Typescript
-    dist
-    ```
-1. Crear el archivo **LICENSE** en la raíz del proyecto con lo especificado en <https://en.wikipedia.org/wiki/MIT_License> (_Tenga en cuanta cambiar el año y el copyright holders_)
-1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
-    ``` bash
-    @aperdomob @germandavid85 @luigisamurai
-    ```
-1. Realizar un commit donde incluya los 7 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
-    ```bash
-    git add .
-    git commit -m "setup protractor configuration"
-    git push origin project-setup
-    ```
-1. Crear un PR y esperar por la aprobación o comentarios de los revisores
-1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
-
-### 2. Mejorando el primer caso de prueba
-
-**Descripción**: Se utilizará el método `onPrepare` para configurar la información que debería ser igual en todas las pruebas, adicionalmente se utilizará el `beforeEach` para organizar la prueba de forma más legible
-
-1. Crear la rama **improve-test** a partir de master
-1. Modificar el **protractor.conf.js** agregando lo siguiente
-    ``` js
-    exports.config = {
-      framework: 'jasmine',
-      seleniumAddress: 'http://localhost:4444/wd/hub',
-      specs: ['test/spec.js'],
-      onPrepare: () => {
-        browser.ignoreSynchronization = true;
-      }
-    }
-    ```
-1. En el **protractor.conf.js** cambiar el valor de spec por **test/Google.spec.js**
-1. Cambiar de nombre el archivo **spec.js** por **Google.spec.js**
-1. Cambiar el contenido del archivo **Google.spec.js** por
-    ``` js
-    describe('Given a SDET learning protractor', () => {
-      describe('when open Google Page', () => {
-        beforeEach(() => {
-          browser.get('http://www.google.com');
-        });
-
-        it('then should have a title', () => {
-          expect(browser.getTitle()).toEqual('Google');
-        });
-      });
-    });
-    ```
 1. Crear el archivo **tsconfig.json** en la raíz del proyecto con el siguiente contenido
     ``` json
     {
@@ -200,9 +147,71 @@
     "test": "npm run build && protractor dist/protractor/config.js"
     ```
 
+1. Ejecutar el comando en una segunda consola `npm test` y comprobar que la prueba pasa de forma satisfactoria
+1. Crear el archivo **.gitignore** en la raíz del proyecto. Ingresar a la página <https://www.gitignore.io/> y en el área de texto  agregar el _sistema operativo_, _IDE's_ y _NodeJS_, ejemplo _OSX Node VisualStudioCode_. Genere el archivo y cópielo dentro del archivo **.gitignore**
+1. Agregar al final del **.gitignore** las siguientes líneas
+    ``` bash
+    # Typescript
+    dist
+    ```
+1. Crear el archivo **LICENSE** en la raíz del proyecto con lo especificado en <https://en.wikipedia.org/wiki/MIT_License> (_Tenga en cuanta cambiar el año y el copyright holders_)
+1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
+    ``` bash
+    @aperdomob @germandavid85 @luigisamurai
+    ```
+1. Realizar un commit donde incluya los 7 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
+    ```bash
+    git add .
+    git commit -m "setup protractor configuration"
+    git push origin project-setup
+    ```
+1. Crear un PR, asignarle los revisores y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo siga las siguientes [instrucciones](https://help.github.com/articles/creating-a-pull-request/)
+1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
+
+### 2. Mejorando el primer caso de prueba
+
+**Descripción**: Se utilizará el método `onPrepare` para configurar la información que debería ser igual en todas las pruebas, adicionalmente se utilizará el `beforeEach` para organizar la prueba de forma más legible
+
+1. Crear la rama **improve-test** a partir de master
+1. Modificar el **protractor/config.ts** agregando la propiedad `onPrepare` con el siguiente contenido:
+    ``` ts
+    onPrepare: () => {
+        browser.ignoreSynchronization = true;
+    }
+    ```
+
+    La propiedad config debe lucir algo así:
+
+    ``` ts
+    export const config: Config = {
+      framework: 'jasmine',
+      specs: [ '../test/spec.js' ],
+      seleniumAddress: 'http://localhost:4444/wd/hub',
+      onPrepare: () => {
+        browser.ignoreSynchronization = true;
+      }
+    };
+    ```
+1. Cambiar el contenido del archivo **spec.ts** por
+    ``` ts
+    import { browser } from 'protractor';
+
+    describe('Given a SDET learning protractor', () => {
+      describe('when open Google Page', () => {
+        beforeEach(() => {
+          browser.get('http://www.google.com');
+        });
+
+        it('then should have a title', () => {
+          expect(browser.getTitle()).toEqual('Google');
+        });
+      });
+    });
+    ```
+
 1. Ejecutar `npm test` y verificar la correcta ejecución de la prueba
 1. Subir los cambios a Github
-1. Crear un PR y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo siga las siguientes [instrucciones](https://help.github.com/articles/creating-a-pull-request/)
+1. Crear un PR, asignar los revisores y esperar por la aprobación o comentarios de los revisores.
 1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
 1. Eliminar la rama una vez mergeada
 
