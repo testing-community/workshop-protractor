@@ -2,7 +2,6 @@ import { browser } from 'protractor';
 import {
   MenuContentPage,
   ProductListPage,
-  ProductDetailPage,
   ProductAddedModalPage,
   SummaryStepPage,
   SignInStepPage,
@@ -13,8 +12,7 @@ import {
   AddressStepPage
 } from '../src/page';
 
-// skipped test because this form now use iframe
-xdescribe('Given a shopping page', () => {
+describe('Given a shopping page', () => {
   beforeAll(async () => {
     await browser.get('http://automationpractice.com/');
   });
@@ -23,13 +21,11 @@ xdescribe('Given a shopping page', () => {
     beforeAll(async () => {
       const menuContentPage: MenuContentPage = new MenuContentPage();
       const productListPage: ProductListPage = new ProductListPage();
-      const productDetailPage: ProductDetailPage = new ProductDetailPage();
       const productAddedModalPage: ProductAddedModalPage = new ProductAddedModalPage();
       const summaryStepPage: SummaryStepPage = new SummaryStepPage();
 
       await menuContentPage.goToTShirtMenu();
       await productListPage.selectProduct('Faded Short Sleeve T-shirts');
-      await productDetailPage.addToCart();
       await productAddedModalPage.proceedToCheckout();
       await summaryStepPage.proceedToCheckout();
     });
@@ -47,8 +43,6 @@ xdescribe('Given a shopping page', () => {
         });
 
         describe('and pay to the bank', () => {
-          const orderResumePage: OrderResumePage = new OrderResumePage();
-
           beforeAll(async () => {
             const shippingStepPage: ShippingStepPage = new ShippingStepPage();
             const paymentStepPage: PaymentStepPage = new PaymentStepPage();
@@ -60,6 +54,8 @@ xdescribe('Given a shopping page', () => {
           });
 
           it('then the order should be completed', async () => {
+            const orderResumePage: OrderResumePage = new OrderResumePage();
+
             await expect(orderResumePage.getOrderTitle())
               .toBe('Your order on My Store is complete.');
           });

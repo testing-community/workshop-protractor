@@ -350,12 +350,6 @@
         await(browser.sleep(10000));
         await $('#block_top_menu > ul > li:nth-child(3) > a').click();
         await(browser.sleep(3000));
-        await browser
-          .actions()
-          .mouseMove(
-            $('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img'))
-          .perform();
-        await(browser.sleep(3000));
         await $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click();
         await(browser.sleep(3000));
         await $('[style*="display: block;"] .button-container > a').click();
@@ -402,25 +396,27 @@
 **Descripción**: El page object model es el patrón por defecto que se utiliza para la mantenibilidad de las pruebas, conocer cómo implementar este patrón le ahorrará muchas horas de reproceso en el futuro. En esta sesión se hará la primera implementación del patrón Page Object Model (POM)
 
 1. Crear la carpeta **src/page** desde la raíz del proyecto
-1. Crear el archivo **src/page/MenuContent.page.ts** con el siguiente contenido
+1. Crear el archivo **src/page/menu-content.page.ts** con el siguiente contenido
     ``` ts
-    import { $, ElementFinder, promise } from 'protractor';
+    import { $, ElementFinder } from 'protractor';
 
     export class MenuContentPage {
-      private get tShirtMenu(): ElementFinder {
-        return $('#block_top_menu > ul > li:nth-child(3) > a');
+      private tShirtMenu: ElementFinder;
+
+      constructor () {
+        this.tShirtMenu = $('#block_top_menu > ul > li:nth-child(3) > a');
       }
 
-      public goToTShirtMenu(): promise.Promise<void> {
-        return this.tShirtMenu.click();
+      public async goToTShirtMenu(): Promise<void> {
+        await this.tShirtMenu.click();
       }
     }
     ```
 1. Crear el archivo src/page/index.ts con el siguiente contenido
     ``` ts
-    export { MenuContentPage } from './MenuContent.page';
+    export { MenuContentPage } from './menu-content.page';
     ```
-1. Modificar el archivo **BuyTshirt.spec.ts** de la siguiente forma
+1. Modificar el archivo **buy-tshirt.spec.ts** de la siguiente forma
     * Importar la dependencia del page object despues del import de protractor
       ``` ts
       import { $, browser } from 'protractor';
@@ -437,7 +433,7 @@
       await(browser.sleep(3000));
       await menuContentPage.goToTShirtMenu();
       ```
-1. Realice el resto de page object y remplacelo en la prueba, los nombres de los page object son:  **AddressStep.page.ts**, **BankPayment.page.ts**, **OrderResume.page.ts**, **PaymentStep.page.ts**, **ProductAddedModal.page.ts**, **ProductDetail.page.ts**, **ProductList.page.ts**, **ShippingStep.page.ts**, **SignInStep.page.ts**, **SummaryStep.page.ts**
+1. Realice el resto de page object y remplacelo en la prueba, los nombres de los page object son:  **address-step.page.ts**, **bank-payment.page.ts**, **order-resume.page.ts**, **payment-step.page.ts**, **product-added-modal.page.ts**, **product-list.page.ts**, **shipping-step.page.ts**, **sign-in-step.page.ts**, **summary-step.page.ts**
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 

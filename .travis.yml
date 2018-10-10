@@ -1,14 +1,12 @@
+dist: trusty
+addons:
+  chrome: stable
 language: node_js
+node_js:
+  - "10"
 cache:
   directories:
-  - node_modules
-notifications:
-  email: false
-node_js:
-- '7'
-branches:
-  except:
-  - "/^v\\d+\\.\\d+\\.\\d+$/"
+    - "node_modules"
 env:
   global:
   - secure: ZAGKvhP1j4vmbMns+gE5ikv+qDsPq5rsVI68lhHs3j9LEbbnIv4ocOf64J1qC6K8E3m+bQ1gP9JjaCMuSrweWLJFPgtBDHEZh+Ulsfgd2tyQf0A2oQ6zbyZ30EOGWI1otoY4Sc/tmGWjwg25b9cuz0De5SuiisNYTAuLjYQcRLbFCsgJCx/hTYOTcbIIWfaqcsPgUaxCqbt3zUpudyh0OGYx3MsN3qxGJwy5jVESPJBqmZelgePDr4Oqgw8fkUmfZVWpkcPBZ+TsZs+0AqmoXtJcKaSVt0Qvbd1RuaMeDia6w3L7WxxGSIzrwo7gbDz8UWZfGhT6MXZ20BUps8ELeBt3kbN9hxmv+tRBtq7/y0ltBzsZ+orcPgyAqSGDOGJ4M/GBQ3rhQ4qsYp2x+lJR8fc2ssbGhhJTVk98dgFJJAhvyShTiuBH8F4T7uIGQc2zXztwET9RcYmNZLhM3c1ynIosaQNIaAdVaWID7mWfhodiSFl1HBH3Iro7wRwgJxVQ/bCLClRzT69hg2knYKlH0o/NMWhx/VoeP3XIFf8wKpNC5d0yNbzCMmyZ8vjoWIkWKinOzuC5hACuOfGGHYHbyafFK7qnmbn6DN8jdsO9pS/yg7EopK97B3SLWC4lisS0YCsCLdg/9Jkg9xNqw5J84fVhmEusW3/1g/F0Yqwvaek=

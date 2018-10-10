@@ -1,8 +1,10 @@
 import { $, ElementFinder, ExpectedConditions, browser } from 'protractor';
 
 export class ProductAddedModalPage {
-  private get proceedToCheckoutButton(): ElementFinder {
-    return $('[style*="display: block;"] .button-container > a');
+  private proceedToCheckoutButton: ElementFinder;
+
+  constructor() {
+    this.proceedToCheckoutButton = $('[style*="display: block;"] .button-container > a');
   }
 
   public async proceedToCheckout(): Promise<void> {
