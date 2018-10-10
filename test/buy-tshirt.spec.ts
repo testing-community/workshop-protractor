@@ -12,7 +12,7 @@ import {
   AddressStepPage
 } from '../src/page';
 
-fdescribe('Given a shopping page', () => {
+describe('Given a shopping page', () => {
   beforeAll(async () => {
     await browser.get('http://automationpractice.com/');
   });
