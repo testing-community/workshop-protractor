@@ -615,50 +615,46 @@
 
 Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interfaz gráfica, debemos utilizar servicios externos para la ejecución en browsers reales. En este caso utilizaremos saucelabs.
 
-1. Crear una cuenta en saucelabs diligenciando el formulario
+1. Crear una cuenta en [SauceLabs](https://saucelabs.com/)
 1. Una vez creada la cuenta, ir a la opción de User Settings
-    ![](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image1.png)
+
+    ![Saucelabs user settings](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image1.png)
+
 1. Ir a la sección de Access Key y dar click en show. Esto pedirá el password para mostrar el access key. Una vez lo acceda, cópielo al portapapeles y guárdelo en un lugar seguro
-    ![](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image2.png)
-1. Instale la dependencia cross-env para setear variables de ambiente en cualquier sistema operativo: `npm i cross-env --save-dev`
+
+    ![Saucelabs access key](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image2.png)
+
 1. Adicione al archivo **package.json** el script `test:saucelabs` y haga que este se corra cuando se ejecute el script de test
     ``` json
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
     "test": "npm run test:saucelabs"
     ```
-1. Adicione el archivo **protractor/saucelabs.config.ts**, que contiene la siguiente información adicional:
-    * `sauceUser`: tendrá el valor del user name de saucelabs
-    * `sauceKey`: tendrá el valor del key de saucelabs copiado en el punto 3
+1. Duplique el archivo  **protractor/config.ts** con el nombre **protractor/saucelabs.config.ts**
+1. Adicione las siguientes propiedades **protractor/saucelabs.config.ts**:
+    * `sauceUser`: tendrá el valor del user name de saucelabs (se obtendrá por variable de ambiente)
+    * `sauceKey`: tendrá el valor del key de saucelabs copiado en el punto 3 (se obtendrá por variable de ambiente)
     * `Capabilities.name`: nombre de la ejecución del job en saucelabs
     ``` ts
-    import { browser, Config } from 'protractor';
-    import { reporter } from './helpers/reporter';
+    // ...
 
     export let config: Config = {
-      framework: 'jasmine',
-      specs: ['../test/**/*.spec.js'],
-      SELENIUM_PROMISE_MANAGER: false,
-      noGlobals: true,
-      getPageTimeout: 30000,
-      capabilities: {
-        name: 'UI Workshop',
-        browserName: 'chrome',
-        chromeOptions: {
-          args: ['disable-infobars=true --window-size=800,600'],
-          prefs: { credentials_enable_service: false }
-        }
-      },
-      jasmineNodeOpts: {
-        defaultTimeoutInterval: 120000
-      },
-      onPrepare: () => {
-        reporter();
-        browser.ignoreSynchronization = true;
-        browser.manage().timeouts().implicitlyWait(0);
-      },
+      // ...
       sauceUser: process.env.SAUCE_USERNAME,
       sauceKey: process.env.SAUCE_ACCESS_KEY
     };
+    ```
+
+    ``` ts
+    // ...
+    capabilities: {
+      name: 'UI Workshop',
+      browserName: 'chrome',
+      chromeOptions: {
+        args: ['disable-infobars=true --window-size=800,600'],
+        prefs: { credentials_enable_service: false }
+      }
+    },
+    // ...
     ```
 1. Una vez configurado esto, en la consola asigne los valores para `SAUCE_USERNAME` y `SAUCE_ACCESS_KEY`, con los valores del registro en saucelabs
     ``` bash
