@@ -350,12 +350,6 @@
         await(browser.sleep(10000));
         await $('#block_top_menu > ul > li:nth-child(3) > a').click();
         await(browser.sleep(3000));
-        await browser
-          .actions()
-          .mouseMove(
-            $('#center_column > ul > li > div > div.left-block > div > a.product_img_link > img'))
-          .perform();
-        await(browser.sleep(3000));
         await $('#center_column a.button.ajax_add_to_cart_button.btn.btn-default').click();
         await(browser.sleep(3000));
         await $('[style*="display: block;"] .button-container > a').click();
