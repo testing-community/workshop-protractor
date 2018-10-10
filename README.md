@@ -650,7 +650,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
       name: 'UI Workshop',
       browserName: 'chrome',
       chromeOptions: {
-        args: ['disable-infobars=true --window-size=800,600'],
+        args: ['disable-infobars=true', '--window-size=800,600'],
         prefs: { credentials_enable_service: false }
       }
     },
@@ -702,28 +702,11 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 
     export let config: Config = {
       multiCapabilities,
-      framework: 'jasmine',
-      specs: ['../test/**/*.spec.js'],
-      SELENIUM_PROMISE_MANAGER: false,
-      noGlobals: true,
-      getPageTimeout: 30000,
-      jasmineNodeOpts: {
-        defaultTimeoutInterval: 120000
-      },
-      onPrepare: () => {
-        reporter();
-        browser.ignoreSynchronization = true;
-        browser.manage().timeouts().implicitlyWait(0);
-      },
-      sauceUser: process.env.SAUCE_USERNAME,
-      sauceKey: process.env.SAUCE_ACCESS_KEY
+      // ...
     };
     ```
-1. Del punto anterior en el objeto multiCapabilities nos interesa:
-    * `shardTestFiles`: habilitar ejecuciones en paralelo de los tests. Se puede aumentar la cantidad de ejecuciones por browser de uno a la cantidad en paralelo que se desee.
-    * `maxInstance`: el número máximo de ejecuciones en paralelo para ese browser
-1. Ahora la ejecución en saucelabs debe mostrar ambos navegadores en ejecución en paralelo
-    ![](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image3.png)
+1. Ejecute las pruebas y en el PR suba la imagen que muestre que esta corriendo en diferentes navegadores
+    ![Saucelabs Multibrowser execution](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image3.png)
 
 #### Sugerencias para brobar con diferentes navegadores
 
