@@ -567,7 +567,7 @@
 
 **Descripción**: Selenium tiene algunas limiaciones y por tanto en ocasiones nos toca ejecutar código directamente en javascript para poder hacer una acción que necesitamos, en este sesión cambiaremos una propiedad de un locator por medio de javascript ya que selenium no es capaz de soportarlo nativamente.
 
-1. Cree el archivo de prueba **IFrame.spec.ts** el cual abrirá la página <http://toolsqa.com/iframe-practice-page/> modificará la áltura del IFrame 1, posteriormente obtendrá la nueva altura para comprobar si efectivamente cambio
+1. Cree el archivo de prueba **i-frame.spec.ts** el cual abrirá la página <http://toolsqa.com/iframe-practice-page/> modificará la áltura del IFrame 1, posteriormente obtendrá la nueva altura para comprobar si efectivamente cambio
 1. Cree el archivo page **IFrame.page.ts** el cual contendrá un método para modificar la altura de un IFrame y otro para obtener su altura
 
 ### 20. Trabajando con IFrames
@@ -578,27 +578,27 @@
     * un método que retorne el título de la página de valor **Sample Iframe page**
     * un método para pasarse al iframe 1
     * otro método para regresar al contexto principal
-1. Modificar la prueba **IFrame.spec.ts** de tal forma que verifique el título principal
-1. Modificar la prueba **IFrame.spec.ts** de tal forma que se cambie al iframe 1 y verifique el título
-1. Modificar la prueba **IFrame.spec** de tal forma que se cambie al contexto principal y verifique nuevamente el título
+1. Modificar la prueba **i-frame.spec.ts** de tal forma que verifique el título principal
+1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al iframe 1 y verifique el título
+1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al contexto principal y verifique nuevamente el título
 
 ### 21. Subiendo un Archivo
 
 **Descripción**: En esta sesión se automatizará una prueba donde se deba subir un archivo.
 
-1. Modificar el page **PersonalInformation.page.ts** de tal forma que el método `fillForm` ahora no haga clic en el botón y cree otro método submit que llene el formulario y haga clic en el botón
+1. Modificar el page **personal-information.page.ts** de tal forma que el método `fillForm` ahora no haga clic en el botón y cree otro método submit que llene el formulario y haga clic en el botón
 1. También debe recibir dentro del json un parámetro file que tiene la ruta relativa de algún archivo a subir, si tiene un valor válido debe subir el archivo
 1. Cree la carpeta resources a nivel de la raíz del proyecto y coloque un archivo jpg en ella
 1. Modificar Locators.spec.ts de tal forma que se le pase la ruta de la imagen que puso en resources
-1. Agregue una validación el Locators.spec.ts que verifique la imagen fue cargada
+1. Agregue una validación el **locators.spec.ts** que verifique la imagen fue cargada
 
 ### 22. Descargando Archivos
 
 **Descripción**: En esta sesión se automatizará una prueba donde se deba descargar un archivo
 
-1. Modificar el page **PersonalInformation.page.ts** de tal forma que si recibe el parámetro `downloadFile` dentro del JSON llame al método privado `download` de ese mismo pageobject
+1. Modificar el page **personal-information.page.ts** de tal forma que si recibe el parámetro `downloadFile` dentro del JSON llame al método privado `download` de ese mismo pageobject
 1. El método `download` obtendrá el link del enlace "**Test File to Download**" y se lo pasará al método `downloadFile` que recibe dos parametros de entrada el link de descarga y el nombre del archivo con que se quiere guardar
-1. Crear la carpeta service dentro de **src** y crear dentro un archivo llamado **Download.service.ts** que tendrá dos métodos públicos
+1. Crear la carpeta service dentro de **src** y crear dentro un archivo llamado **download.service.ts** que tendrá dos métodos públicos
     ``` ts
     public async downloadFile(link: string, filename): Promise<void>
     ```

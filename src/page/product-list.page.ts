@@ -20,12 +20,7 @@ export class ProductListPage {
   public async selectProduct(productName: string): Promise<void> {
     const card = this.findByProduct(productName);
 
-    await browser
-      .actions()
-      .mouseMove(
-        card.$('img'))
-      .perform();
-
+    await browser.actions().mouseMove(card.$('img')).perform();
     await card.$('.ajax_add_to_cart_button.btn.btn-default').click();
   }
 }
