@@ -463,7 +463,7 @@
     browser.manage().timeouts().implicitlyWait(3000)
     ```
 1. Quitar todos los sleeps de la prueba
-1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla 1. modificarla utilizando css locators o los tiempos hasta que logre funcionar
+1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 ### 12. Esperas Explicitas
@@ -491,7 +491,7 @@
 
 **Descripción**: Por legibilidad es bueno tener sesionados cada uno de los pasos de las pruebas en diferentes describes, en esta sesión usted aprenderá cómo hacerlo
 
-1. Modificar la prueba de **BuyTShirt.spec.ts** de tal forma que tenga varios describes de la siguiente forma
+1. Modificar la prueba de **buy-tshirt.spec.ts** de tal forma que tenga varios describes de la siguiente forma
     * Abrir la página en el navegador
     * Proceso de compra de la Camiseta
     * Logeo en la aplicación
@@ -519,7 +519,7 @@
     capabilities: {
       browserName: 'chrome',
       chromeOptions: {
-        args: ['disable-infobars=true --window-size=800,600'],
+        args: ['disable-infobars=true', '--window-size=800,600'],
         prefs: { credentials_enable_service: false }
       }
     },
@@ -532,8 +532,8 @@
 
 **Descripción**: En muchas ocasiones tenemos que obtener un locator para posteriormente poder hacer una acción sobre un hermano o alguno que no esté directamente relacionado, en esta sesión trabajaremos con la anidación de locators y métodos de búsqueda para poder conseguir relacionar dos locators
 
-1. Agregue un `get` dentro de **ProductList.page.ts** llamado `productContainerList` el cual obtendrá todos los productos
-1. Cree el método privado `findByProduct` el cual debe retornar toda la caja del producto con el nombre específico. Utilice `$` para obtener elementos internos del locator, `filter` para filtrar la lista y `first` para obtener el primer elemento. Revise la API de protractor por si tiene alguna duda
+1. Agregar una variable privada dentro de **product-list.page.ts** llamado `products` el cual obtendrá todos los productos
+1. Cree el método privado `findByProduct` el cual debe retornar toda la caja del producto con el nombre específico. Utilice `$` para obtener elementos internos del locator, `filter` para filtrar la lista y `first` para obtener el primer elemento. Revise la [API de protractor](https://www.protractortest.org/#/api) por si tiene alguna duda
 1. Elimine el método que antes obtenía el primer elemento y cambielo por un método llamado `selectProduct` que reciba el nombre del producto y le da clic en la imagen
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -542,8 +542,8 @@
 
 **Descripción**: esta sesión automatizaremos otra página diferente, y su misión es seleccionar los mejores locators posibles de tal forma que el page object sea lo más reutilizable posible
 
-1. Crear el archivo **PersonalInformation.page.ts**
-1. Crear el archivo **Locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button
+1. Crear el archivo **personal-information.page.ts**
+1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button
     ``` ts
     await personalInformationPage.fillForm({
        firstName: 'Alejandro',

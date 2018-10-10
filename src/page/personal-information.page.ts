@@ -18,28 +18,20 @@ interface PersonalInformation {
 }
 
 export class PersonalInformationPage {
-  private get firstNameField(): ElementFinder {
-    return element(by.name('firstname'));
-  }
+  private firstNameField: ElementFinder;
+  private lastNameField: ElementFinder;
+  private sendButton: ElementFinder;
+  private pageTitleLabel: ElementFinder;
+  private uploadFileInput: ElementFinder;
+  private testFileDownloadLink: ElementFinder;
 
-  private get lastNameField(): ElementFinder {
-    return element(by.name('lastname'));
-  }
-
-  private get sendButton(): ElementFinder {
-    return element(by.id('submit'));
-  }
-
-  private get pageTitleLabel(): ElementFinder {
-    return element(by.id('content')).element(by.tagName('h1'));
-  }
-
-  private get uploadFileInput(): ElementFinder {
-    return element(by.id('photo'));
-  }
-
-  private get testFileDownloadLink(): ElementFinder {
-    return element(by.linkText('Test File to Download'));
+  constructor() {
+    this.firstNameField = element(by.name('firstname'));
+    this.lastNameField = element(by.name('lastname'));
+    this.sendButton = element(by.id('submit'));
+    this.pageTitleLabel = element(by.id('content')).element(by.tagName('h1'));
+    this.uploadFileInput = element(by.id('photo'));
+    this.testFileDownloadLink = element(by.linkText('Test File to Download'));
   }
 
   private sexOption(name: string): ElementFinder {
