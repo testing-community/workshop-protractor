@@ -738,13 +738,15 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
         --privileged dosel/zalenium start
     ```
 
-1. Configure el archivo de saucelabs para que apunte al servidor de Grid de Zalenium
+1. Duplicar el archivo de **saucelabs.config.ts** y llamarlo **zalenium.config.ts**
+1. Configure el archivo de zalenium para que apunte al servidor de Grid de Zalenium
     ``` ts
     seleniumAddress: 'http://localhost:4444/wd/hub'
     ```
 
 1. Abrá la página `http://localhost:4444/grid/admin/live`
 1. Remueva del **package.json** la instrucción del `--gecko false` en el script del postinstall
+1. Agregue el script de `test:zalenium`en el **package.json**
 1. Ejecute el comando `npx webdriver-manager update`
-1. Ejecute las pruebas con `npm test` y vea como en la página de `live` se refresca la ejecución de las pruebas
+1. Ejecute las pruebas con `npm run test:zalenium` y vea como en la página de `live` se refresca la ejecución de las pruebas
 1. Abrá la página `http://localhost:4444/dashboard` y tome un screenshot del resultado de las pruebas y lo adjunta al PR

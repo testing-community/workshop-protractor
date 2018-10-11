@@ -34,5 +34,6 @@ export let config: Config = {
     browser.manage().timeouts().implicitlyWait(0);
   },
   sauceUser: process.env.SAUCE_USERNAME,
-  sauceKey: process.env.SAUCE_ACCESS_KEY
+  sauceKey: process.env.SAUCE_ACCESS_KEY,
+  seleniumAddress: 'http://localhost:4444/wd/hub'
 };
