@@ -463,7 +463,7 @@
     browser.manage().timeouts().implicitlyWait(3000)
     ```
 1. Quitar todos los sleeps de la prueba
-1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla 1. modificarla utilizando css locators o los tiempos hasta que logre funcionar
+1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 ### 12. Esperas Explicitas
@@ -491,7 +491,7 @@
 
 **Descripción**: Por legibilidad es bueno tener sesionados cada uno de los pasos de las pruebas en diferentes describes, en esta sesión usted aprenderá cómo hacerlo
 
-1. Modificar la prueba de **BuyTShirt.spec.ts** de tal forma que tenga varios describes de la siguiente forma
+1. Modificar la prueba de **buy-tshirt.spec.ts** de tal forma que tenga varios describes de la siguiente forma
     * Abrir la página en el navegador
     * Proceso de compra de la Camiseta
     * Logeo en la aplicación
@@ -519,7 +519,7 @@
     capabilities: {
       browserName: 'chrome',
       chromeOptions: {
-        args: ['disable-infobars=true --window-size=800,600'],
+        args: ['disable-infobars=true', '--window-size=800,600'],
         prefs: { credentials_enable_service: false }
       }
     },
@@ -532,8 +532,8 @@
 
 **Descripción**: En muchas ocasiones tenemos que obtener un locator para posteriormente poder hacer una acción sobre un hermano o alguno que no esté directamente relacionado, en esta sesión trabajaremos con la anidación de locators y métodos de búsqueda para poder conseguir relacionar dos locators
 
-1. Agregue un `get` dentro de **ProductList.page.ts** llamado `productContainerList` el cual obtendrá todos los productos
-1. Cree el método privado `findByProduct` el cual debe retornar toda la caja del producto con el nombre específico. Utilice `$` para obtener elementos internos del locator, `filter` para filtrar la lista y `first` para obtener el primer elemento. Revise la API de protractor por si tiene alguna duda
+1. Agregar una variable privada dentro de **product-list.page.ts** llamado `products` el cual obtendrá todos los productos
+1. Cree el método privado `findByProduct` el cual debe retornar toda la caja del producto con el nombre específico. Utilice `$` para obtener elementos internos del locator, `filter` para filtrar la lista y `first` para obtener el primer elemento. Revise la [API de protractor](https://www.protractortest.org/#/api) por si tiene alguna duda
 1. Elimine el método que antes obtenía el primer elemento y cambielo por un método llamado `selectProduct` que reciba el nombre del producto y le da clic en la imagen
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -542,8 +542,8 @@
 
 **Descripción**: esta sesión automatizaremos otra página diferente, y su misión es seleccionar los mejores locators posibles de tal forma que el page object sea lo más reutilizable posible
 
-1. Crear el archivo **PersonalInformation.page.ts**
-1. Crear el archivo **Locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button
+1. Crear el archivo **personal-information.page.ts**
+1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button
     ``` ts
     await personalInformationPage.fillForm({
        firstName: 'Alejandro',
@@ -567,7 +567,7 @@
 
 **Descripción**: Selenium tiene algunas limiaciones y por tanto en ocasiones nos toca ejecutar código directamente en javascript para poder hacer una acción que necesitamos, en este sesión cambiaremos una propiedad de un locator por medio de javascript ya que selenium no es capaz de soportarlo nativamente.
 
-1. Cree el archivo de prueba **IFrame.spec.ts** el cual abrirá la página <http://toolsqa.com/iframe-practice-page/> modificará la áltura del IFrame 1, posteriormente obtendrá la nueva altura para comprobar si efectivamente cambio
+1. Cree el archivo de prueba **i-frame.spec.ts** el cual abrirá la página <http://toolsqa.com/iframe-practice-page/> modificará la áltura del IFrame 1, posteriormente obtendrá la nueva altura para comprobar si efectivamente cambio
 1. Cree el archivo page **IFrame.page.ts** el cual contendrá un método para modificar la altura de un IFrame y otro para obtener su altura
 
 ### 20. Trabajando con IFrames
@@ -578,27 +578,27 @@
     * un método que retorne el título de la página de valor **Sample Iframe page**
     * un método para pasarse al iframe 1
     * otro método para regresar al contexto principal
-1. Modificar la prueba **IFrame.spec.ts** de tal forma que verifique el título principal
-1. Modificar la prueba **IFrame.spec.ts** de tal forma que se cambie al iframe 1 y verifique el título
-1. Modificar la prueba **IFrame.spec** de tal forma que se cambie al contexto principal y verifique nuevamente el título
+1. Modificar la prueba **i-frame.spec.ts** de tal forma que verifique el título principal
+1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al iframe 1 y verifique el título
+1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al contexto principal y verifique nuevamente el título
 
 ### 21. Subiendo un Archivo
 
 **Descripción**: En esta sesión se automatizará una prueba donde se deba subir un archivo.
 
-1. Modificar el page **PersonalInformation.page.ts** de tal forma que el método `fillForm` ahora no haga clic en el botón y cree otro método submit que llene el formulario y haga clic en el botón
+1. Modificar el page **personal-information.page.ts** de tal forma que el método `fillForm` ahora no haga clic en el botón y cree otro método submit que llene el formulario y haga clic en el botón
 1. También debe recibir dentro del json un parámetro file que tiene la ruta relativa de algún archivo a subir, si tiene un valor válido debe subir el archivo
 1. Cree la carpeta resources a nivel de la raíz del proyecto y coloque un archivo jpg en ella
 1. Modificar Locators.spec.ts de tal forma que se le pase la ruta de la imagen que puso en resources
-1. Agregue una validación el Locators.spec.ts que verifique la imagen fue cargada
+1. Agregue una validación el **locators.spec.ts** que verifique la imagen fue cargada
 
 ### 22. Descargando Archivos
 
 **Descripción**: En esta sesión se automatizará una prueba donde se deba descargar un archivo
 
-1. Modificar el page **PersonalInformation.page.ts** de tal forma que si recibe el parámetro `downloadFile` dentro del JSON llame al método privado `download` de ese mismo pageobject
+1. Modificar el page **personal-information.page.ts** de tal forma que si recibe el parámetro `downloadFile` dentro del JSON llame al método privado `download` de ese mismo pageobject
 1. El método `download` obtendrá el link del enlace "**Test File to Download**" y se lo pasará al método `downloadFile` que recibe dos parametros de entrada el link de descarga y el nombre del archivo con que se quiere guardar
-1. Crear la carpeta service dentro de **src** y crear dentro un archivo llamado **Download.service.ts** que tendrá dos métodos públicos
+1. Crear la carpeta service dentro de **src** y crear dentro un archivo llamado **download.service.ts** que tendrá dos métodos públicos
     ``` ts
     public async downloadFile(link: string, filename): Promise<void>
     ```
@@ -615,50 +615,46 @@
 
 Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interfaz gráfica, debemos utilizar servicios externos para la ejecución en browsers reales. En este caso utilizaremos saucelabs.
 
-1. Crear una cuenta en saucelabs diligenciando el formulario
+1. Crear una cuenta en [SauceLabs](https://saucelabs.com/)
 1. Una vez creada la cuenta, ir a la opción de User Settings
-    ![](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image1.png)
+
+    ![Saucelabs user settings](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image1.png)
+
 1. Ir a la sección de Access Key y dar click en show. Esto pedirá el password para mostrar el access key. Una vez lo acceda, cópielo al portapapeles y guárdelo en un lugar seguro
-    ![](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image2.png)
-1. Instale la dependencia cross-env para setear variables de ambiente en cualquier sistema operativo: `npm i cross-env --save-dev`
+
+    ![Saucelabs access key](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image2.png)
+
 1. Adicione al archivo **package.json** el script `test:saucelabs` y haga que este se corra cuando se ejecute el script de test
     ``` json
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
     "test": "npm run test:saucelabs"
     ```
-1. Adicione el archivo **protractor/saucelabs.config.ts**, que contiene la siguiente información adicional:
-    * `sauceUser`: tendrá el valor del user name de saucelabs
-    * `sauceKey`: tendrá el valor del key de saucelabs copiado en el punto 3
+1. Duplique el archivo  **protractor/config.ts** con el nombre **protractor/saucelabs.config.ts**
+1. Adicione las siguientes propiedades **protractor/saucelabs.config.ts**:
+    * `sauceUser`: tendrá el valor del user name de saucelabs (se obtendrá por variable de ambiente)
+    * `sauceKey`: tendrá el valor del key de saucelabs copiado en el punto 3 (se obtendrá por variable de ambiente)
     * `Capabilities.name`: nombre de la ejecución del job en saucelabs
     ``` ts
-    import { browser, Config } from 'protractor';
-    import { reporter } from './helpers/reporter';
+    // ...
 
     export let config: Config = {
-      framework: 'jasmine',
-      specs: ['../test/**/*.spec.js'],
-      SELENIUM_PROMISE_MANAGER: false,
-      noGlobals: true,
-      getPageTimeout: 30000,
-      capabilities: {
-        name: 'UI Workshop',
-        browserName: 'chrome',
-        chromeOptions: {
-          args: ['disable-infobars=true --window-size=800,600'],
-          prefs: { credentials_enable_service: false }
-        }
-      },
-      jasmineNodeOpts: {
-        defaultTimeoutInterval: 120000
-      },
-      onPrepare: () => {
-        reporter();
-        browser.ignoreSynchronization = true;
-        browser.manage().timeouts().implicitlyWait(0);
-      },
+      // ...
       sauceUser: process.env.SAUCE_USERNAME,
       sauceKey: process.env.SAUCE_ACCESS_KEY
     };
+    ```
+
+    ``` ts
+    // ...
+    capabilities: {
+      name: 'UI Workshop',
+      browserName: 'chrome',
+      chromeOptions: {
+        args: ['disable-infobars=true', '--window-size=800,600'],
+        prefs: { credentials_enable_service: false }
+      }
+    },
+    // ...
     ```
 1. Una vez configurado esto, en la consola asigne los valores para `SAUCE_USERNAME` y `SAUCE_ACCESS_KEY`, con los valores del registro en saucelabs
     ``` bash
@@ -690,6 +686,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 
     const firefoxConfig = {
       browserName: 'firefox',
+      platform: 'linux',
       name: 'firefox-tests',
       shardTestFiles: true,
       maxInstances: 1
@@ -706,28 +703,11 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 
     export let config: Config = {
       multiCapabilities,
-      framework: 'jasmine',
-      specs: ['../test/**/*.spec.js'],
-      SELENIUM_PROMISE_MANAGER: false,
-      noGlobals: true,
-      getPageTimeout: 30000,
-      jasmineNodeOpts: {
-        defaultTimeoutInterval: 120000
-      },
-      onPrepare: () => {
-        reporter();
-        browser.ignoreSynchronization = true;
-        browser.manage().timeouts().implicitlyWait(0);
-      },
-      sauceUser: process.env.SAUCE_USERNAME,
-      sauceKey: process.env.SAUCE_ACCESS_KEY
+      // ...
     };
     ```
-1. Del punto anterior en el objeto multiCapabilities nos interesa:
-    * `shardTestFiles`: habilitar ejecuciones en paralelo de los tests. Se puede aumentar la cantidad de ejecuciones por browser de uno a la cantidad en paralelo que se desee.
-    * `maxInstance`: el número máximo de ejecuciones en paralelo para ese browser
-1. Ahora la ejecución en saucelabs debe mostrar ambos navegadores en ejecución en paralelo
-    ![](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image3.png)
+1. Ejecute las pruebas y en el PR suba la imagen que muestre que esta corriendo en diferentes navegadores
+    ![Saucelabs Multibrowser execution](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image3.png)
 
 #### Sugerencias para brobar con diferentes navegadores
 

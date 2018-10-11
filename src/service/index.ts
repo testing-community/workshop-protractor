@@ -1,1 +1,1 @@
-export { DownloadService } from './Download.service';
+export { DownloadService } from './download.service';
