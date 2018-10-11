@@ -35,6 +35,7 @@
 1. [Descargando Archivos](#22-descargando-archivos)
 1. [Configurar Saucelabs](#23-configurar-saucelabs)
 1. [Probar con diferentes navegadores](#24-probar-con-diferentes-navegadores)
+1. [Zalenium](#25-zalenium)
 
 ### 1. Configuración Inicial del Proyecto
 
