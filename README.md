@@ -686,6 +686,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 
     const firefoxConfig = {
       browserName: 'firefox',
+      platform: 'linux',
       name: 'firefox-tests',
       shardTestFiles: true,
       maxInstances: 1
