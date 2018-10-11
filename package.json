@@ -4,7 +4,7 @@
   "description": "First workshop for automation",
   "main": "index.js",
   "scripts": {
-    "postinstall": "webdriver-manager update --gecko false",
+    "postinstall": "webdriver-manager update",
     "clean": "rm -rf dist temp",
     "lint": "tslint --project tsconfig.json **/*.ts",
     "prebuild": "npm run clean && npm run lint",

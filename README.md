@@ -714,3 +714,36 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 * Las configuraciones pueden mejorarse, haciendo que se reciban parámetros por consola con los browsers en los que se desea ejecutar
 * Puede adicionar más browsers o versiones de browsers o sistema operativo, siempre y cuando sean [soportados](https://saucelabs.com/platforms) por saucelabs
 * Opciones como shardTestFiles o maxInstances también pueden ser configurables para que el usuario decida cómo ejecutar las pruebas y dejar valores por defecto para ser usado por el CI
+
+### 25. Zalenium
+
+**Descripción**: En ocasiones requerimos ejecutar nuestras pruebas en nuestro ambiente local o en un servidor de integración continua pero no tenemos los recursos suficientes para pagar todas las ejecuiones que se requieren en servicios como Saucelabs, o simplemente no queremos instalar ciertos navegadores en nuestro equipo ya que nos puede afectar nuestro ambiente de trabajo. Zalenium nos permite ejecutar nuestras pruebas dentro de containers si cumplen ciertos requerimientos y el resto mandarlo a Saucelabs de esa forma no tenemos que hacer configuraciones adicionales y tampoco incurrir a facturas muy grandes
+
+1. Descargue la imagen de docker elgalu/selenium
+    ``` bash
+    docker pull elgalu/selenium
+    ```
+
+1. Descargue la imagen de zalenium
+    ``` bash
+    docker pull dosel/zalenium
+    ```
+
+1. Ejecute el contenedor de zalenium
+    ``` bash
+    docker run --rm -ti --name zalenium -p 4444:4444 \
+        -v /var/run/docker.sock:/var/run/docker.sock \
+        -v /tmp/videos:/home/seluser/videos \
+        --privileged dosel/zalenium start
+    ```
+
+1. Configure el archivo de saucelabs para que apunte al servidor de Grid de Zalenium
+    ``` ts
+    seleniumAddress: 'http://localhost:4444/wd/hub'
+    ```
+
+1. Abrá la página `http://localhost:4444/grid/admin/live`
+1. Remueva del **package.json** la instrucción del `--gecko false` en el script del postinstall
+1. Ejecute el comando `npx webdriver-manager update`
+1. Ejecute las pruebas con `npm test` y vea como en la página de `live` se refresca la ejecución de las pruebas
+1. Abrá la página `http://localhost:4444/dashboard` y tome un screenshot del resultado de las pruebas y lo adjunta al PR
