@@ -4,7 +4,7 @@
   "description": "First workshop for automation",
   "main": "index.js",
   "scripts": {
-    "postinstall": "webdriver-manager update --gecko false",
+    "postinstall": "webdriver-manager update",
     "clean": "rm -rf dist temp",
     "lint": "tslint --project tsconfig.json **/*.ts",
     "prebuild": "npm run clean && npm run lint",
@@ -12,6 +12,7 @@
     "test:local": "npm run build && protractor dist/protractor/config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
+    "test:zalenium": "npm run build && protractor dist/protractor/zalenium.config.js",
     "test": "npm run test:saucelabs"
   },
   "repository": {
