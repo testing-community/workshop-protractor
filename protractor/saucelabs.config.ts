@@ -3,7 +3,7 @@ import { reporter } from './helpers/reporter';
 
 const firefoxConfig = {
   browserName: 'firefox',
-  platforms: 'linux',
+  platform: 'linux',
   name: 'firefox-tests',
   shardTestFiles: true,
   maxInstances: 1
