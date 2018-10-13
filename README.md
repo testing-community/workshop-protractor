@@ -46,14 +46,14 @@
 1. Crear una cuenta en Github si no la tiene.
 1. Crear un repositorio en limpio dentro de la página de GitHub con el nombre de “**protractor-workshop-2018**”
 1. Crear una carpeta en su computador llamada `protractor-workshop-2018` y ubicarse en ella en una consola
-1. Seguir las instrucciones para realizar el primer commit
+1. Seguir las instrucciones para realizar el primer commit (use las que aparece en lá página de github)
 
     ``` shell
     echo "# protractor-workshop-2018" >> README.md
     git init
     git add README.md
     git commit -m "first commit"
-    git remote add origin git@github.com:aperdomob/protractor-workshop-2018.git
+    git remote add origin git@github.com:<su-usuario>/protractor-workshop-2018.git
     git push -u origin master
     ```
 
@@ -104,13 +104,13 @@
 1. Actualizar los drivers con el comando
 
    ``` bash
-   ./node_modules/protractor/bin/webdriver-manager update
+   npx webdriver-manager update
    ```
 
 1. En la consola ejecutar
 
    ``` bash
-   ./node_modules/protractor/bin/webdriver-manager start
+   npx webdriver-manager start
    ```
 
 1. Crear la carpeta **test** y dentro de la carpeta crear el archivo **spec.ts**
