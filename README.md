@@ -315,7 +315,7 @@
 1. Agregar el script `"postinstall"` con el valor `"webdriver-manager update --gecko false"`
 1. Subir los cambios a github (no cree aún el PR)
 1. Ir a la url de [Configuración de Travis](https://travis-ci.com/account/repositories)
-1. Habilite la configuración del servicio entre travis y github
+1. Habilite la configuración GitHub Apps
 1. Cree un PR
 1. Verificar que la ejecución en Travis termine correctamente
 
