@@ -116,6 +116,8 @@
 1. Crear la carpeta **test** y dentro de la carpeta crear el archivo **spec.ts**
 
    ``` ts
+   import { browser } from 'protractor';
+
    describe('This is the first example of protractor', () => {
      it('should have a title', () => {
        browser.ignoreSynchronization = true;
@@ -222,11 +224,13 @@
 1. Instale la dependencia de desarrollo **jasmine-spec-reporter**
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
     ```ts
-    import { DisplayProcessor, SpecReporter } from 'jasmine-spec-reporter';
+    import { SpecReporter } from 'jasmine-spec-reporter';
 
     export let reporter = () => {
       jasmine.getEnv().addReporter(new SpecReporter({
-        customProcessors: [DisplayProcessor]
+        spec: {
+          displayStacktrace: true
+        }
       }));
     };
     ```
