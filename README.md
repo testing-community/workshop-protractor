@@ -298,6 +298,7 @@
 
 **Descripción**: La integración continua es una práctica requerida hoy en día, en esta sesión configuraremos travis para ejecutar nuestra integración continua
 
+1. Crear el archivo **.nvmrc** en la raíz del proyecto con el contenido "v10.10.0"
 1. Crear el archivo **.travis.yml** en la raíz del proyecto
 1. Agregar el siguiente contenido
     ``` yml
@@ -305,8 +306,6 @@
     addons:
       chrome: stable
     language: node_js
-    node_js:
-      - "10"
     cache:
       directories:
         - "node_modules"
