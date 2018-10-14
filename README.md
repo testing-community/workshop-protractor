@@ -313,7 +313,7 @@
 1. Habilitar en Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
 1. Modificar los scripts de **package.json** con agregando `"test": "npm run test:headless"`
 1. Agregar el script `"postinstall"` con el valor `"webdriver-manager update --gecko false"`
-1. Subir los cambios a github (push no cree aún el PR)
+1. Subir los cambios a github (no cree aún el PR)
 1. Ir a la url de [Configuración de Travis](https://travis-ci.com/account/repositories)
 1. Habilite la configuración del servicio entre travis y github
 1. Cree un PR
