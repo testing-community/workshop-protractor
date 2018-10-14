@@ -6,6 +6,7 @@
 
 * [Wiki](https://github.com/AgileTestingColombia/workshop-protractor/wiki)
 * [Guide](https://agiletestingcolombia.gitbook.io/workshops/)
+* [FAQ](https://agiletestingcolombia.gitbook.io/workshops/faq)
 
 ## Steps
 
@@ -161,7 +162,7 @@
     ``` bash
     * @aperdomob @germandavid85 @luigisamurai
     ```
-1. Realizar un commit donde incluya los 7 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
+1. Realizar un commit donde incluya los 8 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
     ```bash
     git add .
     git commit -m "setup protractor configuration"
