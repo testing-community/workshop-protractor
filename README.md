@@ -63,6 +63,10 @@
    * [aperdomob](https://github.com/aperdomob)
    * [germandavid85](https://github.com/germandavid85)
    * [luigisamurai](https://github.com/luigisamurai)
+   * [yesidbalvin](https://github.com/yesidbalvin)
+   * [Scot3004](https://github.com/Scot3004)
+   * [santirogu](https://github.com/santirogu)
+
 1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado
 1. Crear una rama **project-setup** en el repositorio
     ``` bash
@@ -160,7 +164,7 @@
 1. Crear el archivo **LICENSE** en la raíz del proyecto con lo especificado en <https://en.wikipedia.org/wiki/MIT_License> (_Tenga en cuanta cambiar el año y el copyright holders_)
 1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
     ``` bash
-    * @aperdomob @germandavid85 @luigisamurai
+    * @aperdomob @germandavid85 @luigisamurai @yesidbalvin @Scot3004 @santirogu
     ```
 1. Realizar un commit donde incluya los 8 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
     ```bash
