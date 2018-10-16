@@ -1,6 +1,6 @@
 # Workshop Protractor
 
-!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcara todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el adecuado uso de [Github](https://github.com/) y [Gitflow](https://guides.github.com/introduction/flow/) para la entrega de un producto de software.
+!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcará todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el adecuado uso de [Github](https://github.com/) y [Gitflow](https://guides.github.com/introduction/flow/) para la entrega de un producto de software.
 
 **Recursos**:
 
@@ -67,6 +67,7 @@
    * [Scot3004](https://github.com/Scot3004)
    * [santirogu](https://github.com/santirogu)
 
+1. [Instalar JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) en su equipo si no lo tiene instalado
 1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado
 1. Crear una rama **project-setup** en el repositorio
     ``` bash
@@ -90,7 +91,7 @@
   `npm install protractor`
 
 1. Instalar las dependencias de desarrollo de typescript
-  `npm i --save-dev typescript``
+  `npm i --save-dev typescript`
 
 1. Instalar los types de Jasmines
   `npm install --save-dev @types/jasminewd2`
@@ -118,7 +119,7 @@
    npx webdriver-manager start
    ```
 
-1. Crear la carpeta **test** y dentro de la carpeta crear el archivo **spec.ts**
+1. Crear la carpeta **test** y dentro de la carpeta crear el archivo **google.spec.ts**
 
    ``` ts
    import { browser } from 'protractor';
@@ -310,7 +311,7 @@
       directories:
         - "node_modules"
     ```
-1. Habilitar en Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
+1. Habilitar Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
 1. Modificar los scripts de **package.json** con agregando `"test": "npm run test:headless"`
 1. Agregar el script `"postinstall"` con el valor `"webdriver-manager update --gecko false"`
 1. Subir los cambios a github (no cree aún el PR)
@@ -324,7 +325,7 @@
 **Descripción**: El análisis de código estático nos ayuda a estandarizar la forma en como escribimos código, en esta sesión configuraremos tslint con airbnb para tener análisis de código estático
 
 1. Agregar las dependencias de desarrollo **tslint** y **tslint-config-airbnb**
-1. Crear el archivo **tslint.json** con la siguientes información
+1. Crear el archivo **tslint.json** en la raíz con la siguientes información
     ``` json
     {
       "defaultSeverity": "error",
@@ -445,7 +446,7 @@
       await(browser.sleep(3000));
       await menuContentPage.goToTShirtMenu();
       ```
-1. Realice el resto de page object y remplacelo en la prueba, los nombres de los page object son:  **address-step.page.ts**, **bank-payment.page.ts**, **order-resume.page.ts**, **payment-step.page.ts**, **product-added-modal.page.ts**, **product-list.page.ts**, **shipping-step.page.ts**, **sign-in-step.page.ts**, **summary-step.page.ts**
+1. Realice el resto de page object y remplacelo en la prueba, los nombres de los page object son:  **address-step.page.ts**, **bank-payment.page.ts**, **order-summary.page.ts**, **payment-step.page.ts**, **product-added-modal.page.ts**, **product-list.page.ts**, **shipping-step.page.ts**, **sign-in-step.page.ts**, **summary-step.page.ts**
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
