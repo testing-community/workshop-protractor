@@ -19,24 +19,25 @@
 1. [Chrome Headless](#5-chrome-headless)
 1. [Agregar Integración Continua](#6-agregar-integración-continua)
 1. [Agregando Análisis de Código Estático](#7-agregando-análisis-de-código-estático)
-1. [CSS Selector](#8-css-selector)
-1. [Page Object Model](#9-page-object-model)
-1. [Esperas de Carga de Página y de Jasmine](#10-esperas-de-carga-de-página-y-de-jasmine)
-1. [Esperas Implicitas](#11-esperas-implicitas)
-1. [Esperas Explicitas](#12-esperas-explicitas)
-1. [Mejorando los Locator](#13-mejorando-los-locator)
-1. [Separar prueba en diferentes describes](#14-separar-prueba-en-diferentes-describes)
-1. [Agregando Jasmine Awesome](#15-agregando-jasmine-awesome)
-1. [Utilizando Capabilities para configurar Chrome](#16-utilizando-capabilities-para-configurar-chrome)
-1. [Listas de Elementos, filtros y elementos dentro de elementos](#17-listas-de-elementos-filtros-y-elementos-dentro-de-elementos)
-1. [Más Locators](#18-más-locators)
-1. [Ejecución de Código Javascript](#19-ejecución-de-código-javascript)
-1. [Trabajando con IFrames](#20-trabajando-con-iframes)
-1. [Subiendo un Archivo](#21-subiendo-un-archivo)
-1. [Descargando Archivos](#22-descargando-archivos)
-1. [Configurar Saucelabs](#23-configurar-saucelabs)
-1. [Probar con diferentes navegadores](#24-probar-con-diferentes-navegadores)
-1. [Zalenium](#25-zalenium)
+1. [Depurando El Código](#8-depurando-el-código)
+1. [CSS Selector](#9-css-selector)
+1. [Page Object Model](#10-page-object-model)
+1. [Esperas de Carga de Página y de Jasmine](#11-esperas-de-carga-de-página-y-de-jasmine)
+1. [Esperas Implicitas](#12-esperas-implicitas)
+1. [Esperas Explicitas](#13-esperas-explicitas)
+1. [Mejorando los Locator](#14-mejorando-los-locator)
+1. [Separar prueba en diferentes describes](#15-separar-prueba-en-diferentes-describes)
+1. [Agregando Jasmine Awesome](#16-agregando-jasmine-awesome)
+1. [Utilizando Capabilities para configurar Chrome](#17-utilizando-capabilities-para-configurar-chrome)
+1. [Listas de Elementos, filtros y elementos dentro de elementos](#18-listas-de-elementos-filtros-y-elementos-dentro-de-elementos)
+1. [Más Locators](#19-más-locators)
+1. [Ejecución de Código Javascript](#20-ejecución-de-código-javascript)
+1. [Trabajando con IFrames](#21-trabajando-con-iframes)
+1. [Subiendo un Archivo](#22-subiendo-un-archivo)
+1. [Descargando Archivos](#23-descargando-archivos)
+1. [Configurar Saucelabs](#24-configurar-saucelabs)
+1. [Probar con diferentes navegadores](#25-probar-con-diferentes-navegadores)
+1. [Zalenium](#26-zalenium)
 
 ### 1. Configuración Inicial del Proyecto
 
@@ -344,7 +345,68 @@
 1. Modifique el script de `build` del `package.json` agregandole al final `npm run lint &&`
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 8. CSS Selector
+**NOTA:** se recomienda instalar la extensión `TSLint` de vs code
+
+### 8. Depurando El Código
+
+**Descripción**: La depuración nos ayudará a identificar y corregir las parte del código que estén presentando fallas, así como poder tener una mayor entendimiento de las valores de las variables en tiempo de ejecución. Para activar el debugger en `vs code`:
+
+1. Vaya a la vista de `Debug` (⇧⌘D -  mac / )
+1. Haga click en el ícono del engranaje y seleccione `Node.js`. Estor creará el archivo `.vscode/launch.json`
+1. Reemplace el contenido del archivo por la siguiente información
+    ``` json
+    {
+      // Use IntelliSense to learn about possible attributes.
+      // Hover to view descriptions of existing attributes.
+      // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+      "version": "0.2.0",
+      "configurations": [
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "Debug tests",
+          "program": "${workspaceRoot}/node_modules/.bin/protractor",
+          "args": ["${workspaceRoot}/dist/protractor/config.js"],
+          "preLaunchTask": "npm: build",
+          "sourceMaps": true,
+          "smartStep": true,
+          "internalConsoleOptions": "openOnSessionStart",
+          "outFiles": [
+              "${workspaceFolder}/dist/**/*.js"
+          ]
+        },
+        {
+          "type": "node",
+          "request": "launch",
+          "name": "Debug headless tests",
+          "program": "${workspaceRoot}/node_modules/.bin/protractor",
+          "args": ["${workspaceRoot}/dist/protractor/headless.config.js"],
+          "preLaunchTask": "npm: build",
+          "sourceMaps": true,
+          "smartStep": true,
+          "internalConsoleOptions": "openOnSessionStart",
+          "outFiles": [
+              "${workspaceFolder}/dist/**/*.js"
+          ]
+        }
+      ]
+    }
+    ```
+1. Compruebe que puede lanzar las pruebas y depurarlas utilzando `vs code`
+1. Envíe un pull request con una captura de pantalla en la que se identifique fue posible hacer depuración del test `google.spec.ts`
+1. Solicite la revisión de código tal como se hizo en el punto anterior
+
+Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/nodejs/nodejs-debugging):
+
+* *program* - ejecutable de entrada del depurador
+* *args* - ruta al config del protractor en el directorio `dist`
+* *preLaunchTask* -  ejecuta la tarea
+* *sourceMaps* - utiliza los source maps del directorio `dist`
+* *smartStep* - omite código **no interesante** que se genera en el proceso de transpilación
+* *internalConsoleOptions* - abre la terminal del depuración
+* *outFiles* - ruta dónde están los archivos `sourceMap`
+
+### 9. CSS Selector
 
 **Descripción**: Los css selector son los selectores más utilizados por los desarrolladores tener un buen dominio de ellos facilita la automatización de pruebas. En esta sesión se implementará un primer caso de pruebas con css selectores
 
@@ -404,7 +466,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 9. Page Object Model
+### 10. Page Object Model
 
 **Descripción**: El page object model es el patrón por defecto que se utiliza para la mantenibilidad de las pruebas, conocer cómo implementar este patrón le ahorrará muchas horas de reproceso en el futuro. En esta sesión se hará la primera implementación del patrón Page Object Model (POM)
 
@@ -450,7 +512,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 10. Esperas de Carga de Página y de Jasmine
+### 11. Esperas de Carga de Página y de Jasmine
 
 **Descripción**: Las esperas en selenium son los tiempos que se esperará para realizar algunas acciones, conocerlos y saber cómo utilizarlos nos disminuirá la fragilidad de las pruebas y adicionalmente nos ayudará a reducir los tiempos de ejecución.
 
@@ -467,7 +529,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 11. Esperas Implicitas
+### 12. Esperas Implicitas
 
 **Descripción**: Una espera implícita es una espera global que se tiene para cada elemento de la página. En esta sesión veremos cómo tenerla configurada nos ayudará a reducir la cantidad de sleeps de la prueba
 
@@ -479,7 +541,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 12. Esperas Explicitas
+### 13. Esperas Explicitas
 
 **Descripción**: Las esperas explícitas es la más recomendada, ya que nos permite hacer esperas puntuales sobre algunos elementos y no sobre todos. En esta sesión desactivaremos las esperas implícitas y activaremos las explícitas donde sea necesario
 
@@ -492,7 +554,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 13. Mejorando los Locator
+### 14. Mejorando los Locator
 
 **Descripción**: En esta sesión usted hará la propuesta de que locators deberían ser utilizados en la prueba que se está implementado.
 
@@ -500,7 +562,7 @@
 1. Enviar PR con los cambios
 1. El revisor comentará con los que no está de acuerdo, en ese caso, justifique la razón de su selección (No une **XPATH**)
 
-### 14. Separar prueba en diferentes describes
+### 15. Separar prueba en diferentes describes
 
 **Descripción**: Por legibilidad es bueno tener sesionados cada uno de los pasos de las pruebas en diferentes describes, en esta sesión usted aprenderá cómo hacerlo
 
@@ -512,7 +574,7 @@
     * Pago en el banco (Este debe contener el `it` de validación)
 1. Enviar PR con los cambios
 
-### 15. Agregando Jasmine Awesome
+### 16. Agregando Jasmine Awesome
 
 **Descripción**: agregaremos un reporte visual a nuestro proyecto de tal forma que tenga un reporte html de la ejecución de las pruebas
 
@@ -523,7 +585,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 16. Utilizando Capabilities para configurar Chrome
+### 17. Utilizando Capabilities para configurar Chrome
 
 **Descripción**: Las popups que muestra chrome cuando se está ejecutando por selenium son molestas y pueden causar fragilidad en las pruebas, en esta sesión se enseñará a desactivarlas por medio de las capabilities.
 
@@ -541,7 +603,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 17. Listas de Elementos, filtros y elementos dentro de elementos
+### 18. Listas de Elementos, filtros y elementos dentro de elementos
 
 **Descripción**: En muchas ocasiones tenemos que obtener un locator para posteriormente poder hacer una acción sobre un hermano o alguno que no esté directamente relacionado, en esta sesión trabajaremos con la anidación de locators y métodos de búsqueda para poder conseguir relacionar dos locators
 
@@ -551,7 +613,7 @@
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-### 18. Más Locators
+### 19. Más Locators
 
 **Descripción**: esta sesión automatizaremos otra página diferente, y su misión es seleccionar los mejores locators posibles de tal forma que el page object sea lo más reutilizable posible
 
@@ -576,14 +638,14 @@
     ```
 1. Realizar una comprobación del título "**Practice Automation Form**"
 
-### 19. Ejecución de Código Javascript
+### 20. Ejecución de Código Javascript
 
 **Descripción**: Selenium tiene algunas limiaciones y por tanto en ocasiones nos toca ejecutar código directamente en javascript para poder hacer una acción que necesitamos, en este sesión cambiaremos una propiedad de un locator por medio de javascript ya que selenium no es capaz de soportarlo nativamente.
 
 1. Cree el archivo de prueba **i-frame.spec.ts** el cual abrirá la página <http://toolsqa.com/iframe-practice-page/> modificará la áltura del IFrame 1, posteriormente obtendrá la nueva altura para comprobar si efectivamente cambio
 1. Cree el archivo page **IFrame.page.ts** el cual contendrá un método para modificar la altura de un IFrame y otro para obtener su altura
 
-### 20. Trabajando con IFrames
+### 21. Trabajando con IFrames
 
 **Descripción**: Los IFrames aunque ya están mandados a recoger, en ocasiones no los encontramos en algunas páginas, y no está de más saber cómo trabajar con ellos cuando nos los encontremos. En esta sesión entraremos a un iframe, haremos acciones sobre el, saldremos de él y haremos otras acciones sobre la página principal
 
@@ -595,7 +657,7 @@
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al iframe 1 y verifique el título
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al contexto principal y verifique nuevamente el título
 
-### 21. Subiendo un Archivo
+### 22. Subiendo un Archivo
 
 **Descripción**: En esta sesión se automatizará una prueba donde se deba subir un archivo.
 
@@ -605,7 +667,7 @@
 1. Modificar Locators.spec.ts de tal forma que se le pase la ruta de la imagen que puso en resources
 1. Agregue una validación el **locators.spec.ts** que verifique la imagen fue cargada
 
-### 22. Descargando Archivos
+### 23. Descargando Archivos
 
 **Descripción**: En esta sesión se automatizará una prueba donde se deba descargar un archivo
 
@@ -622,7 +684,7 @@
     Recibirá el nombre del archivo y devolverá el buffer que contiene la información del archivo
 1. Modificar la prueba de tal forma que descargue el archivo y después comprobar que descargó de forma correcta
 
-### 23. Configurar Saucelabs
+### 24. Configurar Saucelabs
 
 **Descripción**: Ejecutar en modo headless no siempre es la mejor opción, existen herramientas de pago como Saucelabs que nos provisionan diferentes sistemas operativos y diferentes navegadores, en esta sesión configuraremos saucelabs para ejecutar nuestras pruebas.
 
@@ -687,7 +749,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 * Para configurar las variable de entorno en diferentes sistemas operativos, consulte este [link](https://wiki.saucelabs.com/display/DOCS/Best+Practice%3A+Use+Environment+Variables+for+Authentication+Credentials)
 * Asegúrese de establecer los valores correctos para `SAUCE_USERNAME` y `SAUCE_ACCESS_KEY`
 
-### 24. Probar con diferentes navegadores
+### 25. Probar con diferentes navegadores
 
 **Descripción**: Nuestros productos generalmente deben ser verificados en más de un navegador, por tanto es importante saber cómo ejecutar nuestras pruebas en varios navegadores.
 
@@ -728,7 +790,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 * Puede adicionar más browsers o versiones de browsers o sistema operativo, siempre y cuando sean [soportados](https://saucelabs.com/platforms) por saucelabs
 * Opciones como shardTestFiles o maxInstances también pueden ser configurables para que el usuario decida cómo ejecutar las pruebas y dejar valores por defecto para ser usado por el CI
 
-### 25. Zalenium
+### 26. Zalenium
 
 **Descripción**: En ocasiones requerimos ejecutar nuestras pruebas en nuestro ambiente local o en un servidor de integración continua pero no tenemos los recursos suficientes para pagar todas las ejecuiones que se requieren en servicios como Saucelabs, o simplemente no queremos instalar ciertos navegadores en nuestro equipo ya que nos puede afectar nuestro ambiente de trabajo. Zalenium nos permite ejecutar nuestras pruebas dentro de containers si cumplen ciertos requerimientos y el resto mandarlo a Saucelabs de esa forma no tenemos que hacer configuraciones adicionales y tampoco incurrir a facturas muy grandes
 
