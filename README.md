@@ -194,14 +194,14 @@
     ``` ts
     export const config: Config = {
       framework: 'jasmine',
-      specs: [ '../test/spec.js' ],
+      specs: [ '../test/google.spec.js' ],
       seleniumAddress: 'http://localhost:4444/wd/hub',
       onPrepare: () => {
         browser.ignoreSynchronization = true;
       }
     };
     ```
-1. Cambiar el contenido del archivo **spec.ts** por
+1. Cambiar el contenido del archivo **google.spec.ts** por
     ``` ts
     import { browser } from 'protractor';
 
@@ -260,7 +260,7 @@
 1. Eliminar la propiedad `seleniumAddress` del **config.ts**
 1. Mate el proceso del webdriver start (ya no es necesario)
 1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false` en el **config.ts**
-1. Modificar el archivo de **spec.ts** para que trabaje con **async/await**
+1. Modificar el archivo de **google.spec.ts** para que trabaje con **async/await**
     ``` ts
     import { browser } from 'protractor';
 
@@ -665,7 +665,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 1. Modificar el page **personal-information.page.ts** de tal forma que el método `fillForm` ahora no haga clic en el botón y cree otro método submit que llene el formulario y haga clic en el botón
 1. También debe recibir dentro del json un parámetro file que tiene la ruta relativa de algún archivo a subir, si tiene un valor válido debe subir el archivo
 1. Cree la carpeta resources a nivel de la raíz del proyecto y coloque un archivo jpg en ella
-1. Modificar Locators.spec.ts de tal forma que se le pase la ruta de la imagen que puso en resources
+1. Modificar **locators.spec.ts** de tal forma que se le pase la ruta de la imagen que puso en resources
 1. Agregue una validación el **locators.spec.ts** que verifique la imagen fue cargada
 
 ### 23. Descargando Archivos
