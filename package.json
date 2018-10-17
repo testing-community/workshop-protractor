@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "webdriver-manager update --gecko false",
-    "clean": "rm -rf dist temp",
+    "clean": "rm -rf dist temp awesome-report",
     "lint": "tslint --project tsconfig.json **/*.ts",
     "prebuild": "npm run clean && npm run lint",
     "build": "tsc",
@@ -39,6 +39,7 @@
   "devDependencies": {
     "@types/isomorphic-fetch": "0.0.34",
     "@types/jasminewd2": "^2.0.4",
+    "jasmine-awesome-report": "0.0.3",
     "jasmine-spec-reporter": "^4.2.1",
     "tslint": "^5.11.0",
     "tslint-config-airbnb": "^5.11.0",
