@@ -343,7 +343,7 @@
     `"lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"`
 1. Corregir las reglas de forma automática `npm run lint -- --fix`
 1. Las reglas que no se puedan corregir automáticamente investigue y corrijalas. Ejecute el comando `npm run lint` para verificar que reglas esta rompiendo
-1. Modifique el script de `build` del `package.json` agregandole al final `npm run lint &&`
+1. Modifique el script de `build` del `package.json` agregandole al principio `npm run lint &&`
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 **NOTA:** se recomienda instalar la extensión `TSLint` de vs code
