@@ -275,7 +275,7 @@
 **Descripción**: Para [Octubre del 2018](https://github.com/SeleniumHQ/selenium/issues/2969) WebDriverJS dejará de dar soporte a un tipo de promesas personalizadas que ha trabajado desde sus inicios, aunque hoy en día aún hay soporte es necesario empezar a trabajar de la forma que recomienda Protractor
 
 1. Eliminar la propiedad `seleniumAddress` del **config.ts**
-1. Mate el proceso del webdriver start (ya no es necesario)
+1. Termine el proceso del webdriver start (ya no es necesario)
 1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false` en el **config.ts**
 1. Modificar el archivo de **google.spec.ts** para que trabaje con **async/await**
     ``` ts
