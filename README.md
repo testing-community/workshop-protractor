@@ -619,7 +619,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 **Descripción**: esta sesión automatizaremos otra página diferente, y su misión es seleccionar los mejores locators posibles de tal forma que el page object sea lo más reutilizable posible
 
 1. Crear el archivo **personal-information.page.ts**
-1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button
+1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button (Evitar el uso de css locators)
     ``` ts
     await personalInformationPage.fillForm({
        firstName: 'Alejandro',
@@ -650,7 +650,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 **Descripción**: Los IFrames aunque ya están mandados a recoger, en ocasiones no los encontramos en algunas páginas, y no está de más saber cómo trabajar con ellos cuando nos los encontremos. En esta sesión entraremos a un iframe, haremos acciones sobre el, saldremos de él y haremos otras acciones sobre la página principal
 
-1. Modificar el page **IFrame.page.ts** de tal forma que publique:
+1. Modificar el page **i-frame.page.ts** de tal forma que publique:
     * un método que retorne el título de la página de valor **Sample Iframe page**
     * un método para pasarse al iframe 1
     * otro método para regresar al contexto principal
