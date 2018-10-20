@@ -9,7 +9,7 @@ export class IFramePage {
     this.frame = $('#IF1');
   }
 
-  public setFormFrameHeight(height: number) : promise.Promise<void> {
+  public setFormFrameHeight(height: number): promise.Promise<void> {
     return browser
       .executeScript(`document.querySelector("#IF1").setAttribute('height', ${height});`);
   }
