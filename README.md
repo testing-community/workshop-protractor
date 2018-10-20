@@ -74,6 +74,23 @@
     ``` bash
     git checkout -b project-setup
     ```
+1. Crear el archivo .editorconfig a raíz del proyecto con la siguiente información
+    ```properties
+    root = true
+
+    [*]
+    indent_style = space
+    end_of_line = lf
+    charset = utf-8
+    trim_trailing_whitespace = true
+    insert_final_newline = true
+    indent_size = 2
+
+    [*.md]
+    indent_size = 4
+    trim_trailing_whitespace = false
+    ```
+1. Instalar la extensión de Visual Studio Code `EditorConfig for VS Code` (Generalmente requiere reinicio del IDE)
 1. Ejecutar en una consola `npm init` dentro de la ruta donde se encuentra el repositorio y colocar la siguiente información:
 
    | Parametro          | Valor |
