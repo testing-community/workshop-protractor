@@ -761,6 +761,12 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
     travis encrypt SAUCE_USERNAME=el-usuario --add
     travis encrypt SAUCE_ACCESS_KEY=el-key --add
     ```
+    **Nota**: Si no desea instalar el cliente de travis puede utilizar docker de la siguiente forma:
+    ```bash
+    docker build -t travis-ci https://goo.gl/vS7ep1
+    docker run -v $(pwd):/usr/src/app -it travis-ci encrypt SAUCE_USERNAME=el-usuario --add
+    docker run -v $(pwd):/usr/src/app -it travis-ci encrypt SAUCE_ACCESS_KEY=el-key --add
+    ```
 
 #### Sugerencias
 
