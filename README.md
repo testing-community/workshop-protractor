@@ -99,7 +99,7 @@
    | **Version**        | _[Por Defecto]_                               |
    | **Description**    | This is a Workshop about Protractor           |
    | **Entry Point**    | _[Por Defecto]_                               |
-   | **Test Command**   | `protractor dist/protractor/config.js`        |
+   | **Test Command**   | `protractor dist/protractor/local.config.js`        |
    | **Git Repository** | _[Por Defecto]_                               |
    | **Keywords**       | ui-testing, dojo, practice, protractor        |
    | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su github]_) |
@@ -114,7 +114,7 @@
 1. Instalar los types de Jasmines
   `npm install --save-dev @types/jasminewd2`
 
-1. Crear en la raíz del proyecto la carpeta **protractor** y dentro de ella el archivo  **config.ts** y agregar la siguiente información
+1. Crear en la raíz del proyecto la carpeta **protractor** y dentro de ella el archivo  **local.config.ts** y agregar la siguiente información
     ``` ts
     import { Config } from 'protractor';
 
@@ -170,7 +170,7 @@
     ``` json
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc",
-    "test": "npm run build && protractor dist/protractor/config.js"
+    "test": "npm run build && protractor dist/protractor/local.config.js"
     ```
 
 1. Ejecutar el comando en una segunda consola `npm test` y comprobar que la prueba pasa de forma satisfactoria
@@ -199,7 +199,7 @@
 **Descripción**: Se utilizará el método `onPrepare` para configurar la información que debería ser igual en todas las pruebas, adicionalmente se utilizará el `beforeEach` para organizar la prueba de forma más legible
 
 1. Crear la rama **improve-test** a partir de master
-1. Modificar el **protractor/config.ts** agregando la propiedad `onPrepare` con el siguiente contenido:
+1. Modificar el **protractor/local.config.ts** agregando la propiedad `onPrepare` con el siguiente contenido:
     ``` ts
     onPrepare: () => {
         browser.ignoreSynchronization = true;
@@ -274,9 +274,9 @@
 
 **Descripción**: Para [Octubre del 2018](https://github.com/SeleniumHQ/selenium/issues/2969) WebDriverJS dejará de dar soporte a un tipo de promesas personalizadas que ha trabajado desde sus inicios, aunque hoy en día aún hay soporte es necesario empezar a trabajar de la forma que recomienda Protractor
 
-1. Eliminar la propiedad `seleniumAddress` del **config.ts**
+1. Eliminar la propiedad `seleniumAddress` del **local.config.ts**
 1. Termine el proceso del webdriver start (ya no es necesario)
-1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false` en el **config.ts**
+1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false` en el **local.config.ts**
 1. Modificar el archivo de **google.spec.ts** para que trabaje con **async/await**
     ``` ts
     import { browser } from 'protractor';
@@ -299,7 +299,7 @@
 
 **Descripción**: Muchas veces no contamos con servidores de integración continua que tengan acceso a máquinas con interfaz gráfica. Existen algunos navegadores que tienen versión headless que funcionan sin interfaz gráfica pero se comportan muy similar a los navegadores comunes. En esta sesión vamos a configurar la versión headless de chrome
 
-1. Duplicar el archivo **config.ts** con el nombre de **headless.config.ts**
+1. Duplicar el archivo **local.config.ts** con el nombre de **headless.config.ts**
 1. Agregar la propiedad de capabilities en el nuevo archivo con la siguiente información
     ``` ts
     capabilities: {
@@ -384,7 +384,7 @@
           "request": "launch",
           "name": "Debug tests",
           "program": "${workspaceRoot}/node_modules/protractor/bin/protractor",
-          "args": ["${workspaceRoot}/dist/protractor/config.js"],
+          "args": ["${workspaceRoot}/dist/protractor/local.config.js"],
           "preLaunchTask": "npm: build",
           "sourceMaps": true,
           "smartStep": true,
@@ -722,7 +722,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
     "test": "npm run test:saucelabs"
     ```
-1. Duplique el archivo  **protractor/config.ts** con el nombre **protractor/saucelabs.config.ts**
+1. Duplique el archivo  **protractor/local.config.ts** con el nombre **protractor/saucelabs.config.ts**
 1. Adicione las siguientes propiedades **protractor/saucelabs.config.ts**:
     * `sauceUser`: tendrá el valor del user name de saucelabs (se obtendrá por variable de ambiente)
     * `sauceKey`: tendrá el valor del key de saucelabs copiado en el punto 3 (se obtendrá por variable de ambiente)
@@ -777,7 +777,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 
 **Descripción**: Nuestros productos generalmente deben ser verificados en más de un navegador, por tanto es importante saber cómo ejecutar nuestras pruebas en varios navegadores.
 
-1. Necesitaremos editar el archivo protractor/saucelabs.config.ts, con los siguientes valoresCambiar capabilities por multiCapabilities
+1. Necesitaremos editar el archivo **protractor/saucelabs.config.ts**, con los siguientes valoresCambiar capabilities por multiCapabilities
     * `multiCapabilities`: contiene la configuración de varios navegadores en un mismo config file
     ``` ts
     import { browser, Config } from 'protractor';

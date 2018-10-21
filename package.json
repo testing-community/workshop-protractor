@@ -9,7 +9,7 @@
     "lint": "tslint --project tsconfig.json **/*.ts",
     "prebuild": "npm run clean && npm run lint",
     "build": "tsc",
-    "test:local": "npm run build && protractor dist/protractor/config.js",
+    "test:local": "npm run build && protractor dist/protractor/local.config.js",
     "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
     "test:zalenium": "npm run build && protractor dist/protractor/zalenium.config.js",

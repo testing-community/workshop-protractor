@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "Debug tests",
       "program": "${workspaceRoot}/node_modules/protractor/bin/protractor",
-      "args": ["${workspaceRoot}/dist/protractor/config.js"],
+      "args": ["${workspaceRoot}/dist/protractor/local.config.js"],
       "preLaunchTask": "npm: build",
       "sourceMaps": true,
       "smartStep": true,
