@@ -2,6 +2,10 @@
 
 !Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcará todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el adecuado uso de [Github](https://github.com/) y [Gitflow](https://guides.github.com/introduction/flow/) para la entrega de un producto de software.
 
+Para realizar este curso se espera que el estudiante tenga buenos conocimientos en:
+
+* Git (Puede seguir este [enlace](https://services.github.com/on-demand/downloads/es_ES/github-git-cheat-sheet/) con los comandos más utilizados en git)
+
 **Recursos**:
 
 * [Wiki](https://github.com/AgileTestingColombia/workshop-protractor/wiki)
