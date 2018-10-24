@@ -9,9 +9,9 @@ export let config: Config = {
   getPageTimeout: 30000,
   capabilities: {
     browserName: 'chrome',
+    shardTestFiles: true,
+    maxInstances: 2,
     chromeOptions: {
-      shardTestFiles: true,
-      maxInstances: 2,
       args: ['disable-infobars=true', '--window-size=800,600'],
       prefs: { credentials_enable_service: false }
     }
