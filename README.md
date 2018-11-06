@@ -768,6 +768,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
     **Nota**: Si no desea instalar el cliente de travis puede utilizar docker de la siguiente forma:
     ```bash
     docker run -v $(pwd):/usr/src/app -it ruby /bin/bash
+    gem install travis -v 1.8.9 --no-rdoc --no-ri
     echo 'y' | travis -v
     cd /usr/src/app
     travis encrypt SAUCE_USERNAME=el-usuario --add
