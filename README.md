@@ -124,7 +124,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
     export const config: Config = {
       framework: 'jasmine',
-      specs: [ '../test/spec.js' ],
+      specs: [ '../test/google.spec.js' ],
       seleniumAddress: 'http://localhost:4444/wd/hub'
     };
     ```
