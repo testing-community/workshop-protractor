@@ -213,6 +213,8 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     La propiedad config debe lucir algo así:
 
     ``` ts
+    import { Config, browser } from 'protractor';
+
     export const config: Config = {
       framework: 'jasmine',
       specs: [ '../test/google.spec.js' ],
