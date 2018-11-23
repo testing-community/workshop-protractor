@@ -141,7 +141,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    npx webdriver-manager start
    ```
 
-1. Crear la carpeta **test** y dentro de la carpeta crear el archivo **google.spec.ts**
+1. Crear la carpeta en la raíz del proyecto **test** y dentro de la carpeta crear el archivo **google.spec.ts**
 
    ``` ts
    import { browser } from 'protractor';
