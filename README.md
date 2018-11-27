@@ -252,6 +252,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 **Descripción**: Es necesario poder ver los resultados de una forma entendible en la consola, en esta sesión se configura un reporte de consola.
 
 1. Instale la dependencia de desarrollo **jasmine-spec-reporter**
+   `npm install jasmine-spec-reporter`
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
     ```ts
     import { SpecReporter } from 'jasmine-spec-reporter';
@@ -264,11 +265,11 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       }));
     };
     ```
-1. Modifique el **conf.ts** incluyendo el `import` del `reporter`
+1. Modifique el archivo **local.conf.ts** incluyendo el `import` del `reporter`
     ``` ts
     import { reporter } from './helpers/reporter';
     ```
-1. dentro del método `onPrepare` agregar el llamado al método reporter
+1. Dentro del método `onPrepare` agregar el llamado al método reporter
       ``` ts
       reporter();
       ```
@@ -281,7 +282,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 **Descripción**: Para [Octubre del 2018](https://github.com/SeleniumHQ/selenium/issues/2969) WebDriverJS dejará de dar soporte a un tipo de promesas personalizadas que ha trabajado desde sus inicios, aunque hoy en día aún hay soporte es necesario empezar a trabajar de la forma que recomienda Protractor
 
 1. Eliminar la propiedad `seleniumAddress` del **local.config.ts**
-1. Termine el proceso del webdriver start (ya no es necesario)
+1. Termine el proceso del `npx webdriver-manager start` (ya no es necesario)
 1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false` en el **local.config.ts**
 1. Modificar el archivo de **google.spec.ts** para que trabaje con **async/await**
     ``` ts
@@ -337,7 +338,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
         - "node_modules"
     ```
 1. Habilitar Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
-1. Modificar los scripts de **package.json** con agregando `"test": "npm run test:headless"`
+1. Modificar los scripts de **package.json** agregando `"test": "npm run test:headless"`
 1. Agregar el script `"postinstall"` con el valor `"webdriver-manager update --gecko false"`
 1. Subir los cambios a github (no cree aún el PR)
 1. Ir a la url de [Configuración de Travis](https://travis-ci.com/account/repositories)
@@ -432,7 +433,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 ### 9. CSS Selector
 
-**Descripción**: Los css selector son los selectores más utilizados por los desarrolladores tener un buen dominio de ellos facilita la automatización de pruebas. En esta sesión se implementará un primer caso de pruebas con css selectores
+**Descripción**: Los css selector son los selectores más utilizados por los desarrolladores, tener un buen dominio de ellos facilita la automatización de pruebas. En esta sesión se implementará un primer caso de pruebas con css selectores
 
 1. Crear el archivo **buy-tshirt.spec.ts** dentro de la carpeta **test**
 1. Escribir dentro del archivo el siguiente contenido
@@ -511,14 +512,14 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
       }
     }
     ```
-1. Crear el archivo src/page/index.ts con el siguiente contenido
+1. Crear el archivo **src/page/index.ts** con el siguiente contenido
     ``` ts
     export { MenuContentPage } from './menu-content.page';
     ```
 1. Modificar el archivo **buy-tshirt.spec.ts** de la siguiente forma
     * Importar la dependencia del page object despues del import de protractor
       ``` ts
-      import { $, browser } from 'protractor';
+      import { browser } from 'protractor';
       import { MenuContentPage } from '../src/page';
       ```
     * Creando una instancia del objeto `MenuContentPage`
@@ -559,7 +560,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 1. Agregar dentro del onPrepare de los archivos de config la línea
     ``` ts
-    browser.manage().timeouts().implicitlyWait(3000)
+    browser.manage().timeouts().implicitlyWait(3000);
     ```
 1. Quitar todos los sleeps de la prueba
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
@@ -613,17 +614,17 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 **Descripción**: Las popups que muestra chrome cuando se está ejecutando por selenium son molestas y pueden causar fragilidad en las pruebas, en esta sesión se enseñará a desactivarlas por medio de las capabilities.
 
-1. Modificar la configuración local de protractor agregando una capability para chrome para evitar ventanas emergente en la ejecución
+1. Modificar la configuración local de protractor agregando capabilities para chrome para evitar mostrar algunas ventanas emergente en la ejecución
     ``` ts
     capabilities: {
       browserName: 'chrome',
       chromeOptions: {
-        args: ['disable-infobars=true', '--window-size=800,600'],
+        args: ['--disable-popup-blocking', '--no-default-browser-check', '--window-size=800,600'],
         prefs: { credentials_enable_service: false }
       }
     },
     ```
-1. Tomar una foto de que ejecuta sin las ventanas emergentes y colocarla en la descripción del PR
+1. Tomar una foto de que el test se ejecuta sin las ventanas emergentes y colocarla en la descripción del PR
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
@@ -641,7 +642,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 **Descripción**: esta sesión automatizaremos otra página diferente, y su misión es seleccionar los mejores locators posibles de tal forma que el page object sea lo más reutilizable posible
 
-1. Crear el archivo **personal-information.page.ts**
+1. Crear el archivo **personal-information.page.ts** en la carpeta src/page
 1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button (Evitar el uso de css locators)
     ``` ts
     await personalInformationPage.fillForm({
@@ -667,7 +668,16 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 **Descripción**: Selenium tiene algunas limiaciones y por tanto en ocasiones nos toca ejecutar código directamente en javascript para poder hacer una acción que necesitamos, en este sesión cambiaremos una propiedad de un locator por medio de javascript ya que selenium no es capaz de soportarlo nativamente.
 
 1. Cree el archivo de prueba **i-frame.spec.ts** el cual abrirá la página <http://toolsqa.com/iframe-practice-page/> modificará la áltura del IFrame 1, posteriormente obtendrá la nueva altura para comprobar si efectivamente cambio
-1. Cree el archivo page **IFrame.page.ts** el cual contendrá un método para modificar la altura de un IFrame y otro para obtener su altura
+1. Cree el archivo page **i-frame.page.ts** el cual contendrá un método para modificar la altura de un IFrame y otro para obtener su altura
+	``` ts
+	import { $, browser, ElementFinder, promise } from 'protractor';
+	
+	...
+	
+	public setFormFrameHeight(height: number): promise.Promise<void> {
+		return browser.executeScript(`arguments[0].height = ${height};`, this.iframe1);
+	}
+	```
 
 ### 21. Trabajando con IFrames
 
@@ -676,7 +686,17 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 1. Modificar el page **i-frame.page.ts** de tal forma que publique:
     * un método que retorne el título de la página de valor **Sample Iframe page**
     * un método para pasarse al iframe 1
+	``` ts
+	public async switchToFrame(): Promise<void> {
+		await browser.switchTo().frame(this.frame.getWebElement());
+	}
+	```
     * otro método para regresar al contexto principal
+	``` ts
+	public async switchToMainPage(): Promise<void> {
+		await browser.switchTo().defaultContent();
+	}
+	```
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que verifique el título principal
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al iframe 1 y verifique el título
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al contexto principal y verifique nuevamente el título
