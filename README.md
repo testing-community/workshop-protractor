@@ -717,7 +717,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 1. Modificar el page **personal-information.page.ts** de tal forma que si recibe el parámetro `downloadFile` dentro del JSON llame al método privado `download` de ese mismo pageobject
 1. El método `download` obtendrá el link del enlace "**Test File to Download**" y se lo pasará al método `downloadFile` que recibe dos parametros de entrada el link de descarga y el nombre del archivo con que se quiere guardar
-1. Crear la carpeta service dentro de **src** y crear dentro un archivo llamado **download.service.ts** que tendrá dos métodos públicos
+1. Crear la carpeta **service** dentro de **src** y crear dentro un archivo llamado **download.service.ts** que tendrá dos métodos públicos
     ``` ts
     public async downloadFile(link: string, filename): Promise<void>
     ```
@@ -769,7 +769,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
       name: 'UI Workshop',
       browserName: 'chrome',
       chromeOptions: {
-        args: ['disable-infobars=true', '--window-size=800,600'],
+        args: ['--disable-popup-blocking', '--no-default-browser-check', '--window-size=800,600'],
         prefs: { credentials_enable_service: false }
       }
     },
@@ -784,23 +784,26 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 1. Esto lanzará la ejecución directamente en saucelabs y se puede visualizar de la siguiente forma: <http://recordit.co/pIAXMQShQJ>
 1. Para que travis tome correctamente el `SAUCE_ACCESS_KEY` se debe configurar la variable de forma encriptada
     ``` bash
-    travis encrypt SAUCE_USERNAME=el-usuario --add
-    travis encrypt SAUCE_ACCESS_KEY=el-key --add
+    travis encrypt SAUCE_USERNAME=el-usuario --add --com
+    travis encrypt SAUCE_ACCESS_KEY=el-key --add --com
     ```
-    **Nota**: Si no desea instalar el cliente de travis puede utilizar docker de la siguiente forma:
+    **Nota 1**: Si recibe un mensaje de error similar a `repository not known to https://api.travis-ci.org/: owner/repo`
+				Inicie sesión usando el comando `travis login --com`, se le solicitara ingresar su usuario y contraseña de Travis
+	**Nota 2**: Si no desea instalar el cliente de travis puede utilizar docker de la siguiente forma:
     ```bash
     docker run -v $(pwd):/usr/src/app -it ruby /bin/bash
     gem install travis -v 1.8.9 --no-rdoc --no-ri
     echo 'y' | travis -v
     cd /usr/src/app
-    travis encrypt SAUCE_USERNAME=el-usuario --add
-    travis encrypt SAUCE_ACCESS_KEY=el-key --add
+    travis encrypt SAUCE_USERNAME=el-usuario --add --com
+    travis encrypt SAUCE_ACCESS_KEY=el-key --add --com
     ```
 
 #### Sugerencias
 
-* Para configurar las variable de entorno en diferentes sistemas operativos, consulte este [link](https://wiki.saucelabs.com/display/DOCS/Best+Practice%3A+Use+Environment+Variables+for+Authentication+Credentials)
+* Para configurar las variables de entorno en diferentes sistemas operativos, consulte este [link](https://wiki.saucelabs.com/display/DOCS/Best+Practice%3A+Use+Environment+Variables+for+Authentication+Credentials)
 * Asegúrese de establecer los valores correctos para `SAUCE_USERNAME` y `SAUCE_ACCESS_KEY`
+* Para instalar el cliente de Travis, sigas las instrucciones de <https://github.com/travis-ci/travis.rb#installation>
 
 ### 25. Probar con diferentes navegadores
 
@@ -856,6 +859,8 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
     ``` bash
     docker pull dosel/zalenium
     ```
+	**Nota 1**: Si recibe un mensaje de error similar a `Error response from daemon: Get https://registry-1.docker.io/v2/: unauthorized:incorrect username or password`
+				Inicie sesión usando el comando `echo "YOUR_DOCKER_PASSWORD" | docker login --username YOUR_DOCKER_USERNAME --password-stdin`
 
 1. Ejecute el contenedor de zalenium
     ``` bash
