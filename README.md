@@ -265,7 +265,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       }));
     };
     ```
-1. Modifique el archivo **local.conf.ts** incluyendo el `import` del `reporter`
+1. Modifique el archivo **local.config.ts** incluyendo el `import` del `reporter`
     ``` ts
     import { reporter } from './helpers/reporter';
     ```
