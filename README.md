@@ -115,6 +115,9 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Instalar las dependencias de desarrollo de typescript
   `npm i --save-dev typescript`
 
+  1. Instalar los types de NodeJS
+  `npm install --save-dev @types/node`
+
 1. Instalar los types de Jasmines
   `npm install --save-dev @types/jasminewd2`
 
