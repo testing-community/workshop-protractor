@@ -73,12 +73,15 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    * [santirogu](https://github.com/santirogu)
 
 1. [Instalar JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) en su equipo si no lo tiene instalado
-1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado
+1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado. **Nota:** Recomendamos el uso una versión igual o superio de NodeJS 6 y de NPM 5
 1. Crear una rama **project-setup** en el repositorio
+
     ``` bash
     git checkout -b project-setup
     ```
+
 1. Crear el archivo .editorconfig a raíz del proyecto con la siguiente información
+
     ```properties
     root = true
 
@@ -94,6 +97,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     indent_size = 4
     trim_trailing_whitespace = false
     ```
+
 1. Instalar la extensión de Visual Studio Code `EditorConfig for VS Code` (Generalmente requiere reinicio del IDE)
 1. Ejecutar en una consola `npm init` dentro de la ruta donde se encuentra el repositorio y colocar la siguiente información:
 
@@ -110,18 +114,19 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    | **License**        | MIT                                           |
 
 1. Instalar la dependencia de protractor
-  `npm install protractor`
+  `npm install --save protractor`
 
 1. Instalar las dependencias de desarrollo de typescript
   `npm i --save-dev typescript`
 
-  1. Instalar los types de NodeJS
-  `npm install --save-dev @types/node`
+1. Instalar los types de NodeJS
+`npm install --save-dev @types/node`
 
 1. Instalar los types de Jasmines
   `npm install --save-dev @types/jasminewd2`
 
 1. Crear en la raíz del proyecto la carpeta **protractor** y dentro de ella el archivo  **local.config.ts** y agregar la siguiente información
+
     ``` ts
     import { Config } from 'protractor';
 
@@ -159,6 +164,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    ```
 
 1. Crear el archivo **tsconfig.json** en la raíz del proyecto con el siguiente contenido
+
     ``` json
     {
       "compilerOptions": {
@@ -174,6 +180,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     ```
 
 1. Modificar los scripts del package.json para que tengan el siguiente contenido:
+
     ``` json
     "clean": "rm -rf dist",
     "build": "npm run clean && tsc",
@@ -183,21 +190,27 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Ejecutar el comando en una segunda consola `npm test` y comprobar que la prueba pasa de forma satisfactoria
 1. Crear el archivo **.gitignore** en la raíz del proyecto. Ingresar a la página <https://www.gitignore.io/> y en el área de texto  agregar el _sistema operativo_, _IDE's_ y _NodeJS_, ejemplo _OSX Node VisualStudioCode_. Genere el archivo y cópielo dentro del archivo **.gitignore**
 1. Agregar al final del **.gitignore** las siguientes líneas
+
     ``` bash
     # Typescript
     dist
     ```
+
 1. Crear el archivo **LICENSE** en la raíz del proyecto con lo especificado en <https://en.wikipedia.org/wiki/MIT_License> (_Tenga en cuanta cambiar el año y el copyright holders_)
 1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
+
     ``` bash
     * @aperdomob @germandavid85 @luigisamurai @yesidbalvin @Scot3004 @santirogu
     ```
+
 1. Realizar un commit donde incluya los 8 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
+
     ```bash
     git add .
     git commit -m "setup protractor configuration"
     git push origin project-setup
     ```
+
 1. Crear un PR, asignarle los revisores y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo siga las siguientes [instrucciones](https://help.github.com/articles/creating-a-pull-request/)
 1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
 
@@ -207,6 +220,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
 1. Crear la rama **improve-test** a partir de master
 1. Modificar el **protractor/local.config.ts** agregando la propiedad `onPrepare` con el siguiente contenido:
+
     ``` ts
     onPrepare: () => {
         browser.ignoreSynchronization = true;
@@ -227,7 +241,9 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       }
     };
     ```
+
 1. Cambiar el contenido del archivo **google.spec.ts** por
+
     ``` ts
     import { browser } from 'protractor';
 
@@ -255,8 +271,9 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 **Descripción**: Es necesario poder ver los resultados de una forma entendible en la consola, en esta sesión se configura un reporte de consola.
 
 1. Instale la dependencia de desarrollo **jasmine-spec-reporter**
-   `npm install jasmine-spec-reporter`
+   `npm install --save jasmine-spec-reporter`
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
+
     ```ts
     import { SpecReporter } from 'jasmine-spec-reporter';
 
@@ -268,14 +285,19 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       }));
     };
     ```
+
 1. Modifique el archivo **local.config.ts** incluyendo el `import` del `reporter`
+
     ``` ts
     import { reporter } from './helpers/reporter';
     ```
+
 1. Dentro del método `onPrepare` agregar el llamado al método reporter
+
       ``` ts
       reporter();
       ```
+
 1. Solicite la revisión de código tal como se hizo en el punto anterior. Dentro de la descripción del PR incluya una imagen con el resultado de la ejecución, así como muestra a continuación
 
    ![Console result](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image4.png)
@@ -288,6 +310,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Termine el proceso del `npx webdriver-manager start` (ya no es necesario)
 1. Agregar la propiedad `SELENIUM_PROMISE_MANAGER` con el valor `false` en el **local.config.ts**
 1. Modificar el archivo de **google.spec.ts** para que trabaje con **async/await**
+
     ``` ts
     import { browser } from 'protractor';
 
@@ -303,6 +326,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       });
     });
     ```
+
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
 ### 5. Chrome Headless
@@ -311,6 +335,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
 1. Duplicar el archivo **local.config.ts** con el nombre de **headless.config.ts**
 1. Agregar la propiedad de capabilities en el nuevo archivo con la siguiente información
+
     ``` ts
     capabilities: {
       browserName: 'chrome',
@@ -319,6 +344,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       }
     }
     ```
+
 1. Duplicar el script **test** del **package.json** con el nombre de **test:headless** y cambia la ruta de ejecución al archivo **headless.conf.js**
 1. Cambia el nombre del script **test** por **test:local**
 1. Ejecuta tanto el comando `npm run test:local` como el `npm run test:headless` para comprobar que ejecuta efectivamente
@@ -331,6 +357,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Crear el archivo **.nvmrc** en la raíz del proyecto con el contenido `v10.10.0`
 1. Crear el archivo **.travis.yml** en la raíz del proyecto
 1. Agregar el siguiente contenido
+
     ``` yml
     dist: trusty
     addons:
@@ -340,6 +367,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       directories:
         - "node_modules"
     ```
+
 1. Habilitar Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
 1. Modificar los scripts de **package.json** agregando `"test": "npm run test:headless"`
 1. Agregar el script `"postinstall"` con el valor `"webdriver-manager update --gecko false"`
@@ -355,6 +383,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
 1. Agregar las dependencias de desarrollo **tslint** y **tslint-config-airbnb**
 1. Crear el archivo **tslint.json** en la raíz con la siguientes información
+
     ``` json
     {
       "defaultSeverity": "error",
@@ -366,6 +395,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       }
     }
     ```
+
 1. Agregar el script de **package.json** lint
     `"lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"`
 1. Corregir las reglas de forma automática `npm run lint -- --fix`
@@ -382,6 +412,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Vaya a la vista de `Debug` (⇧⌘D -  mac / )
 1. Haga click en el ícono del engranaje y seleccione `Node.js`. Estor creará el archivo `.vscode/launch.json`
 1. Reemplace el contenido del archivo por la siguiente información
+
     ``` json
     {
       // Use IntelliSense to learn about possible attributes.
@@ -420,6 +451,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
       ]
     }
     ```
+
 1. Compruebe que puede lanzar las pruebas y depurarlas utilzando `vs code`
 1. Envíe un pull request con una captura de pantalla en la que se identifique fue posible hacer depuración del test `google.spec.ts`
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -440,6 +472,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 1. Crear el archivo **buy-tshirt.spec.ts** dentro de la carpeta **test**
 1. Escribir dentro del archivo el siguiente contenido
+
     ``` ts
     import { $, browser } from 'protractor';
 
@@ -483,14 +516,19 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
       });
     });
     ```
+
 1. Modifique los archivos de configuración de protractor cambiando
+
     ``` ts
     specs: ['../test/**/*.spec.js']
     ```
+
     y
+
     ``` ts
     getPageTimeout: 1000
     ```
+
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
@@ -500,6 +538,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 1. Crear la carpeta **src/page** desde la raíz del proyecto
 1. Crear el archivo **src/page/menu-content.page.ts** con el siguiente contenido
+
     ``` ts
     import { $, ElementFinder } from 'protractor';
 
@@ -515,27 +554,36 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
       }
     }
     ```
+
 1. Crear el archivo **src/page/index.ts** con el siguiente contenido
+
     ``` ts
     export { MenuContentPage } from './menu-content.page';
     ```
+
 1. Modificar el archivo **buy-tshirt.spec.ts** de la siguiente forma
     * Importar la dependencia del page object despues del import de protractor
+
       ``` ts
       import { browser } from 'protractor';
       import { MenuContentPage } from '../src/page';
       ```
+
     * Creando una instancia del objeto `MenuContentPage`
+
       ``` ts
       describe('Buy a t-shirt', () => {
       const menuContentPage: MenuContentPage = new MenuContentPage();
       ```
+
     * Modificando el locator que le da clic en el menú de t-shirt
+
       ``` ts
       await browser.get('http://automationpractice.com/');
       await(browser.sleep(3000));
       await menuContentPage.goToTShirtMenu();
       ```
+
 1. Realice el resto de page object y remplacelo en la prueba, los nombres de los page object son:  **address-step.page.ts**, **bank-payment.page.ts**, **order-summary.page.ts**, **payment-step.page.ts**, **product-added-modal.page.ts**, **product-list.page.ts**, **shipping-step.page.ts**, **sign-in-step.page.ts**, **summary-step.page.ts**
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -548,11 +596,13 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 1. Elimina el `sleep` de **10000**
 1. Ejecutar las pruebas y verifica que aun sigan funcionando
 1. Agregar el tiempo de espera de Jasmine dentro de los archivos de configuración como muestra la siguiente imagen
+
     ``` ts
     jasmineNodeOpts: {
       defaultTimeoutInterval: 120000
     }
     ```
+
 1. Eliminar el `beforeEach` de la prueba
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -562,9 +612,12 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 **Descripción**: Una espera implícita es una espera global que se tiene para cada elemento de la página. En esta sesión veremos cómo tenerla configurada nos ayudará a reducir la cantidad de sleeps de la prueba
 
 1. Agregar dentro del onPrepare de los archivos de config la línea
+
     ``` ts
     browser.manage().timeouts().implicitlyWait(3000);
+
     ```
+
 1. Quitar todos los sleeps de la prueba
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -574,9 +627,11 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 **Descripción**: Las esperas explícitas es la más recomendada, ya que nos permite hacer esperas puntuales sobre algunos elementos y no sobre todos. En esta sesión desactivaremos las esperas implícitas y activaremos las explícitas donde sea necesario
 
 1. Modificar los archivos de configuración de tal forma que desactive las esperas implicitas
+
     ```ts
     browser.manage().timeouts().implicitlyWait(0)
     ```
+
 1. Ejecute la prueba e identifique en qué partes la prueba falla
 1. Utiliza esperas explícitas para solucionar las fallas de la prueba. busque apoyo de **browser** y **ExpectedConditions**
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
@@ -618,6 +673,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 **Descripción**: Las popups que muestra chrome cuando se está ejecutando por selenium son molestas y pueden causar fragilidad en las pruebas, en esta sesión se enseñará a desactivarlas por medio de las capabilities.
 
 1. Modificar la configuración local de protractor agregando capabilities para chrome para evitar mostrar algunas ventanas emergente en la ejecución
+
     ``` ts
     capabilities: {
       browserName: 'chrome',
@@ -627,6 +683,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
       }
     },
     ```
+
 1. Tomar una foto de que el test se ejecuta sin las ventanas emergentes y colocarla en la descripción del PR
 1. Ejecute las pruebas tanto con interfaz gráfica como en modo headless. Si alguna prueba falla modificarla utilizando css locators o los tiempos hasta que logre funcionar
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -647,6 +704,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 1. Crear el archivo **personal-information.page.ts** en la carpeta src/page
 1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button (Evitar el uso de css locators)
+
     ``` ts
     await personalInformationPage.fillForm({
        firstName: 'Alejandro',
@@ -664,6 +722,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
          'WebElement Commands']
     });
     ```
+
 1. Realizar una comprobación del título "**Practice Automation Form**"
 
 ### 20. Ejecución de Código Javascript
@@ -672,15 +731,16 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 
 1. Cree el archivo de prueba **i-frame.spec.ts** el cual abrirá la página <http://toolsqa.com/iframe-practice-page/> modificará la áltura del IFrame 1, posteriormente obtendrá la nueva altura para comprobar si efectivamente cambio
 1. Cree el archivo page **i-frame.page.ts** el cual contendrá un método para modificar la altura de un IFrame y otro para obtener su altura
-	``` ts
-	import { $, browser, ElementFinder, promise } from 'protractor';
-	
-	...
-	
-	public setFormFrameHeight(height: number): promise.Promise<void> {
-		return browser.executeScript(`arguments[0].height = ${height};`, this.iframe1);
-	}
-	```
+
+    ``` ts
+    import { $, browser, ElementFinder, promise } from 'protractor';
+
+    ...
+
+    public setFormFrameHeight(height: number): promise.Promise<void> {
+        return browser.executeScript(`arguments[0].height = ${height};`, this.iframe1);
+    }
+    ```
 
 ### 21. Trabajando con IFrames
 
@@ -689,17 +749,21 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 1. Modificar el page **i-frame.page.ts** de tal forma que publique:
     * un método que retorne el título de la página de valor **Sample Iframe page**
     * un método para pasarse al iframe 1
-	``` ts
-	public async switchToFrame(): Promise<void> {
-		await browser.switchTo().frame(this.frame.getWebElement());
-	}
-	```
+
+    ``` ts
+    public async switchToFrame(): Promise<void> {
+        await browser.switchTo().frame(this.frame.getWebElement());
+    }
+    ```
+
     * otro método para regresar al contexto principal
-	``` ts
-	public async switchToMainPage(): Promise<void> {
-		await browser.switchTo().defaultContent();
-	}
-	```
+
+    ``` ts
+    public async switchToMainPage(): Promise<void> {
+        await browser.switchTo().defaultContent();
+    }
+    ```
+
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que verifique el título principal
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al iframe 1 y verifique el título
 1. Modificar la prueba **i-frame.spec.ts** de tal forma que se cambie al contexto principal y verifique nuevamente el título
@@ -721,13 +785,17 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 1. Modificar el page **personal-information.page.ts** de tal forma que si recibe el parámetro `downloadFile` dentro del JSON llame al método privado `download` de ese mismo pageobject
 1. El método `download` obtendrá el link del enlace "**Test File to Download**" y se lo pasará al método `downloadFile` que recibe dos parametros de entrada el link de descarga y el nombre del archivo con que se quiere guardar
 1. Crear la carpeta **service** dentro de **src** y crear dentro un archivo llamado **download.service.ts** que tendrá dos métodos públicos
+
     ``` ts
     public async downloadFile(link: string, filename): Promise<void>
     ```
+
     Este método obtendrá la información del link y lo guardará en una carpeta temp a nivel raíz del proyecto con el nombre indicado
+
     ``` ts
     public readFileFromTemp(filename: string): Buffer
     ```
+
     Recibirá el nombre del archivo y devolverá el buffer que contiene la información del archivo
 1. Modificar la prueba de tal forma que descargue el archivo y después comprobar que descargó de forma correcta
 
@@ -747,15 +815,18 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
     ![Saucelabs access key](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image2.png)
 
 1. Adicione al archivo **package.json** el script `test:saucelabs` y haga que este se corra cuando se ejecute el script de test
+
     ``` json
     "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
     "test": "npm run test:saucelabs"
     ```
+
 1. Duplique el archivo  **protractor/local.config.ts** con el nombre **protractor/saucelabs.config.ts**
 1. Adicione las siguientes propiedades **protractor/saucelabs.config.ts**:
     * `sauceUser`: tendrá el valor del user name de saucelabs (se obtendrá por variable de ambiente)
     * `sauceKey`: tendrá el valor del key de saucelabs copiado en el punto 3 (se obtendrá por variable de ambiente)
     * `Capabilities.name`: nombre de la ejecución del job en saucelabs
+
     ``` ts
     // ...
 
@@ -778,21 +849,27 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
     },
     // ...
     ```
+
 1. Una vez configurado esto, en la consola asigne los valores para `SAUCE_USERNAME` y `SAUCE_ACCESS_KEY`, con los valores del registro en saucelabs
+
     ``` bash
     export SAUCE_USERNAME='sauce-username'
     export SAUCE_ACCESS_KEY='sauce-keu'
     ```
+
 1. Ejecute la prueba `npm test`
 1. Esto lanzará la ejecución directamente en saucelabs y se puede visualizar de la siguiente forma: <http://recordit.co/pIAXMQShQJ>
 1. Para que travis tome correctamente el `SAUCE_ACCESS_KEY` se debe configurar la variable de forma encriptada
+
     ``` bash
     travis encrypt SAUCE_USERNAME=el-usuario --add --com
     travis encrypt SAUCE_ACCESS_KEY=el-key --add --com
     ```
+
     **Nota 1**: Si recibe un mensaje de error similar a `repository not known to https://api.travis-ci.org/: owner/repo`
-				Inicie sesión usando el comando `travis login --com`, se le solicitara ingresar su usuario y contraseña de Travis
-	**Nota 2**: Si no desea instalar el cliente de travis puede utilizar docker de la siguiente forma:
+                Inicie sesión usando el comando `travis login --com`, se le solicitara ingresar su usuario y contraseña de Travis
+    **Nota 2**: Si no desea instalar el cliente de travis puede utilizar docker de la siguiente forma:
+
     ```bash
     docker run -v $(pwd):/usr/src/app -it ruby /bin/bash
     gem install travis -v 1.8.9 --no-rdoc --no-ri
@@ -814,6 +891,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 
 1. Necesitaremos editar el archivo **protractor/saucelabs.config.ts**, con los siguientes valoresCambiar capabilities por multiCapabilities
     * `multiCapabilities`: contiene la configuración de varios navegadores en un mismo config file
+
     ``` ts
     import { browser, Config } from 'protractor';
     import { reporter } from './helpers/reporter';
@@ -840,6 +918,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
       // ...
     };
     ```
+
 1. Ejecute las pruebas y en el PR suba la imagen que muestre que esta corriendo en diferentes navegadores
     ![Saucelabs Multibrowser execution](https://raw.githubusercontent.com/wiki/AgileTestingColombia/workshop-protractor/images/image3.png)
 
@@ -854,18 +933,22 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 **Descripción**: En ocasiones requerimos ejecutar nuestras pruebas en nuestro ambiente local o en un servidor de integración continua pero no tenemos los recursos suficientes para pagar todas las ejecuiones que se requieren en servicios como Saucelabs, o simplemente no queremos instalar ciertos navegadores en nuestro equipo ya que nos puede afectar nuestro ambiente de trabajo. Zalenium nos permite ejecutar nuestras pruebas dentro de containers si cumplen ciertos requerimientos y el resto mandarlo a Saucelabs de esa forma no tenemos que hacer configuraciones adicionales y tampoco incurrir a facturas muy grandes
 
 1. Descargue la imagen de docker elgalu/selenium
+
     ``` bash
     docker pull elgalu/selenium
     ```
 
 1. Descargue la imagen de zalenium
+
     ``` bash
     docker pull dosel/zalenium
     ```
-	**Nota 1**: Si recibe un mensaje de error similar a `Error response from daemon: Get https://registry-1.docker.io/v2/: unauthorized:incorrect username or password`
-				Inicie sesión usando el comando `echo "YOUR_DOCKER_PASSWORD" | docker login --username YOUR_DOCKER_USERNAME --password-stdin`
+
+    **Nota 1**: Si recibe un mensaje de error similar a `Error response from daemon: Get https://registry-1.docker.io/v2/: unauthorized:incorrect username or password`
+                Inicie sesión usando el comando `echo "YOUR_DOCKER_PASSWORD" | docker login --username YOUR_DOCKER_USERNAME --password-stdin`
 
 1. Ejecute el contenedor de zalenium
+
     ``` bash
     docker run --rm -ti --name zalenium -p 4444:4444 \
         -v /var/run/docker.sock:/var/run/docker.sock \
@@ -875,6 +958,7 @@ Ya que nuestras pruebas se ejecutarán en un servidor de integración sin interf
 
 1. Duplicar el archivo de **saucelabs.config.ts** y llamarlo **zalenium.config.ts**
 1. Configure el archivo de zalenium para que apunte al servidor de Grid de Zalenium
+
     ``` ts
     seleniumAddress: 'http://localhost:4444/wd/hub'
     ```
