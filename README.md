@@ -73,12 +73,15 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    * [santirogu](https://github.com/santirogu)
 
 1. [Instalar JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) en su equipo si no lo tiene instalado
-1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado
+1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado. **Nota:** Recomendamos el uso una versión igual o superio de NodeJS 6 y de NPM 5
 1. Crear una rama **project-setup** en el repositorio
+
     ``` bash
     git checkout -b project-setup
     ```
+
 1. Crear el archivo .editorconfig a raíz del proyecto con la siguiente información
+
     ```properties
     root = true
 
@@ -94,6 +97,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     indent_size = 4
     trim_trailing_whitespace = false
     ```
+
 1. Instalar la extensión de Visual Studio Code `EditorConfig for VS Code` (Generalmente requiere reinicio del IDE)
 1. Ejecutar en una consola `npm init` dentro de la ruta donde se encuentra el repositorio y colocar la siguiente información:
 
@@ -110,18 +114,19 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    | **License**        | MIT                                           |
 
 1. Instalar la dependencia de protractor
-  `npm install protractor`
+  `npm install --save protractor`
 
 1. Instalar las dependencias de desarrollo de typescript
   `npm i --save-dev typescript`
 
-  1. Instalar los types de NodeJS
-  `npm install --save-dev @types/node`
+1. Instalar los types de NodeJS
+`npm install --save-dev @types/node`
 
 1. Instalar los types de Jasmines
   `npm install --save-dev @types/jasminewd2`
 
 1. Crear en la raíz del proyecto la carpeta **protractor** y dentro de ella el archivo  **local.config.ts** y agregar la siguiente información
+
     ``` ts
     import { Config } from 'protractor';
 
@@ -255,8 +260,9 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 **Descripción**: Es necesario poder ver los resultados de una forma entendible en la consola, en esta sesión se configura un reporte de consola.
 
 1. Instale la dependencia de desarrollo **jasmine-spec-reporter**
-   `npm install jasmine-spec-reporter`
+   `npm install --save jasmine-spec-reporter`
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
+
     ```ts
     import { SpecReporter } from 'jasmine-spec-reporter';
 
