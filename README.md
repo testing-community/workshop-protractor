@@ -65,9 +65,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
 1. En la configuración del repositorio de GitHub en la opción Branches proteja la rama Master indicando que los PR requieran revisión antes de mergear y que requiera la comprobación del estado antes de hacer merge
 1. Dentro del menú colaboradores agregar a:
-   * [aperdomob](https://github.com/aperdomob)
    * [germandavid85](https://github.com/germandavid85)
-   * [luigisamurai](https://github.com/luigisamurai)
    * [yesidbalvin](https://github.com/yesidbalvin)
    * [Scot3004](https://github.com/Scot3004)
    * [santirogu](https://github.com/santirogu)
