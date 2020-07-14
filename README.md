@@ -69,6 +69,8 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    * [yesidbalvin](https://github.com/yesidbalvin)
    * [Scot3004](https://github.com/Scot3004)
    * [santirogu](https://github.com/santirogu)
+   * [leonleo997](https://github.com/lelonleo997)
+   * [holgiosalos](https://github.com/holgiosalos)
 
 1. [Instalar JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) en su equipo si no lo tiene instalado
 1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado. **Nota:** Recomendamos el uso una versión igual o superio de NodeJS 6 y de NPM 5
