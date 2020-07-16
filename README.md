@@ -69,7 +69,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    * [yesidbalvin](https://github.com/yesidbalvin)
    * [Scot3004](https://github.com/Scot3004)
    * [santirogu](https://github.com/santirogu)
-   * [leonleo997](https://github.com/lelonleo997)
+   * [leonleo997](https://github.com/leonleo997)
    * [holgiosalos](https://github.com/holgiosalos)
 
 1. [Instalar JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) en su equipo si no lo tiene instalado
