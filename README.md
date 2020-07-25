@@ -277,12 +277,12 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
 
     ```ts
-    import { SpecReporter } from 'jasmine-spec-reporter';
+    import { SpecReporter, StacktraceOption } from 'jasmine-spec-reporter';
 
     export let reporter = () => {
       jasmine.getEnv().addReporter(new SpecReporter({
         spec: {
-          displayStacktrace: true
+          displayStacktrace: StacktraceOption.PRETTY
         }
       }));
     };
