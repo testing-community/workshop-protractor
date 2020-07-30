@@ -116,7 +116,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    | **License**        | MIT                                           |
 
 1. Instalar la dependencia de protractor
-  `npm install --save protractor`
+  `npm install --save-dev protractor`
 
 1. Instalar las dependencias de desarrollo de typescript
   `npm i --save-dev typescript`
@@ -277,12 +277,11 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
 
     ```ts
-    import { SpecReporter } from 'jasmine-spec-reporter';
-
+    import { SpecReporter, StacktraceOption } from 'jasmine-spec-reporter';
     export let reporter = () => {
       jasmine.getEnv().addReporter(new SpecReporter({
         spec: {
-          displayStacktrace: true
+          displayStacktrace: StacktraceOption.PRETTY
         }
       }));
     };
@@ -361,7 +360,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Agregar el siguiente contenido
 
     ``` yml
-    dist: trusty
+    dist: xenial
     addons:
       chrome: stable
     language: node_js
