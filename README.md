@@ -704,7 +704,7 @@ Sobre las [opciones de depuración de node](https://code.visualstudio.com/docs/n
 **Descripción**: esta sesión automatizaremos otra página diferente, y su misión es seleccionar los mejores locators posibles de tal forma que el page object sea lo más reutilizable posible
 
 1. Crear el archivo **personal-information.page.ts** en la carpeta src/page
-1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <http://toolsqa.com/automation-practice-form/> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button (Evitar el uso de css locators)
+1. Crear el archivo **locators.spec.ts** en la carpeta de test, dentro de este archivo se navegará a <https://www.tutorialspoint.com/selenium/selenium_automation_practice.htm> y ejecutará el siguiente método que debe llenar el formulario con la información que se indica y dar clic en el botón Button (Evitar el uso de css locators)
 
     ``` ts
     await personalInformationPage.fillForm({
