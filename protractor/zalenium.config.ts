@@ -1,5 +1,5 @@
 import { browser, Config } from 'protractor';
-import { reporter } from './helpers/reporter';
+// import { reporter } from './helpers/reporter';
 
 const firefoxConfig = {
   browserName: 'firefox',
@@ -29,7 +29,7 @@ export let config: Config = {
     defaultTimeoutInterval: 120000
   },
   onPrepare: () => {
-    reporter();
+    // reporter();
     browser.ignoreSynchronization = true;
     browser.manage().timeouts().implicitlyWait(0);
   },

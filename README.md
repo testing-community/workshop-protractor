@@ -1,10 +1,11 @@
 # Workshop Protractor
 
-!Bienvenido! El objetivo de este taller es desarrollar los conocimientos necesarios para automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcará todo lo que necesitas para desarrollar un proyecto de automatización de forma exitosa. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el adecuado uso de [Github](https://github.com/) y [Gitflow](https://guides.github.com/introduction/flow/) para la entrega de un producto de software.
+!Bienvenido! El objetivo de este taller es aprender a automatizar pruebas de interfaz gráfica (UI) usando [Protractor](https://www.protractortest.org/#/). Mediante el desarrollo de varios ejercicios prácticos, se abarcará diferentes temas para desarrollar un proyecto de automatización. Durante el desarrollo de los ejercicios, se explicará cómo preparar un proyecto para un proceso de integración continúa con [Travis CI](https://travis-ci.com/), cómo usar [SauceLabs](https://saucelabs.com/) como plataforma de pruebas en la nube, el uso de [Zalenium](https://github.com/zalando/zalenium) para orquestar pruebas (tanto local como en la nube), y el uso de [Github](https://github.com/) y [Gitflow](https://guides.github.com/introduction/flow/) para la entrega de un producto de software.
 
-Para realizar este taller se espera que el estudiante tenga buenos conocimientos en:
+Se asume que la persona tiene conocimientos previos en:
 
 * Git (Puede seguir este [enlace](https://services.github.com/on-demand/downloads/es_ES/github-git-cheat-sheet/) con los comandos más utilizados en git)
+* GitHub
 
 **Recursos**:
 
@@ -50,32 +51,26 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 **Nota:** Si no tiene conocimiento sobre Github se le recomienda realizar las [Guias de Github](https://guides.github.com/activities/hello-world/) o el lab de [Introduction to Github](https://lab.github.com/githubtraining/introduction-to-github)
 
 1. Crear una cuenta en Github si no la tiene.
-1. Crear un repositorio en limpio dentro de la página de GitHub con el nombre de “**protractor-workshop-2018**”
-1. Crear una carpeta en su computador llamada `protractor-workshop-2018` y ubicarse en ella en una consola
+1. Crear un repositorio en limpio dentro de la página de GitHub con el nombre de “**protractor-workshop**”
+1. Crear una carpeta en su computador llamada `protractor-workshop` y ubicarse en ella en una consola
 1. Seguir las instrucciones para realizar el primer commit (use las que aparece en lá página de github)
 
     ``` shell
-    echo "# protractor-workshop-2018" >> README.md
+    echo "# protractor-workshop" >> README.md
     git init
     git add README.md
     git commit -m "first commit"
-    git remote add origin git@github.com:<su-usuario>/protractor-workshop-2018.git
-    git push -u origin master
+    git remote add origin git@github.com:<su-usuario>/protractor-workshop.git
+    git push -u origin main
     ```
 
 1. En la configuración del repositorio de GitHub en la opción Branches proteja la rama Master indicando que los PR requieran revisión antes de mergear y que requiera la comprobación del estado antes de hacer merge
 1. Dentro del menú colaboradores agregar a:
-   * [germandavid85](https://github.com/germandavid85)
-   * [yesidbalvin](https://github.com/yesidbalvin)
-   * [Scot3004](https://github.com/Scot3004)
-   * [santirogu](https://github.com/santirogu)
    * [leonleo997](https://github.com/leonleo997)
    * [holgiosalos](https://github.com/holgiosalos)
-   * [renardete](https://github.com/renardete)
-   * [valeryibarra](https://github.com/valeryibarra)
 
-1. [Instalar JDK](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) en su equipo si no lo tiene instalado
-1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado. **Nota:** Recomendamos el uso una versión igual o superio de NodeJS 6 y de NPM 5
+1. [Instalar JDK](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html) en su equipo si no lo tiene instalado
+1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado.
 1. Crear una rama **project-setup** en el repositorio
 
     ``` bash
@@ -109,9 +104,9 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
    | **Version**        | _[Por Defecto]_                               |
    | **Description**    | This is a Workshop about Protractor           |
    | **Entry Point**    | _[Por Defecto]_                               |
-   | **Test Command**   | `protractor dist/protractor/local.config.js`        |
+   | **Test Command**   | `protractor dist/protractor/local.config.js`  |
    | **Git Repository** | _[Por Defecto]_                               |
-   | **Keywords**       | ui-testing, dojo, practice, protractor        |
+   | **Keywords**       | ui-testing, protractor                        |
    | **Author**         | _[Su nombre]_ <_[Su correo]_> (_[su github]_) |
    | **License**        | MIT                                           |
 
@@ -158,9 +153,8 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
    describe('This is the first example of protractor', () => {
      it('should have a title', () => {
-       browser.ignoreSynchronization = true;
-       browser.get('http://www.google.com');
-       expect(browser.getTitle()).toEqual('Google');
+         browser.driver.get('http://www.google.com');
+         expect(browser.driver.getTitle()).toEqual('Google');
      });
    });
    ```
@@ -169,15 +163,10 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
     ``` json
     {
-      "compilerOptions": {
-        "target": "es6",
-        "sourceMap": true,
-        "outDir": "dist",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "noUnusedParameters": true,
-        "noUnusedLocals": true
-      }
+        "compilerOptions": {
+            "outDir": "dist",
+            "noUnusedLocals": true
+        }
     }
     ```
 
@@ -202,7 +191,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
 
     ``` bash
-    * @aperdomob @germandavid85 @luigisamurai @yesidbalvin @Scot3004 @santirogu
+    * @aperdomob @leonleo997 @holgiosalos
     ```
 
 1. Realizar un commit donde incluya los 8 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
@@ -221,29 +210,6 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 **Descripción**: Se utilizará el método `onPrepare` para configurar la información que debería ser igual en todas las pruebas, adicionalmente se utilizará el `beforeEach` para organizar la prueba de forma más legible
 
 1. Crear la rama **improve-test** a partir de master
-1. Modificar el **protractor/local.config.ts** agregando la propiedad `onPrepare` con el siguiente contenido:
-
-    ``` ts
-    onPrepare: () => {
-        browser.ignoreSynchronization = true;
-    }
-    ```
-
-    La propiedad config debe lucir algo así:
-
-    ``` ts
-    import { Config, browser } from 'protractor';
-
-    export const config: Config = {
-      framework: 'jasmine',
-      specs: [ '../test/google.spec.js' ],
-      seleniumAddress: 'http://localhost:4444/wd/hub',
-      onPrepare: () => {
-        browser.ignoreSynchronization = true;
-      }
-    };
-    ```
-
 1. Cambiar el contenido del archivo **google.spec.ts** por
 
     ``` ts
@@ -252,14 +218,15 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     describe('Given a SDET learning protractor', () => {
       describe('when open Google Page', () => {
         beforeEach(() => {
-          browser.get('http://www.google.com');
+          browser.driver.get('http://www.google.com');
         });
 
         it('then should have a title', () => {
-          expect(browser.getTitle()).toEqual('Google');
+          expect(browser.driver.getTitle()).toEqual('Google');
         });
       });
     });
+
     ```
 
 1. Ejecutar `npm test` y verificar la correcta ejecución de la prueba
@@ -273,7 +240,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 **Descripción**: Es necesario poder ver los resultados de una forma entendible en la consola, en esta sesión se configura un reporte de consola.
 
 1. Instale la dependencia de desarrollo **jasmine-spec-reporter**
-   `npm install --save jasmine-spec-reporter`
+   `npm install -D jasmine-spec-reporter`
 1. Crear la carpeta **protractor/helpers** y dentro de la carpeta el archivo **reporter.ts** con el siguiente contenido
 
     ```ts
@@ -281,7 +248,8 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     export let reporter = () => {
       jasmine.getEnv().addReporter(new SpecReporter({
         spec: {
-          displayStacktrace: StacktraceOption.PRETTY
+          displayStacktrace: StacktraceOption.PRETTY,
+          displayDuration: true
         }
       }));
     };
@@ -293,10 +261,12 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     import { reporter } from './helpers/reporter';
     ```
 
-1. Dentro del método `onPrepare` agregar el llamado al método reporter
+1. Modificar el protractor/local.config.ts agregando la propiedad `onPrepare` con el siguiente contenido:
 
       ``` ts
-      reporter();
+      onPrepare: () => {
+        reporter();
+      }
       ```
 
 1. Solicite la revisión de código tal como se hizo en el punto anterior. Dentro de la descripción del PR incluya una imagen con el resultado de la ejecución, así como muestra a continuación
@@ -305,7 +275,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
 ### 4. Desactivar el manejador de promesas y Selenium server
 
-**Descripción**: Para [Octubre del 2018](https://github.com/SeleniumHQ/selenium/issues/2969) WebDriverJS dejará de dar soporte a un tipo de promesas personalizadas que ha trabajado desde sus inicios, aunque hoy en día aún hay soporte es necesario empezar a trabajar de la forma que recomienda Protractor
+**Descripción**: En el [issue](https://github.com/SeleniumHQ/selenium/issues/2969) WebDriverJS recomienda dejar de utilizar la implentación propia de promesas personalizadas de Selenium que ha trabajado desde sus inicios, aunque hoy en día aún hay soporte es necesario empezar a trabajar de la forma que recomienda Protractor
 
 1. Eliminar la propiedad `seleniumAddress` del **local.config.ts**
 1. Termine el proceso del `npx webdriver-manager start` (ya no es necesario)
@@ -318,11 +288,11 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     describe('Given a SDET learning protractor', () => {
       describe('when open Google Page', () => {
         beforeEach(async () => {
-          await browser.get('http://www.google.com');
+          await browser.driver.get('http://www.google.com');
         });
 
         it('then should have a title', async () => {
-          await expect(browser.getTitle()).toEqual('Google');
+          expect(await browser.driver.getTitle()).toEqual('Google');
         });
       });
     });
@@ -355,7 +325,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
 **Descripción**: La integración continua es una práctica requerida hoy en día, en esta sesión configuraremos travis para ejecutar nuestra integración continua
 
-1. Crear el archivo **.nvmrc** en la raíz del proyecto con el contenido `v10.10.0`
+1. Crear el archivo **.nvmrc** en la raíz del proyecto con el contenido `v15.3.0`
 1. Crear el archivo **.travis.yml** en la raíz del proyecto
 1. Agregar el siguiente contenido
 
@@ -364,6 +334,9 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
     addons:
       chrome: stable
     language: node_js
+    install:
+      - npm ci
+      - npm run webdriver:update
     cache:
       directories:
         - "node_modules"
@@ -371,7 +344,7 @@ Para realizar este taller se espera que el estudiante tenga buenos conocimientos
 
 1. Habilitar Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
 1. Modificar los scripts de **package.json** agregando `"test": "npm run test:headless"`
-1. Agregar el script `"postinstall"` con el valor `"webdriver-manager update --gecko false"`
+1. Agregar el script `"webdriver:update"` con el valor `"webdriver-manager update --gecko false"`
 1. Subir los cambios a github (no cree aún el PR)
 1. Ir a la url de [Configuración de Travis](https://travis-ci.com/account/repositories)
 1. Habilite la configuración GitHub Apps
