@@ -1,49 +1,38 @@
 {
-  "name": "psl-workshop-protractor",
+  "name": "workshop-protractor",
   "version": "1.0.0",
-  "description": "First workshop for automation",
+  "description": "This is a Workshop about Protractor",
   "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
   "scripts": {
-    "postinstall": "webdriver-manager update --gecko false",
-    "clean": "rm -rf dist temp awesome-report",
-    "lint": "tslint --project tsconfig.json **/*.ts",
-    "prebuild": "npm run clean && npm run lint",
-    "build": "tsc",
-    "test:local": "npm run build && protractor dist/protractor/config.js",
-    "test:headless": "npm run build && protractor dist/protractor/headless.config.js",
-    "test:saucelabs": "npm run build && protractor dist/protractor/saucelabs.config.js",
-    "test:zalenium": "npm run build && protractor dist/protractor/zalenium.config.js",
-    "test": "npm run test:saucelabs"
+    "webdriver:update": "webdriver-manager update --gecko false",
+    "clean": "rm -rf dist",
+    "build": "npm run clean && tsc",
+    "test": "npm run test:headless",
+    "test:local": "npm run build && protractor dist/protractor/local.config.js",
+    "test:headless": "npm run build && protractor dist/protractor/headless.config.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aperdomob/psl-workshop-protractor.git"
+    "url": "git+https://github.com/AgileTestingColombia/workshop-protractor.git"
   },
   "keywords": [
-    "practice",
-    "protractor",
-    "psl",
-    "training",
-    "workshop"
+    "ui-testing",
+    "protractor"
   ],
-  "author": "aperdomobo@gmail.com (Alejandro Perdomo)",
+  "author": "Alejandro Perdomo <aperdomobo@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/aperdomob/psl-workshop-protractor/issues"
+    "url": "https://github.com/AgileTestingColombia/workshop-protractor/issues"
   },
-  "homepage": "https://github.com/aperdomob/psl-workshop-protractor#readme",
-  "dependencies": {
-    "isomorphic-fetch": "^2.2.1",
-    "protractor": "^5.4.3"
-  },
+  "homepage": "https://github.com/AgileTestingColombia/workshop-protractor#readme",
   "devDependencies": {
-    "@types/isomorphic-fetch": "0.0.34",
-    "@types/jasminewd2": "^2.0.4",
+    "@types/jasminewd2": "^2.0.8",
     "@types/node": "^14.14.22",
-    "jasmine-awesome-report": "0.0.3",
-    "jasmine-spec-reporter": "^4.2.1",
-    "tslint": "^5.11.0",
-    "tslint-config-airbnb": "^5.11.0",
+    "jasmine-spec-reporter": "^6.0.0",
+    "protractor": "^7.0.0",
     "typescript": "^4.1.3"
   }
 }
