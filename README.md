@@ -165,6 +165,8 @@ Se asume que la persona tiene conocimientos previos en:
     {
         "compilerOptions": {
             "outDir": "dist",
+            "sourceMap": true,
+            "mapRoot": "dist",
             "noUnusedLocals": true
         }
     }
