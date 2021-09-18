@@ -64,7 +64,8 @@ Se asume que la persona tiene conocimientos previos en:
     git push -u origin main
     ```
 
-1. En la configuración del repositorio de GitHub en la opción Branches proteja la rama Master indicando que los PR requieran revisión antes de mergear y que requiera la comprobación del estado antes de hacer merge
+1. En Options de la pestaña settings habilite la opción "Automatically delete head branches"
+1. En la configuración del repositorio de GitHub en la opción Branches proteja la rama main indicando que los PR requieran revisión antes de mergear (Require pull request reviews before merging) con un approver, y que requiera la comprobación del estado antes de hacer merge (Require status checks to pass before merging) y que la rama este al día (Require branches to be up to date before merging)
 1. Dentro del menú colaboradores agregar a:
    * [leonleo997](https://github.com/leonleo997)
    * [holgiosalos](https://github.com/holgiosalos)
@@ -100,7 +101,7 @@ Se asume que la persona tiene conocimientos previos en:
 
    | Parametro          | Valor |
    | ------------------ | ---------- |
-   | **Name**           | workshop-protractor                           |
+   | **Name**           | protractor-workshop                           |
    | **Version**        | _[Por Defecto]_                               |
    | **Description**    | This is a Workshop about Protractor           |
    | **Entry Point**    | _[Por Defecto]_                               |
@@ -163,12 +164,12 @@ Se asume que la persona tiene conocimientos previos en:
 
     ``` json
     {
-        "compilerOptions": {
-            "outDir": "dist",
-            "sourceMap": true,
-            "mapRoot": "dist",
-            "noUnusedLocals": true
-        }
+      "compilerOptions": {
+        "outDir": "dist",
+        "sourceMap": true,
+        "mapRoot": "dist",
+        "noUnusedLocals": true
+      }
     }
     ```
 
@@ -196,22 +197,22 @@ Se asume que la persona tiene conocimientos previos en:
     * @aperdomob @leonleo997 @holgiosalos
     ```
 
-1. Realizar un commit donde incluya los 8 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
+1. Realizar un commit donde incluya los 9 archivos modificados con el mensaje “chore: setup protractor configuration” y subir los cambios al repositorio
 
     ```bash
     git add .
-    git commit -m "setup protractor configuration"
+    git commit -m "chore: setup protractor configuration"
     git push origin project-setup
     ```
 
 1. Crear un PR, asignarle los revisores y esperar por la aprobación o comentarios de los revisores. Si no sabe como realizarlo siga las siguientes [instrucciones](https://help.github.com/articles/creating-a-pull-request/)
-1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
+1. Una vez aprobado realizar el merge a main seleccionando la opción “squash and merge”
 
 ### 2. Mejorando el primer caso de prueba
 
 **Descripción**: Se utilizará el método `onPrepare` para configurar la información que debería ser igual en todas las pruebas, adicionalmente se utilizará el `beforeEach` para organizar la prueba de forma más legible
 
-1. Crear la rama **improve-test** a partir de master
+1. Crear la rama **improve-test** a partir de main
 1. Cambiar el contenido del archivo **google.spec.ts** por
 
     ``` ts
@@ -234,7 +235,7 @@ Se asume que la persona tiene conocimientos previos en:
 1. Ejecutar `npm test` y verificar la correcta ejecución de la prueba
 1. Subir los cambios a Github
 1. Crear un PR, asignar los revisores y esperar por la aprobación o comentarios de los revisores.
-1. Una vez aprobado realizar el merge a master seleccionando la opción “squash and merge”
+1. Una vez aprobado realizar el merge a main seleccionando la opción “squash and merge”
 1. Eliminar la rama una vez mergeada
 
 ### 3. Agregando Reporte a la Consola
@@ -318,7 +319,7 @@ Se asume que la persona tiene conocimientos previos en:
     }
     ```
 
-1. Duplicar el script **test** del **package.json** con el nombre de **test:headless** y cambia la ruta de ejecución al archivo **headless.conf.js**
+1. Duplicar el script **test** del **package.json** con el nombre de **test:headless** y cambia la ruta de ejecución al archivo **headless.config.js**
 1. Cambia el nombre del script **test** por **test:local**
 1. Ejecuta tanto el comando `npm run test:local` como el `npm run test:headless` para comprobar que ejecuta efectivamente
 1. Solicite la revisión de código tal como se hizo en el punto anterior
@@ -327,31 +328,38 @@ Se asume que la persona tiene conocimientos previos en:
 
 **Descripción**: La integración continua es una práctica requerida hoy en día, en esta sesión configuraremos travis para ejecutar nuestra integración continua
 
-1. Crear el archivo **.nvmrc** en la raíz del proyecto con el contenido `v15.3.0`
-1. Crear el archivo **.travis.yml** en la raíz del proyecto
+1. Crear el archivo **.nvmrc** en la raíz del proyecto con el contenido `v14.17.6`
+1. Crear el archivo **.github/workflows/ci.yml** en la raíz del proyecto
 1. Agregar el siguiente contenido
 
     ``` yml
-    dist: xenial
-    addons:
-      chrome: stable
-    language: node_js
-    install:
-      - npm ci
-      - npm run webdriver:update
-    cache:
-      directories:
-        - "node_modules"
+    on: push
+    jobs:
+    ci:
+        runs-on: ubuntu-latest
+        steps:
+        - uses: actions/checkout@v1
+        - name: Read .nvmrc
+            run: echo ::set-output name=NODE_VERSION::$(cat .nvmrc)
+            id: nvm
+        - name: Use Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+            uses: actions/setup-node@v2
+            with:
+            node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+        - name: Install dependencies
+            run: npm ci
+        - name: Update Driver
+            run: npm run webdriver:update
+        - name: Tests
+            run: npm test
     ```
 
-1. Habilitar Travis en el repositorio <https://docs.travis-ci.com/user/getting-started/>
 1. Modificar los scripts de **package.json** agregando `"test": "npm run test:headless"`
 1. Agregar el script `"webdriver:update"` con el valor `"webdriver-manager update --gecko false"`
-1. Subir los cambios a github (no cree aún el PR)
-1. Ir a la url de [Configuración de Travis](https://travis-ci.com/account/repositories)
-1. Habilite la configuración GitHub Apps
+1. Subir los cambios a github
 1. Cree un PR
-1. Verificar que la ejecución en Travis termine correctamente
+1. Verificar que la ejecución en Actions termine correctamente
+1. Modificar el protected rule de main haciendo que sea requerido que el job ci pase para habilitar el merge
 
 ### 7. Agregando Análisis de Código Estático
 
