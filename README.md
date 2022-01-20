@@ -66,8 +66,12 @@ Se asume que la persona tiene conocimientos previos en:
 
 1. En la configuración del repositorio de GitHub en la opción Branches proteja la rama Master indicando que los PR requieran revisión antes de mergear y que requiera la comprobación del estado antes de hacer merge
 1. Dentro del menú colaboradores agregar a:
-   * [leonleo997](https://github.com/leonleo997)
    * [holgiosalos](https://github.com/holgiosalos)
+   * [veronicatofino](https://github.com/veronicatofino)
+   * [alejagonzalezv](https://github.com/alejagonzalezv)
+   * [angieVa](https://github.com/angieVa)
+   * [kliver98](https://github.com/kliver98)
+   * [danielgalvis98](https://github.com/danielgalvis98)
 
 1. [Instalar JDK](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html) en su equipo si no lo tiene instalado
 1. [Instalar NodeJS](https://nodejs.org/es/download/package-manager/) en su equipo si no lo tiene instalado.
@@ -193,7 +197,7 @@ Se asume que la persona tiene conocimientos previos en:
 1. Crear la carpeta a nivel de raíz llamada **.github** y dentro de ella crear el archivo **CODEOWNERS** con el siguiente contenido
 
     ``` bash
-    * @aperdomob @leonleo997 @holgiosalos
+    * @aperdomob @holgiosalos @veronicatofino @alejagonzalezv @angieVa @kliver98 @danielgalvis98
     ```
 
 1. Realizar un commit donde incluya los 8 archivos modificados con el mensaje “setup protractor configuration” y subir los cambios al repositorio
