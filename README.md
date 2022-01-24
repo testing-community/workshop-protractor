@@ -359,31 +359,46 @@ Se asume que la persona tiene conocimientos previos en:
 
 ### 7. Agregando Análisis de Código Estático
 
-**Descripción**: El análisis de código estático nos ayuda a estandarizar la forma en como escribimos código, en esta sesión configuraremos tslint con airbnb para tener análisis de código estático
+**Descripción**: El análisis de código estático nos ayuda a estandarizar la forma en como escribimos código, en esta sesión configuraremos eslint con airbnb para tener análisis de código estático
 
-1. Agregar las dependencias de desarrollo **tslint** y **tslint-config-airbnb**
-1. Crear el archivo **tslint.json** en la raíz con la siguientes información
+1. Agregar las dependencias de desarrollo **eslint**, **@typescript-eslint/eslint-plugin**, **@typescript-eslint/parser**, **eslint-plugin-protractor**, y **eslint-config-airbnb**
+1. Crear el archivo **.eslintrc.js** en la raíz con la siguientes información
 
-    ``` json
-    {
-      "defaultSeverity": "error",
-      "extends": [
-        "tslint-config-airbnb"
-      ],
-      "rules": {
-        "trailing-comma": [true]
-      }
+    ``` js
+    module.exports = {
+    "env": {
+        "browser": true,
+        "commonjs": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:protractor/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "protractor"
+    ],
+    "rules": {
+        "comma-dangle": "off",
+        "@typescript-eslint/comma-dangle": ["error", "only-multiline"]
+    }
     }
     ```
 
 1. Agregar el script de **package.json** lint
-    `"lint": "tslint --project tsconfig.json protractor/**/*.ts test/**/*.ts src/**/*.ts"`
+    `"lint": "eslint . --ext .ts"`
 1. Corregir las reglas de forma automática `npm run lint -- --fix`
 1. Las reglas que no se puedan corregir automáticamente investigue y corrijalas. Ejecute el comando `npm run lint` para verificar que reglas esta rompiendo
 1. Modifique el script de `build` del `package.json` agregandole al principio `npm run lint &&`
 1. Solicite la revisión de código tal como se hizo en el punto anterior
 
-**NOTA:** se recomienda instalar la extensión `TSLint` de vs code
+**NOTA:** se recomienda instalar la extensión `ESLint` de vs code
 
 ### 8. Depurando El Código
 
